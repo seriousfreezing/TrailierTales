@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
-import net.frozenblock.trailiertales.tag.TTEntityTags;
+import net.frozenblock.trailiertales.tag.TTEntityTypeTags;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -37,7 +37,7 @@ public class ApparitionAttackablesSensor extends Sensor<LivingEntity> {
 	}
 
 	private boolean isHostileTarget(LivingEntity entity) {
-		return entity.is(TTEntityTags.APPARITION_TARGETABLE);
+		return entity.is(TTEntityTypeTags.APPARITION_TARGETABLE);
 	}
 
 	private boolean isClose(LivingEntity apparition, LivingEntity target) {

@@ -17,33 +17,30 @@
 
 package net.frozenblock.trailiertales.registry;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityType;
 import net.frozenblock.trailiertales.TTConstants;
 import net.frozenblock.trailiertales.block.entity.SurveyorBlockEntity;
 import net.frozenblock.trailiertales.block.entity.coffin.CoffinBlockEntity;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.frozenblock.trailiertales.references.TTBlockEntityTypeIds;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
 
 public final class TTBlockEntityTypes {
-
-	public static final BlockEntityType<CoffinBlockEntity> COFFIN = register("coffin", CoffinBlockEntity::new, TTBlocks.COFFIN);
-	public static final BlockEntityType<SurveyorBlockEntity> SURVEYOR = register("surveyor", SurveyorBlockEntity::new, TTBlocks.SURVEYOR);
+	public static final BlockEntityType<CoffinBlockEntity> COFFIN = BlockEntityTypes.register(TTBlockEntityTypeIds.COFFIN,
+		CoffinBlockEntity::new,
+		TTBlocks.COFFIN
+	);
+	public static final BlockEntityType<SurveyorBlockEntity> SURVEYOR = BlockEntityTypes.register(TTBlockEntityTypeIds.SURVEYOR,
+		SurveyorBlockEntity::new,
+		TTBlocks.SURVEYOR
+	);
 
 	public static void register() {
 		TTConstants.log("Registering BlockEntities for Trailier Tales.", TTConstants.UNSTABLE_LOGGING);
 
-		final FabricBlockEntityType brushableBlock = BlockEntityType.BRUSHABLE_BLOCK;
+		final FabricBlockEntityType brushableBlock = BlockEntityTypes.BRUSHABLE_BLOCK;
 		brushableBlock.addValidBlock(TTBlocks.SUSPICIOUS_DIRT);
 		brushableBlock.addValidBlock(TTBlocks.SUSPICIOUS_CLAY);
 		brushableBlock.addValidBlock(TTBlocks.SUSPICIOUS_RED_SAND);
-	}
-
-	private static <T extends BlockEntity> BlockEntityType<T> register(String path, BlockEntityType.BlockEntitySupplier<T> factory, Block... blocks) {
-		return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, TTConstants.id(path), new BlockEntityType<>(factory, Arrays.stream(blocks).collect(Collectors.toSet())));
 	}
 }

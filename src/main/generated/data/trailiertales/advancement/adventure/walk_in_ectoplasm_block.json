@@ -8,7 +8,7 @@
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "stepping_on": {
+              "minecraft:movement_affected_by": {
                 "block": {
                   "blocks": "trailiertales:ectoplasm_block"
                 }

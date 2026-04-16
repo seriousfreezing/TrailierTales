@@ -27,7 +27,7 @@ import net.frozenblock.trailiertales.config.TTEntityConfig;
 import static net.frozenblock.trailiertales.config.gui.TTConfigGuiHelper.booleanEntry;
 import static net.frozenblock.trailiertales.config.gui.TTConfigGuiHelper.entitySpawnEntry;
 import net.frozenblock.trailiertales.registry.TTEntityTypes;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 
 @Environment(EnvType.CLIENT)
 public final class TTEntityConfigGui {
@@ -62,11 +62,11 @@ public final class TTEntityConfigGui {
 		var snifferDigsGuzmaniaSeeds = booleanEntry(entryBuilder, "sniffer_digs_guzmania_seeds", TTEntityConfig.SNIFFER_DIGS_GUZMANIA_SEEDS);
 		var sniffersDigDawntrailSeeds = booleanEntry(entryBuilder, "sniffer_digs_dawntrail_seeds", TTEntityConfig.SNIFFER_DIGS_DAWNTRAIL_SEEDS);
 		var sniffersDigLithopsSeeds = booleanEntry(entryBuilder, "sniffer_digs_lithops_seeds", TTEntityConfig.SNIFFER_DIGS_LITHOPS_SEEDS);
-		var spawnSniffer = entitySpawnEntry(entryBuilder, EntityType.SNIFFER, TTEntityConfig.SPAWN_SNIFFERS);
+		var spawnSniffer = entitySpawnEntry(entryBuilder, EntityTypes.SNIFFER, TTEntityConfig.SPAWN_SNIFFERS);
 
-		FrozenClothConfig.createSubCategory(entryBuilder, category, EntityType.SNIFFER.getDescription(),
+		FrozenClothConfig.createSubCategory(entryBuilder, category, EntityTypes.SNIFFER.getDescription(),
 			false,
-			tooltip("entity_category", EntityType.SNIFFER.getDescription()),
+			tooltip("entity_category", EntityTypes.SNIFFER.getDescription()),
 			snifferDigsCyanRoseSeeds, snifferDigsManedropGerms, snifferDigsGuzmaniaSeeds, sniffersDigLithopsSeeds, sniffersDigDawntrailSeeds,
 			spawnSniffer
 		);
@@ -74,18 +74,18 @@ public final class TTEntityConfigGui {
 		// VILLAGER
 		var villagersSellCatacombsMap = booleanEntry(entryBuilder, "sell_catacombs_map", TTEntityConfig.VILLAGER_SELLS_CATACOMBS_MAP);
 
-		FrozenClothConfig.createSubCategory(entryBuilder, category, EntityType.VILLAGER.getDescription(),
+		FrozenClothConfig.createSubCategory(entryBuilder, category, EntityTypes.VILLAGER.getDescription(),
 			false,
-			tooltip("entity_category", EntityType.VILLAGER.getDescription()),
+			tooltip("entity_category", EntityTypes.VILLAGER.getDescription()),
 			villagersSellCatacombsMap
 		);
 
 		// ARMOR STAND
 		var armorStandArms = booleanEntry(entryBuilder, "armor_stand_arms", TTEntityConfig.ARMOR_STAND_HAS_ARMS);
 
-		FrozenClothConfig.createSubCategory(entryBuilder, category, EntityType.ARMOR_STAND.getDescription(),
+		FrozenClothConfig.createSubCategory(entryBuilder, category, EntityTypes.ARMOR_STAND.getDescription(),
 			false,
-			tooltip("entity_category", EntityType.ARMOR_STAND.getDescription()),
+			tooltip("entity_category", EntityTypes.ARMOR_STAND.getDescription()),
 			armorStandArms
 		);
 	}

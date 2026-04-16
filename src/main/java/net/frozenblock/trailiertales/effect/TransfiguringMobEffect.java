@@ -35,6 +35,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.gamerules.GameRules;
 import org.jetbrains.annotations.Contract;
@@ -67,7 +68,7 @@ public class TransfiguringMobEffect extends MobEffect {
 			0.6F,
 			0.9F + (entity.level().getRandom().nextFloat() * 0.2F)
 		);
-		apparition.dropItem();
+		apparition.dropItem(apparition.getItemBySlot(EquipmentSlot.MAINHAND));
 		entity.remove(Entity.RemovalReason.DISCARDED);
 	}
 

@@ -25,7 +25,7 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.frozenblock.trailiertales.TTConstants;
 import net.frozenblock.trailiertales.config.TTEntityConfig;
 import net.frozenblock.trailiertales.config.TTWorldgenConfig;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -62,7 +62,7 @@ public final class TTBiomeModifications {
 					}
 
 					if (TTEntityConfig.SPAWN_SNIFFERS.get()) {
-						spawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SNIFFER, 1, 4), 5);
+						spawnSettings.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityTypes.SNIFFER, 1, 4), 5);
 					}
 				}
 

@@ -146,6 +146,7 @@ public class RuinsStructure extends Structure {
 				z + 128 + 1
 			);
 			RuinsPieces.addPieces(
+				context.registryAccess(),
 				context.structureTemplateManager(),
 				heightAccessor,
 				startPos,

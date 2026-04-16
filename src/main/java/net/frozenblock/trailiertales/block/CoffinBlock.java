@@ -42,6 +42,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityEvent;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -274,7 +275,7 @@ public class CoffinBlock extends HorizontalDirectionalBlock implements EntityBlo
 		if (entity instanceof EntityCoffinInterface entityInterface) entityInterface.trailierTales$setCoffinData(null);
 
 		if (entity instanceof Apparition apparition && remove) {
-			apparition.dropItem();
+			apparition.dropItem(apparition.getItemBySlot(EquipmentSlot.MAINHAND));
 			apparition.level().broadcastEntityEvent(apparition, EntityEvent.POOF);
 			apparition.discard();
 			apparition.dropPreservedEquipment(level);

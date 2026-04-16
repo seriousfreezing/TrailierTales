@@ -39,6 +39,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.lighting.LightEngine;
@@ -131,23 +132,23 @@ public class ApparitionRenderer extends MobRenderer<Apparition, ApparitionRender
 	}
 
 	@Override
-	public void extractRenderState(Apparition apparition, ApparitionRenderState renderState, float partialTick) {
-		super.extractRenderState(apparition, renderState, partialTick);
+	public void extractRenderState(Apparition apparition, ApparitionRenderState renderState, float partialTicks) {
+		super.extractRenderState(apparition, renderState, partialTicks);
 		renderState.lightCoords = 15728640;
-		renderState.itemYRot = apparition.getItemYRot(partialTick);
-		renderState.itemZRot = apparition.getItemZRot(partialTick);
+		renderState.itemYRot = apparition.getItemYRot(partialTicks);
+		renderState.itemZRot = apparition.getItemZRot(partialTicks);
 
 		final Minecraft minecraft = Minecraft.getInstance();
 		final Player player = minecraft.player;
 		final MobEffectInstance nightVision = player != null ? player.getEffect(MobEffects.NIGHT_VISION) : null;
-		final float nightVisionBlend = nightVision != null ? nightVision.getBlendFactor(player, partialTick) : 0F;
-		renderState.totalTransparency = apparition.totalTransparency(nightVisionBlend, partialTick);
-		renderState.innerTransparency = apparition.getInnerTransparency(nightVisionBlend, partialTick);
-		renderState.outerTransparency = apparition.getOuterTransparency(nightVisionBlend, partialTick);
-		renderState.flicker = apparition.getFlicker(partialTick);
+		final float nightVisionBlend = nightVision != null ? nightVision.getBlendFactor(player, partialTicks) : 0F;
+		renderState.totalTransparency = apparition.totalTransparency(nightVisionBlend, partialTicks);
+		renderState.innerTransparency = apparition.getInnerTransparency(nightVisionBlend, partialTicks);
+		renderState.outerTransparency = apparition.getOuterTransparency(nightVisionBlend, partialTicks);
+		renderState.flicker = apparition.getFlicker(partialTicks);
 
-		this.itemModelResolver.updateForLiving(renderState.item, apparition.getVisibleItem(), ItemDisplayContext.GROUND, apparition);
-		renderState.aidAnimProgress = apparition.getAidAnimProgress(partialTick);
-		renderState.poltergeistAnimProgress = apparition.getPoltergeistAnimProgress(partialTick);
+		this.itemModelResolver.updateForLiving(renderState.item, apparition.getItemBySlot(EquipmentSlot.MAINHAND), ItemDisplayContext.GROUND, apparition);
+		renderState.aidAnimProgress = apparition.getAidAnimProgress(partialTicks);
+		renderState.poltergeistAnimProgress = apparition.getPoltergeistAnimProgress(partialTicks);
 	}
 }

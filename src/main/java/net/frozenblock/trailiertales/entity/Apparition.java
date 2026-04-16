@@ -27,7 +27,7 @@ import net.frozenblock.trailiertales.mod_compat.FrozenLibIntegration;
 import net.frozenblock.trailiertales.particle.options.GlowingDustColorTransitionOptions;
 import net.frozenblock.trailiertales.registry.TTMemoryModuleTypes;
 import net.frozenblock.trailiertales.registry.TTSounds;
-import net.frozenblock.trailiertales.tag.TTEntityTags;
+import net.frozenblock.trailiertales.tag.TTEntityTypeTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.particles.ParticleOptions;
@@ -47,13 +47,13 @@ import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MoverType;
@@ -70,7 +70,6 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.npc.InventoryCarrier;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
@@ -89,20 +88,18 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 
-public class Apparition extends Monster implements InventoryCarrier, RangedAttackMob, WindDisturbingEntity {
+public class Apparition extends Monster implements RangedAttackMob, WindDisturbingEntity {
 	private static final Vec3 BASE_DUST_COLOR = new Vec3(162F / 255F, 181F / 255F, 217F / 255F);
 	private static final Vec3 AID_DUST_COLOR = new Vec3(24F / 255F, 252F / 255F, 1F);
 	private static final Vec3 POLTERGEIST_DUST_COLOR = new Vec3(222F / 255F, 157F / 255F, 224F / 255F);
 	private static final int WHITE = ARGB.color(new Vec3(1F, 1F, 1F));
 	private static final Brain.Provider<Apparition> BRAIN_PROVIDER = ApparitionAi.brainProvider();
-	private static final EntityDataAccessor<ItemStack> ITEM_STACK = SynchedEntityData.defineId(Apparition.class, EntityDataSerializers.ITEM_STACK);
 	private static final EntityDataAccessor<Float> TRANSPARENCY = SynchedEntityData.defineId(Apparition.class, EntityDataSerializers.FLOAT);
 	private static final EntityDataAccessor<Float> OUTER_TRANSPARENCY = SynchedEntityData.defineId(Apparition.class, EntityDataSerializers.FLOAT);
 	private static final EntityDataAccessor<Float> AID_ANIM_PROGRESS = SynchedEntityData.defineId(Apparition.class, EntityDataSerializers.FLOAT);
 	private static final EntityDataAccessor<Float> POLTERGEIST_ANIM_PROGRESS = SynchedEntityData.defineId(Apparition.class, EntityDataSerializers.FLOAT);
 	private static final EntityDataAccessor<Boolean> HIDING = SynchedEntityData.defineId(Apparition.class, EntityDataSerializers.BOOLEAN);
 
-	private final SimpleContainer inventory = new SimpleContainer(1);
 	private float transparency;
 	private float outerTransparency;
 	public int hiddenTicks;
@@ -130,7 +127,6 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
-		builder.define(ITEM_STACK, ItemStack.EMPTY);
 		builder.define(TRANSPARENCY, 0F);
 		builder.define(OUTER_TRANSPARENCY, 0F);
 		builder.define(AID_ANIM_PROGRESS, 0F);
@@ -268,19 +264,6 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 	}
 
 	@Override
-	public SimpleContainer getInventory() {
-		return this.inventory;
-	}
-
-	public ItemStack getVisibleItem() {
-		return this.entityData.get(ITEM_STACK);
-	}
-
-	public void setVisibleItem(ItemStack stack) {
-		this.getEntityData().set(ITEM_STACK, stack);
-	}
-
-	@Override
 	public boolean canPickUpLoot() {
 		return !this.isOnPickupCooldown() && TTEntityConfig.APPARITION_PICKS_UP_ITEMS.get();
 	}
@@ -297,20 +280,39 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 	public boolean wantsToPickUp(ServerLevel level, ItemStack stack) {
 		if (!TTEntityConfig.APPARITION_PICKS_UP_ITEMS.get()) return false;
 		if (!(level.getGameRules().get(GameRules.MOB_GRIEFING) || TTEntityConfig.APPARITION_IGNORES_MOB_GRIEFING.get())) return false;
-		return this.inventory.getItems().getFirst().isEmpty();
+		return this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty();
+	}
+
+	@Override
+	protected boolean canDispenserEquipIntoSlot(EquipmentSlot slot) {
+		return slot == EquipmentSlot.MAINHAND && this.canPickUpLoot();
+	}
+
+	@Override
+	public boolean canHoldItem(ItemStack itemStack) {
+		return this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty();
 	}
 
 	@Override
 	protected void pickUpItem(ServerLevel level, ItemEntity item) {
-		final ItemEntity itemEntity = new ItemEntity(this.level(), item.getX(), item.getY(), item.getZ(), item.getItem().split(1));
-		this.level().addFreshEntity(itemEntity);
-		InventoryCarrier.pickUpItem(level, this, this, itemEntity);
+		final ItemStack itemStack = item.getItem();
+
+		this.dropItem(this.getItemBySlot(EquipmentSlot.MAINHAND));
+		this.onItemPickup(item);
+		this.setItemSlot(EquipmentSlot.MAINHAND, itemStack.split(1));
+		this.setGuaranteedDrop(EquipmentSlot.MAINHAND);
+		this.take(item, 1);
 	}
 
 	@Override
-	protected void dropEquipment(ServerLevel level) {
-		super.dropEquipment(level);
-		this.inventory.removeAllItems().forEach(it -> this.spawnAtLocation(level, it));
+	protected void dropAllDeathLoot(ServerLevel level, DamageSource source) {
+		final ItemStack itemStack = this.getItemBySlot(EquipmentSlot.MAINHAND);
+		if (!itemStack.isEmpty()) {
+			this.spawnAtLocation(level, itemStack);
+			this.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+		}
+
+		super.dropAllDeathLoot(level, source);
 	}
 
 	public float getInnerTransparency() {
@@ -392,7 +394,6 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 			final boolean hiding = this.hiddenTicks > 0;
 			this.setHiding(hiding);
 			if (isHidden != hiding) this.refreshDimensions();
-			this.setVisibleItem(this.inventory.getItems().getFirst().copy());
 		} else {
 			this.prevTransparency = this.transparency;
 			this.prevOuterTransparency = this.outerTransparency;
@@ -455,7 +456,7 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 
 	@Override
 	public boolean requiresCustomPersistence() {
-		return super.requiresCustomPersistence() || !this.getVisibleItem().isEmpty();
+		return super.requiresCustomPersistence() || this.hasItemInSlot(EquipmentSlot.MAINHAND);
 	}
 
 	@Override
@@ -470,6 +471,7 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 			if (!(source.getDirectEntity() instanceof Projectile projectile)) break catchProjectile;
 
 			if (projectile instanceof AbstractArrow abstractArrow) {
+				if (abstractArrow.pickup != AbstractArrow.Pickup.ALLOWED) return false;
 				this.swapItem(abstractArrow.getPickupItemStackOrigin());
 			} else if (projectile instanceof ItemSupplier itemSupplier) {
 				this.swapItem(itemSupplier.getItem());
@@ -488,13 +490,12 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 
 	public void swapItem(ItemStack stack) {
 		if (stack.isEmpty() || this.level().isClientSide()) return;
-		this.dropItem();
-		this.inventory.setItem(0, stack);
+		this.dropItem(this.getItemBySlot(EquipmentSlot.MAINHAND));
+		this.setItemSlot(EquipmentSlot.MAINHAND, stack.copyAndClear());
 	}
 
-	public void dropItem() {
-		final ItemStack currentStack = this.inventory.getItems().getFirst().copyAndClear();
-		if (!currentStack.isEmpty()) this.level().addFreshEntity(new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), currentStack));
+	public void dropItem(ItemStack stack) {
+		if (!stack.isEmpty() && !this.level().isClientSide()) this.level().addFreshEntity(new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), stack));
 	}
 
 	@Override
@@ -541,24 +542,24 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 		this.setOuterTransparency(this.outerTransparency);
 	}
 
-	public float getInnerTransparency(float nightVisionBlend, float partialTick) {
-		return Math.max(Mth.lerp(partialTick, this.prevTransparency, this.transparency), nightVisionBlend) * 0.8F * (1F - this.getOtherAnimProgress(partialTick));
+	public float getInnerTransparency(float nightVisionBlend, float partialTicks) {
+		return Math.max(Mth.lerp(partialTicks, this.prevTransparency, this.transparency), nightVisionBlend) * 0.8F * (1F - this.getOtherAnimProgress(partialTicks));
 	}
 
-	public float getOuterTransparency(float nightVisionBlend, float partialTick) {
-		return Math.max(Mth.lerp(partialTick, this.prevOuterTransparency, this.outerTransparency), nightVisionBlend) * 0.75F * (1F - this.getOtherAnimProgress(partialTick));
+	public float getOuterTransparency(float nightVisionBlend, float partialTicks) {
+		return Math.max(Mth.lerp(partialTicks, this.prevOuterTransparency, this.outerTransparency), nightVisionBlend) * 0.75F * (1F - this.getOtherAnimProgress(partialTicks));
 	}
 
-	private float getOtherAnimProgress(float partialTick) {
-		return Math.max(this.getAidAnimProgress(partialTick), this.getPoltergeistAnimProgress(partialTick));
+	private float getOtherAnimProgress(float partialTicks) {
+		return Math.max(this.getAidAnimProgress(partialTicks), this.getPoltergeistAnimProgress(partialTicks));
 	}
 
-	public float getAidAnimProgress(float partialTick) {
-		return Mth.lerp(partialTick, this.prevAidAnimProgress, this.aidAnimProgress) * 0.85F;
+	public float getAidAnimProgress(float partialTicks) {
+		return Mth.lerp(partialTicks, this.prevAidAnimProgress, this.aidAnimProgress) * 0.85F;
 	}
 
-	public float getPoltergeistAnimProgress(float partialTick) {
-		return Mth.lerp(partialTick, this.prevPoltergeistAnimProgress, this.poltergeistAnimProgress) * 0.85F;
+	public float getPoltergeistAnimProgress(float partialTicks) {
+		return Mth.lerp(partialTicks, this.prevPoltergeistAnimProgress, this.poltergeistAnimProgress) * 0.85F;
 	}
 
 	public float totalTransparency(float nightVisionBlend, float partialTick) {
@@ -574,7 +575,6 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 	@Override
 	public void addAdditionalSaveData(ValueOutput output) {
 		super.addAdditionalSaveData(output);
-		this.writeInventoryToTag(output);
 		output.putFloat("Transparency", this.getInnerTransparency());
 		output.putFloat("OuterTransparency", this.getOuterTransparency());
 		output.putFloat("AidAnimProgress", this.getAidAnimProgress());
@@ -585,13 +585,11 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 	@Override
 	public void readAdditionalSaveData(ValueInput input) {
 		super.readAdditionalSaveData(input);
-		this.readInventoryFromTag(input);
 		this.setTransparency(input.getFloatOr("Transparency", 0));
 		this.setOuterTransparency(input.getFloatOr("OuterTransparency", 0));
 		this.setAidAnimProgress(input.getFloatOr("AidAnimProgress", 0));
 		this.setPoltergeistAnimProgress(input.getFloatOr("PoltergeistAnimProgress", 0));
 		this.setHiding(input.getBooleanOr("Hiding", false));
-		this.setVisibleItem(this.inventory.getItems().getFirst().copy());
 	}
 
 	public boolean isAiding() {
@@ -627,7 +625,7 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 			&& !this.level().getDifficulty().equals(Difficulty.PEACEFUL)
 			&& EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(livingEntity)
 			&& !this.isAlliedTo(livingEntity)
-			&& entity.is(TTEntityTags.APPARITION_TARGETABLE)
+			&& entity.is(TTEntityTypeTags.APPARITION_TARGETABLE)
 			&& !livingEntity.isInvulnerable()
 			&& !livingEntity.isDeadOrDying()
 			&& !livingEntity.isRemoved()
@@ -655,15 +653,14 @@ public class Apparition extends Monster implements InventoryCarrier, RangedAttac
 
 	@Override
 	public void performRangedAttack(LivingEntity target, float pullProgress) {
-		final ItemStack stack = this.inventory.getItems().getFirst();
+		final ItemStack stack = this.getItemBySlot(EquipmentSlot.MAINHAND).copyAndClear();
 		if (stack.isEmpty()) return;
 
 		Projectile projectile;
-		final ItemStack singleItem = stack.copyAndClear();
-		if (singleItem.getItem() instanceof ProjectileItem projectileItem) {
-			projectile = projectileItem.asProjectile(this.level(), this.getEyePosition(), singleItem, this.getDirection());
+		if (stack.getItem() instanceof ProjectileItem projectileItem) {
+			projectile = projectileItem.asProjectile(this.level(), this.getEyePosition(), stack, this.getDirection());
 		} else {
-			projectile = new ThrownItemProjectile(this.level(), this, singleItem);
+			projectile = new ThrownItemProjectile(this.level(), this, stack);
 		}
 		projectile.setOwner(this);
 

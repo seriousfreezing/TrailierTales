@@ -34,6 +34,7 @@ import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.MultifaceSpreadeableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -166,7 +167,7 @@ public class TTFeatureBootstrap {
 			DAWNTRAIL,
 			Feature.MULTIFACE_GROWTH,
 			new MultifaceGrowthConfiguration(
-				TTBlocks.DAWNTRAIL,
+				(MultifaceSpreadeableBlock) TTBlocks.DAWNTRAIL,
 				20,
 				true,
 				true,

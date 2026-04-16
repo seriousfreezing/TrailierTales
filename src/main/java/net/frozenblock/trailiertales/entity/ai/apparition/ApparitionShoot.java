@@ -24,6 +24,7 @@ import net.frozenblock.trailiertales.registry.TTMemoryModuleTypes;
 import net.frozenblock.trailiertales.registry.TTSounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Unit;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.Brain;
@@ -50,14 +51,14 @@ public class ApparitionShoot extends Behavior<Apparition> {
 
 	@Override
 	protected boolean checkExtraStartConditions(ServerLevel level, Apparition apparition) {
-		return !apparition.getInventory().getItems().getFirst().isEmpty() && !apparition.isHiding()
+		return !apparition.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty() && !apparition.isHiding()
 			&& apparition.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).map(livingEntity -> isTargetWithinRange(apparition, livingEntity)).orElse(false);
 	}
 
 	@Override
 	protected boolean canStillUse(ServerLevel level, Apparition apparition, long timestamp) {
 		return apparition.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET)
-			&& !apparition.getInventory().getItems().getFirst().isEmpty();
+			&& !apparition.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty();
 	}
 
 	@Override

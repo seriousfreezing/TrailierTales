@@ -22,15 +22,18 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.frozenblock.trailiertales.mod_compat.TTModIntegrations;
-import net.frozenblock.trailiertales.registry.TTBlocks;
+import net.frozenblock.trailiertales.references.TTBlockIds;
+import net.frozenblock.trailiertales.references.TTBlockItemIds;
 import net.frozenblock.trailiertales.tag.TTBlockTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.references.BlockIds;
+import net.minecraft.references.BlockItemIds;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
 public final class TTBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
@@ -44,505 +47,504 @@ public final class TTBlockTagsProvider extends FabricTagsProvider.BlockTagsProvi
 
 	@Override
 	protected void addTags(HolderLookup.Provider arg) {
-		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-			.add(TTBlocks.STONE_WALL)
+		this.builder(BlockTags.MINEABLE_WITH_PICKAXE)
+			.add(TTBlockItemIds.STONE_WALL)
 
-			.add(TTBlocks.CHISELED_GRANITE_BRICKS)
-			.add(TTBlocks.GRANITE_BRICKS)
-			.add(TTBlocks.CRACKED_GRANITE_BRICKS)
-			.add(TTBlocks.GRANITE_BRICK_STAIRS)
-			.add(TTBlocks.GRANITE_BRICK_SLAB)
-			.add(TTBlocks.GRANITE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_GRANITE_BRICKS)
-			.add(TTBlocks.MOSSY_GRANITE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_GRANITE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_GRANITE_BRICK_WALL)
-			.add(TTBlocks.POLISHED_GRANITE_WALL)
+			.add(TTBlockItemIds.CHISELED_GRANITE_BRICKS)
+			.add(TTBlockItemIds.GRANITE_BRICKS)
+			.add(TTBlockItemIds.CRACKED_GRANITE_BRICKS)
+			.add(TTBlockItemIds.GRANITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.GRANITE_BRICK_SLAB)
+			.add(TTBlockItemIds.GRANITE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_GRANITE_BRICKS)
+			.add(TTBlockItemIds.MOSSY_GRANITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_GRANITE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_GRANITE_BRICK_WALL)
+			.add(TTBlockItemIds.POLISHED_GRANITE_WALL)
 
-			.add(TTBlocks.CHISELED_DIORITE_BRICKS)
-			.add(TTBlocks.DIORITE_BRICKS)
-			.add(TTBlocks.CRACKED_DIORITE_BRICKS)
-			.add(TTBlocks.DIORITE_BRICK_STAIRS)
-			.add(TTBlocks.DIORITE_BRICK_SLAB)
-			.add(TTBlocks.DIORITE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_DIORITE_BRICKS)
-			.add(TTBlocks.MOSSY_DIORITE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_DIORITE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_DIORITE_BRICK_WALL)
-			.add(TTBlocks.POLISHED_DIORITE_WALL)
+			.add(TTBlockItemIds.CHISELED_DIORITE_BRICKS)
+			.add(TTBlockItemIds.DIORITE_BRICKS)
+			.add(TTBlockItemIds.CRACKED_DIORITE_BRICKS)
+			.add(TTBlockItemIds.DIORITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.DIORITE_BRICK_SLAB)
+			.add(TTBlockItemIds.DIORITE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_DIORITE_BRICKS)
+			.add(TTBlockItemIds.MOSSY_DIORITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DIORITE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_DIORITE_BRICK_WALL)
+			.add(TTBlockItemIds.POLISHED_DIORITE_WALL)
 
-			.add(TTBlocks.CHISELED_ANDESITE_BRICKS)
-			.add(TTBlocks.ANDESITE_BRICKS)
-			.add(TTBlocks.CRACKED_ANDESITE_BRICKS)
-			.add(TTBlocks.ANDESITE_BRICK_STAIRS)
-			.add(TTBlocks.ANDESITE_BRICK_SLAB)
-			.add(TTBlocks.ANDESITE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_ANDESITE_BRICKS)
-			.add(TTBlocks.MOSSY_ANDESITE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_ANDESITE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_ANDESITE_BRICK_WALL)
-			.add(TTBlocks.POLISHED_ANDESITE_WALL)
+			.add(TTBlockItemIds.CHISELED_ANDESITE_BRICKS)
+			.add(TTBlockItemIds.ANDESITE_BRICKS)
+			.add(TTBlockItemIds.CRACKED_ANDESITE_BRICKS)
+			.add(TTBlockItemIds.ANDESITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.ANDESITE_BRICK_SLAB)
+			.add(TTBlockItemIds.ANDESITE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICKS)
+			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICK_WALL)
+			.add(TTBlockItemIds.POLISHED_ANDESITE_WALL)
 
-			.add(TTBlocks.CALCITE_STAIRS)
-			.add(TTBlocks.CALCITE_SLAB)
-			.add(TTBlocks.CALCITE_WALL)
-			.add(TTBlocks.POLISHED_CALCITE)
-			.add(TTBlocks.POLISHED_CALCITE_STAIRS)
-			.add(TTBlocks.POLISHED_CALCITE_SLAB)
-			.add(TTBlocks.POLISHED_CALCITE_WALL)
-			.add(TTBlocks.CHISELED_CALCITE_BRICKS)
-			.add(TTBlocks.CALCITE_BRICKS)
-			.add(TTBlocks.CRACKED_CALCITE_BRICKS)
-			.add(TTBlocks.CALCITE_BRICK_STAIRS)
-			.add(TTBlocks.CALCITE_BRICK_SLAB)
-			.add(TTBlocks.CALCITE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_CALCITE_BRICKS)
-			.add(TTBlocks.MOSSY_CALCITE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_CALCITE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_CALCITE_BRICK_WALL)
+			.add(TTBlockItemIds.CALCITE_STAIRS)
+			.add(TTBlockItemIds.CALCITE_SLAB)
+			.add(TTBlockItemIds.CALCITE_WALL)
+			.add(TTBlockItemIds.POLISHED_CALCITE)
+			.add(TTBlockItemIds.POLISHED_CALCITE_STAIRS)
+			.add(TTBlockItemIds.POLISHED_CALCITE_SLAB)
+			.add(TTBlockItemIds.POLISHED_CALCITE_WALL)
+			.add(TTBlockItemIds.CHISELED_CALCITE_BRICKS)
+			.add(TTBlockItemIds.CALCITE_BRICKS)
+			.add(TTBlockItemIds.CRACKED_CALCITE_BRICKS)
+			.add(TTBlockItemIds.CALCITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.CALCITE_BRICK_SLAB)
+			.add(TTBlockItemIds.CALCITE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_CALCITE_BRICKS)
+			.add(TTBlockItemIds.MOSSY_CALCITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_CALCITE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_CALCITE_BRICK_WALL)
 
-			.add(TTBlocks.CRACKED_TUFF_BRICKS)
-			.add(TTBlocks.MOSSY_TUFF_BRICKS)
-			.add(TTBlocks.MOSSY_TUFF_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_TUFF_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_TUFF_BRICK_WALL)
+			.add(TTBlockItemIds.CRACKED_TUFF_BRICKS)
+			.add(TTBlockItemIds.MOSSY_TUFF_BRICKS)
+			.add(TTBlockItemIds.MOSSY_TUFF_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_TUFF_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_TUFF_BRICK_WALL)
 
-			.add(TTBlocks.CRACKED_BRICKS)
-			.add(TTBlocks.MOSSY_BRICKS)
-			.add(TTBlocks.MOSSY_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_BRICK_WALL)
+			.add(TTBlockItemIds.CRACKED_BRICKS)
+			.add(TTBlockItemIds.MOSSY_BRICKS)
+			.add(TTBlockItemIds.MOSSY_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_BRICK_WALL)
 
-			.add(TTBlocks.CRACKED_RESIN_BRICKS)
-			.add(TTBlocks.PALE_MOSSY_RESIN_BRICKS)
-			.add(TTBlocks.PALE_MOSSY_RESIN_BRICK_STAIRS)
-			.add(TTBlocks.PALE_MOSSY_RESIN_BRICK_SLAB)
-			.add(TTBlocks.PALE_MOSSY_RESIN_BRICK_WALL)
+			.add(TTBlockItemIds.CRACKED_RESIN_BRICKS)
+			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICKS)
+			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICK_STAIRS)
+			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICK_SLAB)
+			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICK_WALL)
 
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_WALL)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICKS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILES)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_STAIRS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_SLAB)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_WALL)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_STAIRS)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_SLAB)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_WALL)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICKS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILES)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_SLAB)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_WALL)
 
-			.add(TTBlocks.SMOOTH_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_SANDSTONE_STAIRS)
+			.add(TTBlockItemIds.SMOOTH_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_SANDSTONE_STAIRS)
 
-			.add(TTBlocks.SMOOTH_RED_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_RED_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_RED_SANDSTONE_STAIRS)
+			.add(TTBlockItemIds.SMOOTH_RED_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_RED_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_RED_SANDSTONE_STAIRS)
 
-			.add(TTBlocks.PRISMARINE_BRICK_WALL)
-			.add(TTBlocks.DARK_PRISMARINE_WALL)
+			.add(TTBlockItemIds.PRISMARINE_BRICK_WALL)
+			.add(TTBlockItemIds.DARK_PRISMARINE_WALL)
 
-			.add(TTBlocks.CHORAL_END_STONE)
-			.add(TTBlocks.CHORAL_END_STONE_STAIRS)
-			.add(TTBlocks.CHORAL_END_STONE_SLAB)
-			.add(TTBlocks.CHORAL_END_STONE_WALL)
-			.add(TTBlocks.END_STONE_STAIRS)
-			.add(TTBlocks.END_STONE_SLAB)
-			.add(TTBlocks.END_STONE_WALL)
+			.add(TTBlockItemIds.CHORAL_END_STONE)
+			.add(TTBlockItemIds.CHORAL_END_STONE_STAIRS)
+			.add(TTBlockItemIds.CHORAL_END_STONE_SLAB)
+			.add(TTBlockItemIds.CHORAL_END_STONE_WALL)
+			.add(TTBlockItemIds.END_STONE_STAIRS)
+			.add(TTBlockItemIds.END_STONE_SLAB)
+			.add(TTBlockItemIds.END_STONE_WALL)
 
-			.add(TTBlocks.CRACKED_END_STONE_BRICKS)
-			.add(TTBlocks.CHISELED_END_STONE_BRICKS)
-			.add(TTBlocks.CHORAL_END_STONE_BRICKS)
-			.add(TTBlocks.CHORAL_END_STONE_BRICK_STAIRS)
-			.add(TTBlocks.CHORAL_END_STONE_BRICK_SLAB)
-			.add(TTBlocks.CHORAL_END_STONE_BRICK_WALL)
+			.add(TTBlockItemIds.CRACKED_END_STONE_BRICKS)
+			.add(TTBlockItemIds.CHISELED_END_STONE_BRICKS)
+			.add(TTBlockItemIds.CHORAL_END_STONE_BRICKS)
+			.add(TTBlockItemIds.CHORAL_END_STONE_BRICK_STAIRS)
+			.add(TTBlockItemIds.CHORAL_END_STONE_BRICK_SLAB)
+			.add(TTBlockItemIds.CHORAL_END_STONE_BRICK_WALL)
 
-			.add(TTBlocks.CRACKED_PURPUR_BLOCK)
-			.add(TTBlocks.CHISELED_PURPUR_BLOCK)
-			.add(TTBlocks.PURPUR_WALL)
+			.add(TTBlockItemIds.CRACKED_PURPUR_BLOCK)
+			.add(TTBlockItemIds.CHISELED_PURPUR_BLOCK)
+			.add(TTBlockItemIds.PURPUR_WALL)
 
-			.add(TTBlocks.SURVEYOR);
+			.add(TTBlockItemIds.SURVEYOR);
 
-		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
-			.add(TTBlocks.SUSPICIOUS_RED_SAND)
-			.add(TTBlocks.SUSPICIOUS_DIRT)
-			.add(TTBlocks.SUSPICIOUS_CLAY);
+		this.builder(BlockTags.MINEABLE_WITH_SHOVEL)
+			.add(TTBlockItemIds.SUSPICIOUS_RED_SAND)
+			.add(TTBlockItemIds.SUSPICIOUS_DIRT)
+			.add(TTBlockItemIds.SUSPICIOUS_CLAY);
 
-		this.valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE)
-			.add(TTBlocks.LITHOPS);
+		this.builder(BlockTags.MINEABLE_WITH_HOE)
+			.add(TTBlockItemIds.LITHOPS);
 
-		this.valueLookupBuilder(BlockTags.SWORD_EFFICIENT)
-			.add(TTBlocks.LITHOPS);
+		this.builder(BlockTags.SWORD_EFFICIENT)
+			.add(TTBlockItemIds.LITHOPS);
 
-		this.valueLookupBuilder(BlockTags.SAND)
-			.add(TTBlocks.SUSPICIOUS_RED_SAND);
+		this.builder(BlockItemTags.SAND.block())
+			.add(TTBlockItemIds.SUSPICIOUS_RED_SAND);
 
-		this.valueLookupBuilder(BlockTags.DIRT)
-			.add(TTBlocks.SUSPICIOUS_DIRT);
+		this.builder(BlockItemTags.DIRT.block())
+			.add(TTBlockItemIds.SUSPICIOUS_DIRT);
 
-		this.valueLookupBuilder(BlockTags.SMALL_FLOWERS)
-			.add(TTBlocks.CYAN_ROSE);
+		this.builder(BlockItemTags.SMALL_FLOWERS.block())
+			.add(TTBlockItemIds.CYAN_ROSE);
 
-		this.valueLookupBuilder(BlockTags.BEE_ATTRACTIVE)
-			.add(TTBlocks.MANEDROP)
-			.add(TTBlocks.CYAN_ROSE)
-			.add(TTBlocks.GUZMANIA);
+		this.builder(BlockItemTags.BEE_FOOD.block())
+			.add(TTBlockItemIds.CYAN_ROSE)
+			.add(TTBlockItemIds.MANEDROP)
+			.add(TTBlockItemIds.GUZMANIA);
 
-		this.valueLookupBuilder(BlockTags.FLOWERS)
-			.add(TTBlocks.DAWNTRAIL);
+		this.builder(BlockItemTags.FLOWERS.block())
+			.add(TTBlockItemIds.DAWNTRAIL);
 
-		this.valueLookupBuilder(BlockTags.FLOWER_POTS)
-			.add(TTBlocks.POTTED_CYAN_ROSE)
-			.add(TTBlocks.POTTED_LITHOPS);
+		this.builder(BlockTags.FLOWER_POTS)
+			.add(TTBlockIds.POTTED_CYAN_ROSE)
+			.add(TTBlockIds.POTTED_LITHOPS);
 
-		this.valueLookupBuilder(BlockTags.CROPS)
-			.add(TTBlocks.CYAN_ROSE_CROP)
-			.add(TTBlocks.MANEDROP_CROP)
-			.add(TTBlocks.GUZMANIA_CROP)
-			.add(TTBlocks.DAWNTRAIL_CROP)
-			.add(TTBlocks.LITHOPS_CROP);
+		this.builder(BlockTags.CROPS)
+			.add(TTBlockItemIds.CYAN_ROSE_CROP)
+			.add(TTBlockItemIds.MANEDROP_CROP)
+			.add(TTBlockItemIds.GUZMANIA_CROP)
+			.add(TTBlockItemIds.DAWNTRAIL_CROP)
+			.add(TTBlockItemIds.LITHOPS_CROP);
 
-		this.valueLookupBuilder(BlockTags.MAINTAINS_FARMLAND)
-			.add(TTBlocks.CYAN_ROSE_CROP)
-			.add(TTBlocks.CYAN_ROSE)
-			.add(TTBlocks.MANEDROP_CROP)
-			.add(TTBlocks.GUZMANIA_CROP)
-			.add(TTBlocks.DAWNTRAIL_CROP)
-			.add(TTBlocks.DAWNTRAIL)
-			.add(TTBlocks.LITHOPS_CROP)
-			.add(TTBlocks.LITHOPS);
+		this.builder(BlockTags.MAINTAINS_FARMLAND)
+			.add(TTBlockItemIds.CYAN_ROSE_CROP)
+			.add(TTBlockItemIds.CYAN_ROSE)
+			.add(TTBlockItemIds.MANEDROP_CROP)
+			.add(TTBlockItemIds.GUZMANIA_CROP)
+			.add(TTBlockItemIds.DAWNTRAIL_CROP)
+			.add(TTBlockItemIds.DAWNTRAIL)
+			.add(TTBlockItemIds.LITHOPS_CROP)
+			.add(TTBlockItemIds.LITHOPS);
 
-		this.valueLookupBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
-			.add(TTBlocks.DAWNTRAIL)
-			.add(TTBlocks.LITHOPS);
+		this.builder(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
+			.add(TTBlockItemIds.DAWNTRAIL)
+			.add(TTBlockItemIds.LITHOPS);
 
-		this.valueLookupBuilder(BlockTags.REPLACEABLE_BY_TREES)
-			.add(TTBlocks.CYAN_ROSE)
-			.add(TTBlocks.DAWNTRAIL)
-			.add(TTBlocks.LITHOPS);
+		this.builder(BlockTags.REPLACEABLE_BY_TREES)
+			.add(TTBlockItemIds.CYAN_ROSE)
+			.add(TTBlockItemIds.DAWNTRAIL)
+			.add(TTBlockItemIds.LITHOPS);
 
-		this.valueLookupBuilder(BlockTags.STAIRS)
-			.add(TTBlocks.GRANITE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_GRANITE_BRICK_STAIRS)
-			.add(TTBlocks.DIORITE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_DIORITE_BRICK_STAIRS)
-			.add(TTBlocks.ANDESITE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_ANDESITE_BRICK_STAIRS)
-			.add(TTBlocks.CALCITE_STAIRS)
-			.add(TTBlocks.POLISHED_CALCITE_STAIRS)
-			.add(TTBlocks.CALCITE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_CALCITE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_TUFF_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_BRICK_STAIRS)
-			.add(TTBlocks.PALE_MOSSY_RESIN_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_STAIRS)
-			.add(TTBlocks.POLISHED_RESIN_STAIRS)
-			.add(TTBlocks.CUT_SANDSTONE_STAIRS)
-			.add(TTBlocks.CUT_RED_SANDSTONE_STAIRS)
-			.add(TTBlocks.CHORAL_END_STONE_STAIRS)
-			.add(TTBlocks.CHORAL_END_STONE_BRICK_STAIRS)
-			.add(TTBlocks.END_STONE_STAIRS);
+		this.builder(BlockItemTags.STAIRS.block())
+			.add(TTBlockItemIds.GRANITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_GRANITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.DIORITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DIORITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.ANDESITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.CALCITE_STAIRS)
+			.add(TTBlockItemIds.POLISHED_CALCITE_STAIRS)
+			.add(TTBlockItemIds.CALCITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_CALCITE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_TUFF_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_BRICK_STAIRS)
+			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_STAIRS)
+			.add(TTBlockItemIds.POLISHED_RESIN_STAIRS)
+			.add(TTBlockItemIds.CUT_SANDSTONE_STAIRS)
+			.add(TTBlockItemIds.CUT_RED_SANDSTONE_STAIRS)
+			.add(TTBlockItemIds.CHORAL_END_STONE_STAIRS)
+			.add(TTBlockItemIds.CHORAL_END_STONE_BRICK_STAIRS)
+			.add(TTBlockItemIds.END_STONE_STAIRS);
 
-		this.valueLookupBuilder(BlockTags.SLABS)
-			.add(TTBlocks.GRANITE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_GRANITE_BRICK_SLAB)
-			.add(TTBlocks.DIORITE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_DIORITE_BRICK_SLAB)
-			.add(TTBlocks.ANDESITE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_ANDESITE_BRICK_SLAB)
-			.add(TTBlocks.CALCITE_SLAB)
-			.add(TTBlocks.POLISHED_CALCITE_SLAB)
-			.add(TTBlocks.CALCITE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_CALCITE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_TUFF_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_BRICK_SLAB)
-			.add(TTBlocks.PALE_MOSSY_RESIN_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_SLAB)
-			.add(TTBlocks.POLISHED_RESIN_SLAB)
-			.add(TTBlocks.CHORAL_END_STONE_SLAB)
-			.add(TTBlocks.CHORAL_END_STONE_BRICK_SLAB)
-			.add(TTBlocks.END_STONE_SLAB);
+		this.builder(BlockItemTags.SLABS.block())
+			.add(TTBlockItemIds.GRANITE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_GRANITE_BRICK_SLAB)
+			.add(TTBlockItemIds.DIORITE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_DIORITE_BRICK_SLAB)
+			.add(TTBlockItemIds.ANDESITE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICK_SLAB)
+			.add(TTBlockItemIds.CALCITE_SLAB)
+			.add(TTBlockItemIds.POLISHED_CALCITE_SLAB)
+			.add(TTBlockItemIds.CALCITE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_CALCITE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_TUFF_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_BRICK_SLAB)
+			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_SLAB)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_SLAB)
+			.add(TTBlockItemIds.POLISHED_RESIN_SLAB)
+			.add(TTBlockItemIds.CHORAL_END_STONE_SLAB)
+			.add(TTBlockItemIds.CHORAL_END_STONE_BRICK_SLAB)
+			.add(TTBlockItemIds.END_STONE_SLAB);
 
-		this.valueLookupBuilder(BlockTags.WALLS)
-			.add(TTBlocks.STONE_WALL)
-			.add(TTBlocks.GRANITE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_GRANITE_BRICK_WALL)
-			.add(TTBlocks.POLISHED_GRANITE_WALL)
-			.add(TTBlocks.DIORITE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_DIORITE_BRICK_WALL)
-			.add(TTBlocks.POLISHED_DIORITE_WALL)
-			.add(TTBlocks.ANDESITE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_ANDESITE_BRICK_WALL)
-			.add(TTBlocks.POLISHED_ANDESITE_WALL)
-			.add(TTBlocks.CALCITE_WALL)
-			.add(TTBlocks.POLISHED_CALCITE_WALL)
-			.add(TTBlocks.CALCITE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_CALCITE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_TUFF_BRICK_WALL)
-			.add(TTBlocks.MOSSY_BRICK_WALL)
-			.add(TTBlocks.PALE_MOSSY_RESIN_BRICK_WALL)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_WALL)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_WALL)
-			.add(TTBlocks.POLISHED_RESIN_WALL)
-			.add(TTBlocks.SMOOTH_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_SANDSTONE_WALL)
-			.add(TTBlocks.SMOOTH_RED_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_RED_SANDSTONE_WALL)
-			.add(TTBlocks.PRISMARINE_BRICK_WALL)
-			.add(TTBlocks.DARK_PRISMARINE_WALL)
-			.add(TTBlocks.CHORAL_END_STONE_WALL)
-			.add(TTBlocks.CHORAL_END_STONE_BRICK_WALL)
-			.add(TTBlocks.END_STONE_WALL)
-			.add(TTBlocks.PURPUR_WALL);
+		this.builder(BlockItemTags.WALLS.block())
+			.add(TTBlockItemIds.STONE_WALL)
+			.add(TTBlockItemIds.GRANITE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_GRANITE_BRICK_WALL)
+			.add(TTBlockItemIds.POLISHED_GRANITE_WALL)
+			.add(TTBlockItemIds.DIORITE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_DIORITE_BRICK_WALL)
+			.add(TTBlockItemIds.POLISHED_DIORITE_WALL)
+			.add(TTBlockItemIds.ANDESITE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICK_WALL)
+			.add(TTBlockItemIds.POLISHED_ANDESITE_WALL)
+			.add(TTBlockItemIds.CALCITE_WALL)
+			.add(TTBlockItemIds.POLISHED_CALCITE_WALL)
+			.add(TTBlockItemIds.CALCITE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_CALCITE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_TUFF_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_BRICK_WALL)
+			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_WALL)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_WALL)
+			.add(TTBlockItemIds.POLISHED_RESIN_WALL)
+			.add(TTBlockItemIds.SMOOTH_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_SANDSTONE_WALL)
+			.add(TTBlockItemIds.SMOOTH_RED_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_RED_SANDSTONE_WALL)
+			.add(TTBlockItemIds.PRISMARINE_BRICK_WALL)
+			.add(TTBlockItemIds.DARK_PRISMARINE_WALL)
+			.add(TTBlockItemIds.CHORAL_END_STONE_WALL)
+			.add(TTBlockItemIds.CHORAL_END_STONE_BRICK_WALL)
+			.add(TTBlockItemIds.END_STONE_WALL)
+			.add(TTBlockItemIds.PURPUR_WALL);
 
-		this.valueLookupBuilder(BlockTags.ANCIENT_CITY_REPLACEABLE)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_WALL)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICKS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILES)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_STAIRS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_SLAB)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_WALL);
+		this.builder(BlockTags.ANCIENT_CITY_REPLACEABLE)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_STAIRS)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_SLAB)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_WALL)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICKS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILES)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_SLAB)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_WALL);
 
-		this.valueLookupBuilder(BlockTags.SCULK_REPLACEABLE_WORLD_GEN)
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICKS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILES);
+		this.builder(BlockTags.SCULK_REPLACEABLE_WORLD_GEN)
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICKS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILES);
 
-		this.valueLookupBuilder(TTBlockTags.SUPPORTS_LITHOPS)
+		this.builder(TTBlockTags.SUPPORTS_LITHOPS)
 			.addOptionalTag(BlockTags.SUPPORTS_DRY_VEGETATION)
 			.addOptionalTag(BlockTags.SAND)
 			.addOptionalTag(BlockTags.BASE_STONE_OVERWORLD);
 
-		this.valueLookupBuilder(TTBlockTags.COFFIN_UNSPAWNABLE_ON)
-			.add(Blocks.REDSTONE_WIRE)
-			.add(Blocks.REDSTONE_TORCH)
-			.add(Blocks.REDSTONE_WALL_TORCH)
-			.add(Blocks.REDSTONE_BLOCK)
-			.add(Blocks.REDSTONE_LAMP)
-			.add(Blocks.LEVER)
-			.add(Blocks.REPEATER)
-			.add(Blocks.COMPARATOR)
+		this.builder(TTBlockTags.COFFIN_UNSPAWNABLE_ON)
+			.add(BlockItemIds.REDSTONE_DUST)
+			.add(BlockItemIds.REDSTONE_TORCH)
+			.add(BlockIds.REDSTONE_WALL_TORCH)
+			.add(BlockItemIds.REDSTONE_BLOCK)
+			.add(BlockItemIds.REDSTONE_LAMP)
+			.add(BlockItemIds.LEVER)
+			.add(BlockItemIds.REPEATER)
+			.add(BlockItemIds.COMPARATOR)
 			.addOptionalTag(BlockTags.BUTTONS)
 			.addOptionalTag(BlockTags.PRESSURE_PLATES);
 
-		this.valueLookupBuilder(BlockTags.FEATURES_CANNOT_REPLACE)
-			.add(TTBlocks.COFFIN);
+		this.builder(BlockTags.FEATURES_CANNOT_REPLACE)
+			.add(TTBlockItemIds.COFFIN);
 
-		this.valueLookupBuilder(BlockTags.IMPERMEABLE)
-			.add(TTBlocks.ECTOPLASM_BLOCK);
+		this.builder(BlockTags.IMPERMEABLE)
+			.add(TTBlockItemIds.ECTOPLASM_BLOCK);
 
-		this.valueLookupBuilder(TTBlockTags.SURVEYOR_CAN_SEE_THROUGH)
+		this.builder(TTBlockTags.SURVEYOR_CAN_SEE_THROUGH)
 			.addOptionalTag(ConventionalBlockTags.GLASS_BLOCKS)
 			.addOptionalTag(ConventionalBlockTags.GLASS_PANES);
 
 		this.builder(TTBlockTags.SURVEYOR_CANNOT_SEE_THROUGH)
-			.add(Blocks.TINTED_GLASS.builtInRegistryHolder().key())
+			.add(BlockItemIds.TINTED_GLASS)
 			.addOptional(this.getKey(TTModIntegrations.WILDER_WILD_INTEGRATION.getIntegration().getID(), "echo_glass"));
 
-		this.valueLookupBuilder(ConventionalBlockTags.UNCOLORED_SANDSTONE_BLOCKS)
-			.add(TTBlocks.SMOOTH_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_SANDSTONE_STAIRS);
+		this.builder(ConventionalBlockTags.UNCOLORED_SANDSTONE_BLOCKS)
+			.add(TTBlockItemIds.SMOOTH_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_SANDSTONE_STAIRS);
 
-		this.valueLookupBuilder(ConventionalBlockTags.UNCOLORED_SANDSTONE_STAIRS)
-			.add(TTBlocks.CUT_SANDSTONE_STAIRS);
+		this.builder(ConventionalBlockTags.UNCOLORED_SANDSTONE_STAIRS)
+			.add(TTBlockItemIds.CUT_SANDSTONE_STAIRS);
 
-		this.valueLookupBuilder(ConventionalBlockTags.RED_SANDSTONE_BLOCKS)
-			.add(TTBlocks.SMOOTH_RED_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_RED_SANDSTONE_WALL)
-			.add(TTBlocks.CUT_RED_SANDSTONE_STAIRS);
+		this.builder(ConventionalBlockTags.RED_SANDSTONE_BLOCKS)
+			.add(TTBlockItemIds.SMOOTH_RED_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_RED_SANDSTONE_WALL)
+			.add(TTBlockItemIds.CUT_RED_SANDSTONE_STAIRS);
 
-		this.valueLookupBuilder(ConventionalBlockTags.RED_SANDSTONE_STAIRS)
-			.add(TTBlocks.CUT_RED_SANDSTONE_STAIRS);
+		this.builder(ConventionalBlockTags.RED_SANDSTONE_STAIRS)
+			.add(TTBlockItemIds.CUT_RED_SANDSTONE_STAIRS);
 
 		// SOUNDS
 
-		this.valueLookupBuilder(TTBlockTags.SOUND_UNPOLISHED_BRICKS)
+		this.builder(TTBlockTags.SOUND_UNPOLISHED_BRICKS)
 			.add(
-				Blocks.BRICKS,
-				Blocks.BRICK_STAIRS,
-				Blocks.BRICK_SLAB,
-				Blocks.BRICK_WALL,
-				TTBlocks.CRACKED_BRICKS,
-				TTBlocks.MOSSY_BRICKS,
-				TTBlocks.MOSSY_BRICK_STAIRS,
-				TTBlocks.MOSSY_BRICK_SLAB,
-				TTBlocks.MOSSY_BRICK_WALL
+				BlockItemIds.BRICKS,
+				BlockItemIds.BRICK_STAIRS,
+				BlockItemIds.BRICK_SLAB,
+				BlockItemIds.BRICK_WALL,
+				TTBlockItemIds.CRACKED_BRICKS,
+				TTBlockItemIds.MOSSY_BRICKS,
+				TTBlockItemIds.MOSSY_BRICK_STAIRS,
+				TTBlockItemIds.MOSSY_BRICK_SLAB,
+				TTBlockItemIds.MOSSY_BRICK_WALL
 			).add(
-				Blocks.STONE_BRICKS,
-				Blocks.STONE_BRICK_STAIRS,
-				Blocks.STONE_BRICK_SLAB,
-				Blocks.STONE_BRICK_WALL,
-				Blocks.CHISELED_STONE_BRICKS,
-				Blocks.CRACKED_STONE_BRICKS,
-				Blocks.MOSSY_STONE_BRICKS,
-				Blocks.MOSSY_STONE_BRICK_STAIRS,
-				Blocks.MOSSY_STONE_BRICK_SLAB,
-				Blocks.MOSSY_STONE_BRICK_WALL,
-				Blocks.INFESTED_STONE_BRICKS,
-				Blocks.INFESTED_CHISELED_STONE_BRICKS,
-				Blocks.INFESTED_CRACKED_STONE_BRICKS,
-				Blocks.INFESTED_MOSSY_STONE_BRICKS
+				BlockItemIds.STONE_BRICKS,
+				BlockItemIds.STONE_BRICK_STAIRS,
+				BlockItemIds.STONE_BRICK_SLAB,
+				BlockItemIds.STONE_BRICK_WALL,
+				BlockItemIds.CHISELED_STONE_BRICKS,
+				BlockItemIds.CRACKED_STONE_BRICKS,
+				BlockItemIds.MOSSY_STONE_BRICKS,
+				BlockItemIds.MOSSY_STONE_BRICK_STAIRS,
+				BlockItemIds.MOSSY_STONE_BRICK_SLAB,
+				BlockItemIds.MOSSY_STONE_BRICK_WALL,
+				BlockItemIds.INFESTED_STONE_BRICKS,
+				BlockItemIds.INFESTED_CHISELED_STONE_BRICKS,
+				BlockItemIds.INFESTED_CRACKED_STONE_BRICKS,
+				BlockItemIds.INFESTED_MOSSY_STONE_BRICKS
 			).add(
-				Blocks.PRISMARINE_BRICKS,
-				Blocks.PRISMARINE_BRICK_STAIRS,
-				Blocks.PRISMARINE_BRICK_SLAB,
-				TTBlocks.PRISMARINE_BRICK_WALL
+				BlockItemIds.PRISMARINE_BRICKS,
+				BlockItemIds.PRISMARINE_BRICK_STAIRS,
+				BlockItemIds.PRISMARINE_BRICK_SLAB,
+				TTBlockItemIds.PRISMARINE_BRICK_WALL
 			)
 			.add(
-				Blocks.END_STONE_BRICKS,
-				Blocks.END_STONE_BRICK_STAIRS,
-				Blocks.END_STONE_BRICK_SLAB,
-				Blocks.END_STONE_BRICK_WALL,
-				TTBlocks.CHISELED_END_STONE_BRICKS,
-				TTBlocks.CRACKED_END_STONE_BRICKS,
-				TTBlocks.CHORAL_END_STONE_BRICKS,
-				TTBlocks.CHORAL_END_STONE_BRICK_STAIRS,
-				TTBlocks.CHORAL_END_STONE_BRICK_SLAB,
-				TTBlocks.CHORAL_END_STONE_BRICK_WALL
+				BlockItemIds.END_STONE_BRICKS,
+				BlockItemIds.END_STONE_BRICK_STAIRS,
+				BlockItemIds.END_STONE_BRICK_SLAB,
+				BlockItemIds.END_STONE_BRICK_WALL,
+				TTBlockItemIds.CHISELED_END_STONE_BRICKS,
+				TTBlockItemIds.CRACKED_END_STONE_BRICKS,
+				TTBlockItemIds.CHORAL_END_STONE_BRICKS,
+				TTBlockItemIds.CHORAL_END_STONE_BRICK_STAIRS,
+				TTBlockItemIds.CHORAL_END_STONE_BRICK_SLAB,
+				TTBlockItemIds.CHORAL_END_STONE_BRICK_WALL
 			);
 
-		this.valueLookupBuilder(TTBlockTags.SOUND_POLISHED_BRICKS)
+		this.builder(TTBlockTags.SOUND_POLISHED_BRICKS)
 			.add(
-				TTBlocks.GRANITE_BRICKS,
-				TTBlocks.GRANITE_BRICK_STAIRS,
-				TTBlocks.GRANITE_BRICK_SLAB,
-				TTBlocks.GRANITE_BRICK_WALL,
-				TTBlocks.CHISELED_GRANITE_BRICKS,
-				TTBlocks.CRACKED_GRANITE_BRICKS,
-				TTBlocks.MOSSY_GRANITE_BRICKS,
-				TTBlocks.MOSSY_GRANITE_BRICK_STAIRS,
-				TTBlocks.MOSSY_GRANITE_BRICK_SLAB,
-				TTBlocks.MOSSY_GRANITE_BRICK_WALL
+				TTBlockItemIds.GRANITE_BRICKS,
+				TTBlockItemIds.GRANITE_BRICK_STAIRS,
+				TTBlockItemIds.GRANITE_BRICK_SLAB,
+				TTBlockItemIds.GRANITE_BRICK_WALL,
+				TTBlockItemIds.CHISELED_GRANITE_BRICKS,
+				TTBlockItemIds.CRACKED_GRANITE_BRICKS,
+				TTBlockItemIds.MOSSY_GRANITE_BRICKS,
+				TTBlockItemIds.MOSSY_GRANITE_BRICK_STAIRS,
+				TTBlockItemIds.MOSSY_GRANITE_BRICK_SLAB,
+				TTBlockItemIds.MOSSY_GRANITE_BRICK_WALL
 			).add(
-				TTBlocks.DIORITE_BRICKS,
-				TTBlocks.DIORITE_BRICK_STAIRS,
-				TTBlocks.DIORITE_BRICK_SLAB,
-				TTBlocks.DIORITE_BRICK_WALL,
-				TTBlocks.CHISELED_DIORITE_BRICKS,
-				TTBlocks.CRACKED_DIORITE_BRICKS,
-				TTBlocks.MOSSY_DIORITE_BRICKS,
-				TTBlocks.MOSSY_DIORITE_BRICK_STAIRS,
-				TTBlocks.MOSSY_DIORITE_BRICK_SLAB,
-				TTBlocks.MOSSY_DIORITE_BRICK_WALL
+				TTBlockItemIds.DIORITE_BRICKS,
+				TTBlockItemIds.DIORITE_BRICK_STAIRS,
+				TTBlockItemIds.DIORITE_BRICK_SLAB,
+				TTBlockItemIds.DIORITE_BRICK_WALL,
+				TTBlockItemIds.CHISELED_DIORITE_BRICKS,
+				TTBlockItemIds.CRACKED_DIORITE_BRICKS,
+				TTBlockItemIds.MOSSY_DIORITE_BRICKS,
+				TTBlockItemIds.MOSSY_DIORITE_BRICK_STAIRS,
+				TTBlockItemIds.MOSSY_DIORITE_BRICK_SLAB,
+				TTBlockItemIds.MOSSY_DIORITE_BRICK_WALL
 			).add(
-				TTBlocks.ANDESITE_BRICKS,
-				TTBlocks.ANDESITE_BRICK_STAIRS,
-				TTBlocks.ANDESITE_BRICK_SLAB,
-				TTBlocks.ANDESITE_BRICK_WALL,
-				TTBlocks.CHISELED_ANDESITE_BRICKS,
-				TTBlocks.CRACKED_ANDESITE_BRICKS,
-				TTBlocks.MOSSY_ANDESITE_BRICKS,
-				TTBlocks.MOSSY_ANDESITE_BRICK_STAIRS,
-				TTBlocks.MOSSY_ANDESITE_BRICK_SLAB,
-				TTBlocks.MOSSY_ANDESITE_BRICK_WALL
+				TTBlockItemIds.ANDESITE_BRICKS,
+				TTBlockItemIds.ANDESITE_BRICK_STAIRS,
+				TTBlockItemIds.ANDESITE_BRICK_SLAB,
+				TTBlockItemIds.ANDESITE_BRICK_WALL,
+				TTBlockItemIds.CHISELED_ANDESITE_BRICKS,
+				TTBlockItemIds.CRACKED_ANDESITE_BRICKS,
+				TTBlockItemIds.MOSSY_ANDESITE_BRICKS,
+				TTBlockItemIds.MOSSY_ANDESITE_BRICK_STAIRS,
+				TTBlockItemIds.MOSSY_ANDESITE_BRICK_SLAB,
+				TTBlockItemIds.MOSSY_ANDESITE_BRICK_WALL
 			)
 			.add(
-				Blocks.POLISHED_BLACKSTONE_BRICKS,
-				Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS,
-				Blocks.POLISHED_BLACKSTONE_BRICK_SLAB,
-				Blocks.POLISHED_BLACKSTONE_BRICK_WALL,
-				Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS
+				BlockItemIds.POLISHED_BLACKSTONE_BRICKS,
+				BlockItemIds.POLISHED_BLACKSTONE_BRICK_STAIRS,
+				BlockItemIds.POLISHED_BLACKSTONE_BRICK_SLAB,
+				BlockItemIds.POLISHED_BLACKSTONE_BRICK_WALL,
+				BlockItemIds.CRACKED_POLISHED_BLACKSTONE_BRICKS
 			);
 
-		this.valueLookupBuilder(TTBlockTags.SOUND_POLISHED_CALCITE)
+		this.builder(TTBlockTags.SOUND_POLISHED_CALCITE)
 			.add(
-				TTBlocks.POLISHED_CALCITE,
-				TTBlocks.POLISHED_CALCITE_SLAB,
-				TTBlocks.POLISHED_CALCITE_WALL,
-				TTBlocks.POLISHED_CALCITE_STAIRS
+				TTBlockItemIds.POLISHED_CALCITE,
+				TTBlockItemIds.POLISHED_CALCITE_SLAB,
+				TTBlockItemIds.POLISHED_CALCITE_WALL,
+				TTBlockItemIds.POLISHED_CALCITE_STAIRS
 			);
 
-		this.valueLookupBuilder(TTBlockTags.SOUND_CALCITE_BRICKS)
+		this.builder(TTBlockTags.SOUND_CALCITE_BRICKS)
 			.add(
-				TTBlocks.CALCITE_BRICKS,
-				TTBlocks.CALCITE_BRICK_STAIRS,
-				TTBlocks.CALCITE_BRICK_SLAB,
-				TTBlocks.CALCITE_BRICK_WALL,
-				TTBlocks.CHISELED_CALCITE_BRICKS,
-				TTBlocks.CRACKED_CALCITE_BRICKS,
-				TTBlocks.MOSSY_CALCITE_BRICKS,
-				TTBlocks.MOSSY_CALCITE_BRICK_STAIRS,
-				TTBlocks.MOSSY_CALCITE_BRICK_SLAB,
-				TTBlocks.MOSSY_CALCITE_BRICK_WALL
+				TTBlockItemIds.CALCITE_BRICKS,
+				TTBlockItemIds.CALCITE_BRICK_STAIRS,
+				TTBlockItemIds.CALCITE_BRICK_SLAB,
+				TTBlockItemIds.CALCITE_BRICK_WALL,
+				TTBlockItemIds.CHISELED_CALCITE_BRICKS,
+				TTBlockItemIds.CRACKED_CALCITE_BRICKS,
+				TTBlockItemIds.MOSSY_CALCITE_BRICKS,
+				TTBlockItemIds.MOSSY_CALCITE_BRICK_STAIRS,
+				TTBlockItemIds.MOSSY_CALCITE_BRICK_SLAB,
+				TTBlockItemIds.MOSSY_CALCITE_BRICK_WALL
 			);
 
-		this.valueLookupBuilder(TTBlockTags.SOUND_POLISHED)
+		this.builder(TTBlockTags.SOUND_POLISHED)
 			.add(
-				Blocks.POLISHED_ANDESITE,
-				Blocks.POLISHED_ANDESITE_SLAB,
-				Blocks.POLISHED_ANDESITE_STAIRS,
-				TTBlocks.POLISHED_ANDESITE_WALL,
-				Blocks.POLISHED_GRANITE,
-				Blocks.POLISHED_GRANITE_SLAB,
-				Blocks.POLISHED_GRANITE_STAIRS,
-				TTBlocks.POLISHED_GRANITE_WALL,
-				Blocks.POLISHED_DIORITE,
-				Blocks.POLISHED_DIORITE_SLAB,
-				Blocks.POLISHED_DIORITE_STAIRS,
-				TTBlocks.POLISHED_DIORITE_WALL,
-				Blocks.POLISHED_BLACKSTONE,
-				Blocks.POLISHED_BLACKSTONE_SLAB,
-				Blocks.POLISHED_BLACKSTONE_STAIRS,
-				Blocks.POLISHED_BLACKSTONE_WALL,
-				Blocks.CHISELED_POLISHED_BLACKSTONE,
-				Blocks.POLISHED_BLACKSTONE_BUTTON,
-				Blocks.POLISHED_BLACKSTONE_PRESSURE_PLATE
+				BlockItemIds.POLISHED_ANDESITE,
+				BlockItemIds.POLISHED_ANDESITE_SLAB,
+				BlockItemIds.POLISHED_ANDESITE_STAIRS,
+				TTBlockItemIds.POLISHED_ANDESITE_WALL,
+				BlockItemIds.POLISHED_GRANITE,
+				BlockItemIds.POLISHED_GRANITE_SLAB,
+				BlockItemIds.POLISHED_GRANITE_STAIRS,
+				TTBlockItemIds.POLISHED_GRANITE_WALL,
+				BlockItemIds.POLISHED_DIORITE,
+				BlockItemIds.POLISHED_DIORITE_SLAB,
+				BlockItemIds.POLISHED_DIORITE_STAIRS,
+				TTBlockItemIds.POLISHED_DIORITE_WALL,
+				BlockItemIds.POLISHED_BLACKSTONE,
+				BlockItemIds.POLISHED_BLACKSTONE_SLAB,
+				BlockItemIds.POLISHED_BLACKSTONE_STAIRS,
+				BlockItemIds.POLISHED_BLACKSTONE_WALL,
+				BlockItemIds.CHISELED_POLISHED_BLACKSTONE,
+				BlockItemIds.POLISHED_BLACKSTONE_BUTTON,
+				BlockItemIds.POLISHED_BLACKSTONE_PRESSURE_PLATE
 			);
 
-		this.valueLookupBuilder(TTBlockTags.SOUND_POLISHED_DEEPSLATE)
+		this.builder(TTBlockTags.SOUND_POLISHED_DEEPSLATE)
 			.add(
-				Blocks.POLISHED_DEEPSLATE,
-				Blocks.POLISHED_DEEPSLATE_SLAB,
-				Blocks.POLISHED_DEEPSLATE_WALL,
-				Blocks.POLISHED_DEEPSLATE_STAIRS
+				BlockItemIds.POLISHED_DEEPSLATE,
+				BlockItemIds.POLISHED_DEEPSLATE_SLAB,
+				BlockItemIds.POLISHED_DEEPSLATE_WALL,
+				BlockItemIds.POLISHED_DEEPSLATE_STAIRS
 			);
 
-		this.valueLookupBuilder(TTBlockTags.SOUND_POLISHED_TUFF)
+		this.builder(TTBlockTags.SOUND_POLISHED_TUFF)
 			.add(
-				Blocks.POLISHED_TUFF,
-				Blocks.POLISHED_TUFF_SLAB,
-				Blocks.POLISHED_TUFF_WALL,
-				Blocks.POLISHED_TUFF_STAIRS
+				BlockItemIds.POLISHED_TUFF,
+				BlockItemIds.POLISHED_TUFF_SLAB,
+				BlockItemIds.POLISHED_TUFF_WALL,
+				BlockItemIds.POLISHED_TUFF_STAIRS
 			);
 
-		this.valueLookupBuilder(TTBlockTags.SOUND_POLISHED_BASALT)
-			.add(Blocks.POLISHED_BASALT);
+		this.builder(TTBlockTags.SOUND_POLISHED_BASALT)
+			.add(BlockItemIds.POLISHED_BASALT);
 
-		this.valueLookupBuilder(TTBlockTags.SOUND_POLISHED_RESIN)
-			.add(TTBlocks.POLISHED_RESIN_BLOCK, TTBlocks.POLISHED_RESIN_STAIRS, TTBlocks.POLISHED_RESIN_SLAB, TTBlocks.POLISHED_RESIN_WALL);
+		this.builder(TTBlockTags.SOUND_POLISHED_RESIN)
+			.add(TTBlockItemIds.POLISHED_RESIN_BLOCK, TTBlockItemIds.POLISHED_RESIN_STAIRS, TTBlockItemIds.POLISHED_RESIN_SLAB, TTBlockItemIds.POLISHED_RESIN_WALL);
 
 		// WILDER WILD
+		this.builder(getTag("wilderwild:sculk_slab_replaceable_worldgen"))
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_SLAB)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_SLAB)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_SLAB);
 
-		this.valueLookupBuilder(getTag("wilderwild:sculk_slab_replaceable_worldgen"))
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_SLAB)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_SLAB);
+		this.builder(getTag("wilderwild:sculk_stair_replaceable_worldgen"))
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_STAIRS)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_STAIRS);
 
-		this.valueLookupBuilder(getTag("wilderwild:sculk_stair_replaceable_worldgen"))
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_STAIRS);
+		this.builder(getTag("wilderwild:sculk_wall_replaceable_worldgen"))
+			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_WALL)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_WALL)
+			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_WALL);
 
-		this.valueLookupBuilder(getTag("wilderwild:sculk_wall_replaceable_worldgen"))
-			.add(TTBlocks.MOSSY_COBBLED_DEEPSLATE_WALL)
-			.add(TTBlocks.MOSSY_DEEPSLATE_BRICK_WALL)
-			.add(TTBlocks.MOSSY_DEEPSLATE_TILE_WALL);
-
-		this.valueLookupBuilder(getTag("wilderwild:sculk_wall_replaceable"))
-			.add(TTBlocks.STONE_WALL);
+		this.builder(getTag("wilderwild:sculk_wall_replaceable"))
+			.add(TTBlockItemIds.STONE_WALL);
 	}
 
 	private TagKey<Block> getTag(String id) {

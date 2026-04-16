@@ -24,7 +24,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 
 public final class TTStructurePieceTypes {
-	public static final StructurePieceType RUIN = setTemplatePieceId(RuinsPieces.RuinPiece::create, "ruin");
+	public static final StructurePieceType RUIN = setFullContextPieceId(RuinsPieces.RuinPiece::create, "ruin");
 
 	public static void init() {
 	}

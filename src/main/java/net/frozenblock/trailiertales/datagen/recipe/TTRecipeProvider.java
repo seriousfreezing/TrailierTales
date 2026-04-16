@@ -128,10 +128,10 @@ public class TTRecipeProvider extends FabricRecipeProvider {
 					.unlockedBy(getHasName(Items.CLAY), has(Items.CLAY))
 					.save(output);
 
-				this.oneToOneConversionRecipe(Items.CYAN_DYE, TTBlocks.CYAN_ROSE, "cyan_dye");
-				this.oneToOneConversionRecipe(Items.PURPLE_DYE, TTBlocks.MANEDROP, "purple_dye", 2);
-				this.oneToOneConversionRecipe(Items.PURPLE_DYE, TTItems.DAWNTRAIL_SEEDS, "purple_dye");
-				this.oneToOneConversionRecipe(Items.MAGENTA_DYE, TTBlocks.GUZMANIA, "magenta_dye", 2);
+				this.oneToOneConversionRecipe(Items.DYE.cyan(), TTBlocks.CYAN_ROSE, "cyan_dye");
+				this.oneToOneConversionRecipe(Items.DYE.purple(), TTBlocks.MANEDROP, "purple_dye", 2);
+				this.oneToOneConversionRecipe(Items.DYE.purple(), TTItems.DAWNTRAIL_SEEDS, "purple_dye");
+				this.oneToOneConversionRecipe(Items.DYE.magenta(), TTBlocks.GUZMANIA, "magenta_dye", 2);
 
 				// GRANITE
 
@@ -534,8 +534,6 @@ public class TTRecipeProvider extends FabricRecipeProvider {
 				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, TTBlocks.CHORAL_END_STONE_BRICK_WALL, TTBlocks.CHORAL_END_STONE_BRICKS);
 
 				// END STONE
-
-				this.stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, TTBlocks.END_STONE_STAIRS, Blocks.END_STONE);
 
 				// CHORAL END STONE
 

@@ -30,7 +30,7 @@ import net.frozenblock.trailiertales.entity.Apparition;
 import net.frozenblock.trailiertales.registry.TTEntityTypes;
 import net.frozenblock.trailiertales.registry.TTMemoryModuleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.Brain;
@@ -73,7 +73,7 @@ public class ApparitionAidablesSensor extends Sensor<Apparition> {
 				&& mob.isAlive()
 				&& !mob.isSpectator()
 				&& mob != currentTarget
-				&& (currentTarget == null || currentTarget.getType() != EntityType.PLAYER);
+				&& (currentTarget == null || currentTarget.getType() != EntityTypes.PLAYER);
 		}
 		return false;
 	}

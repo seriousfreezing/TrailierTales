@@ -40,7 +40,7 @@ accessible method net/minecraft/client/particle/SpellParticle <init> (Lnet/minec
 
 # Rendering
 extendable method net/minecraft/client/model/Model renderToBuffer (Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;III)V
-accessible class net/minecraft/client/gui/Gui$HeartType
+accessible class net/minecraft/client/gui/Hud$HeartType
 accessible field net/minecraft/client/renderer/blockentity/state/BlockEntityRenderState blockState Lnet/minecraft/world/level/block/state/BlockState;
 
 # Other

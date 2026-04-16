@@ -25,7 +25,7 @@ import net.frozenblock.trailiertales.block.LithopsCropBlock;
 import net.frozenblock.trailiertales.block.ManedropCropBlock;
 import net.frozenblock.trailiertales.registry.TTBlocks;
 import net.frozenblock.trailiertales.registry.TTItems;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
+import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;

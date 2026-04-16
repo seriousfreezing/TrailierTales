@@ -27,8 +27,8 @@ import net.frozenblock.trailiertales.block.entity.coffin.impl.EntityCoffinData;
 import net.frozenblock.trailiertales.block.entity.coffin.impl.EntityCoffinInterface;
 import net.frozenblock.trailiertales.registry.TTMobEffects;
 import net.frozenblock.trailiertales.registry.TTParticleTypes;
-import net.minecraft.advancements.criterion.EntityHurtPlayerTrigger;
-import net.minecraft.advancements.criterion.PlayerHurtEntityTrigger;
+import net.minecraft.advancements.triggers.EntityHurtPlayerTrigger;
+import net.minecraft.advancements.triggers.PlayerHurtEntityTrigger;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -75,41 +75,40 @@ public abstract class LivingEntityMixin implements EntityCoffinInterface {
 		method = "hurtServer",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/advancements/criterion/PlayerHurtEntityTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;FFZ)V"
+			target = "Lnet/minecraft/advancements/triggers/PlayerHurtEntityTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;FFZ)V"
 		)
 	)
 	public void trailierTales$onHurtByPlayer(
-		PlayerHurtEntityTrigger instance, ServerPlayer player, Entity entity, DamageSource damage, float dealt, float taken, boolean blocked, Operation<Void> original
+		PlayerHurtEntityTrigger instance, ServerPlayer player, Entity victim, DamageSource source, float originalDamage, float actualDamage, boolean blocked, Operation<Void> original
 	) {
-		if (this.trailierTales$entityCoffinData != null) this.trailierTales$entityCoffinData.updateLastInteraction(entity.level().getGameTime());
-		original.call(instance, player, entity, damage, dealt, taken, blocked);
+		if (this.trailierTales$entityCoffinData != null) this.trailierTales$entityCoffinData.updateLastInteraction(victim.level().getGameTime());
+		original.call(instance, player, victim, source, originalDamage, actualDamage, blocked);
 	}
 
 	@WrapOperation(
 		method = "hurtServer",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/advancements/criterion/EntityHurtPlayerTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/damagesource/DamageSource;FFZ)V"
+			target = "Lnet/minecraft/advancements/triggers/EntityHurtPlayerTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/damagesource/DamageSource;FFZ)V"
 		)
 	)
 	public void trailierTales$onHurtPlayer(
-		EntityHurtPlayerTrigger instance, ServerPlayer player, DamageSource source, float dealt, float taken, boolean blocked, Operation<Void> original
+		EntityHurtPlayerTrigger instance, ServerPlayer player, DamageSource source, float originalDamage, float actualDamage, boolean blocked, Operation<Void> original
 	) {
 		Entity entity = source.getEntity();
 		if (entity == null) entity = source.getDirectEntity();
 		if (entity instanceof EntityCoffinInterface coffinInterface && coffinInterface.trailierTales$getCoffinData() != null) {
 			coffinInterface.trailierTales$getCoffinData().updateLastInteraction(entity.level().getGameTime());
 		}
-		original.call(instance, player, source, dealt, taken, blocked);
+		original.call(instance, player, source, originalDamage, actualDamage, blocked);
 	}
 
 	@ModifyReturnValue(method = "getExperienceReward", at = @At("RETURN"))
 	public int trailierTales$getExperienceReward(
 		int original,
-		ServerLevel serverLevel,
-		@Nullable Entity entity
+		ServerLevel level, @Nullable Entity killer
 	) {
-		if (this.trailierTales$entityCoffinData != null && entity instanceof Player player && player.hasEffect(TTMobEffects.SIEGE_OMEN)) return original * 2;
+		if (this.trailierTales$entityCoffinData != null && killer instanceof Player player && player.hasEffect(TTMobEffects.SIEGE_OMEN)) return original * 2;
 		return original;
 	}
 

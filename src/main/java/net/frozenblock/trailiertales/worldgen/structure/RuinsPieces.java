@@ -26,6 +26,9 @@ import java.util.concurrent.atomic.AtomicReference;
 import net.frozenblock.trailiertales.registry.TTStructurePieceTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
@@ -47,6 +50,7 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
+import net.minecraft.world.level.levelgen.structure.templatesystem.ProtectedBlockProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
@@ -56,6 +60,7 @@ import org.jetbrains.annotations.Nullable;
 public class RuinsPieces {
 
 	public static void addPieces(
+		RegistryAccess registries,
 		StructureTemplateManager structureTemplateManager,
 		LevelHeightAccessor heightAccessor,
 		BlockPos pos,
@@ -65,12 +70,13 @@ public class RuinsPieces {
 		List<RuinsPieces.RuinPiece> pieces,
 		BoundingBox box
 	) {
-		final RuinPiece ruinPiece = addStarterPiece(structureTemplateManager, pos, rotation, pieces, random, feature);
+		final RuinPiece ruinPiece = addStarterPiece(registries, structureTemplateManager, pos, rotation, pieces, random, feature);
 		if (random.nextFloat() > feature.clusterProbability) return;
-		addClusterRuins(structureTemplateManager, ruinPiece.getBoundingBox(), random, pos, feature, pieces, box);
+		addClusterRuins(registries, structureTemplateManager, ruinPiece.getBoundingBox(), random, pos, feature, pieces, box);
 	}
 
 	private static void addClusterRuins(
+		RegistryAccess registries,
 		StructureTemplateManager structureTemplateManager,
 		BoundingBox boundingBox,
 		RandomSource random,
@@ -84,11 +90,12 @@ public class RuinsPieces {
 		int totalPieces = feature.clusterPieces.sample(random);
 		for (int pieceNumber = 0; pieceNumber < totalPieces; pieceNumber++) {
 			final Rotation newRotation = Rotation.getRandom(random);
-			addPiece(structureTemplateManager, boundingBoxes, pos, newRotation, pieces, random, feature, box, 7);
+			addPiece(registries, structureTemplateManager, boundingBoxes, pos, newRotation, pieces, random, feature, box, 7);
 		}
 	}
 
 	private static @Nullable RuinPiece addPiece(
+		RegistryAccess registries,
 		StructureTemplateManager structureTemplateManager,
 		ObjectArrayList<BoundingBox> boundingBoxes,
 		BlockPos pos,
@@ -108,6 +115,7 @@ public class RuinsPieces {
 
 		for (int i = 0; i < maxAttempts; i++) {
 			potentialPiece = new RuinPiece(
+				registries,
 				structureTemplateManager,
 				pieceId,
 				mutable,
@@ -160,6 +168,7 @@ public class RuinsPieces {
 	}
 
 	private static RuinPiece addStarterPiece(
+		RegistryAccess registries,
 		StructureTemplateManager structureTemplateManager,
 		BlockPos pos,
 		Rotation rotation,
@@ -169,6 +178,7 @@ public class RuinsPieces {
 	) {
 		final Identifier structureId = structure.ruinsType.getPieceHandler().getRandomPiece(random);
 		final RuinPiece piece = new RuinPiece(
+			registries,
 			structureTemplateManager,
 			structureId,
 			pos,
@@ -188,6 +198,7 @@ public class RuinsPieces {
 		private boolean adjustedHeight;
 
 		public RuinPiece(
+			HolderLookup.Provider registries,
 			StructureTemplateManager structureTemplateManager,
 			Identifier structureId,
 			BlockPos pos,
@@ -195,13 +206,14 @@ public class RuinsPieces {
 			RuinsStructure.Type biomeType, Optional<Heightmap.Types> heightmap,
 			Optional<Integer> providedHeight
 		) {
-			super(TTStructurePieceTypes.RUIN, 0, structureTemplateManager, structureId, structureId.toString(), makeSettings(rotation, biomeType), pos);
+			super(TTStructurePieceTypes.RUIN, 0, structureTemplateManager, structureId, structureId.toString(), makeSettings(registries,rotation, biomeType), pos);
 			this.ruinsType = biomeType;
 			this.heightmap = heightmap;
 			this.providedHeight = providedHeight;
 		}
 
 		public RuinPiece(
+			HolderLookup.Provider registries,
 			StructureTemplateManager structureTemplateManager,
 			Identifier structureId,
 			BlockPos pos,
@@ -211,7 +223,7 @@ public class RuinsPieces {
 			Optional<Integer> providedHeight,
 			boolean adjustedHeight
 		) {
-			super(TTStructurePieceTypes.RUIN, 0, structureTemplateManager, structureId, structureId.toString(), makeSettings(rotation, ruinsType), pos);
+			super(TTStructurePieceTypes.RUIN, 0, structureTemplateManager, structureId, structureId.toString(), makeSettings(registries, rotation, ruinsType), pos);
 			this.ruinsType = ruinsType;
 			this.heightmap = heightmap;
 			this.providedHeight = providedHeight;
@@ -219,63 +231,58 @@ public class RuinsPieces {
 		}
 
 		private RuinPiece(
+			HolderLookup.Provider registries,
 			StructureTemplateManager templateManager,
-			CompoundTag nbt, Rotation rotation,
+			CompoundTag nbt,
+			Rotation rotation,
 			RuinsStructure.Type ruinsType,
 			Optional<Heightmap.Types> heightmap,
 			Optional<Integer> providedHeight
 		) {
-			super(TTStructurePieceTypes.RUIN, nbt, templateManager, id -> makeSettings(rotation, ruinsType));
+			super(TTStructurePieceTypes.RUIN, nbt, templateManager, id -> makeSettings(registries, rotation, ruinsType));
 			this.ruinsType = ruinsType;
 			this.heightmap = heightmap;
 			this.providedHeight = providedHeight;
 		}
 
 		private RuinPiece(
+			HolderLookup.Provider registries,
 			StructureTemplateManager templateManager,
-			CompoundTag nbt, Rotation rotation,
+			CompoundTag nbt,
+			Rotation rotation,
 			RuinsStructure.Type ruinsType,
 			Optional<Heightmap.Types> heightmap,
 			Optional<Integer> providedHeight,
 			boolean adjustedHeight
 		) {
-			super(TTStructurePieceTypes.RUIN, nbt, templateManager, id -> makeSettings(rotation, ruinsType));
+			super(TTStructurePieceTypes.RUIN, nbt, templateManager, id -> makeSettings(registries, rotation, ruinsType));
 			this.ruinsType = ruinsType;
 			this.heightmap = heightmap;
 			this.providedHeight = providedHeight;
 			this.adjustedHeight = adjustedHeight;
 		}
 
-		private static StructurePlaceSettings makeSettings(Rotation rotation, RuinsStructure.Type ruinsType) {
+		private static StructurePlaceSettings makeSettings(HolderLookup.Provider registries, Rotation rotation, RuinsStructure.Type ruinsType) {
 			StructurePlaceSettings placeSettings = new StructurePlaceSettings()
 				.setRotation(rotation)
 				.setMirror(Mirror.NONE)
 				.addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
 
 			ruinsType.getProcessors().list().forEach(placeSettings::addProcessor);
+			placeSettings.addProcessor(new ProtectedBlockProcessor(registries.lookupOrThrow(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE)));
 			return placeSettings;
 		}
 
-		public static RuinPiece create(StructureTemplateManager templateManager, CompoundTag tag) {
-			final Rotation rotation = Rotation.valueOf(tag.getStringOr("Rot", ""));
+		public static RuinPiece create(StructurePieceSerializationContext context, CompoundTag tag) {
+			final Rotation rotation = tag.read("Rot", Rotation.CODEC).orElse(Rotation.NONE);
+			final RuinsStructure.Type type = tag.read("RuinsType", RuinsStructure.Type.CODEC)
+				.or(() -> tag.read("BiomeType", RuinsStructure.Type.CODEC))
+				.orElse(RuinsStructure.Type.GENERIC);
+			final Optional<Heightmap.Types> heightmap = tag.read("HeightmapType", Heightmap.Types.CODEC);
+			final Optional<Integer> providedHeight = tag.getInt("ProvidedHeight");
+			final boolean adjustedHeight = tag.getBooleanOr("AdjustedHeight", false);
 
-			RuinsStructure.Type type = RuinsStructure.Type.GENERIC;
-			if (tag.contains("RuinsType")) {
-				type = RuinsStructure.Type.valueOf(tag.getStringOr("RuinsType", ""));
-			} else if (tag.contains("BiomeType")) {
-				type = RuinsStructure.Type.valueOf(tag.getStringOr("BiomeType", ""));
-			}
-
-			Heightmap.Types heightmap = null;
-			if (tag.contains("HeightmapType")) heightmap = Heightmap.Types.valueOf(tag.getStringOr("HeightmapType", ""));
-
-			Integer providedHeight = null;
-			if (tag.contains("ProvidedHeight")) providedHeight = tag.getIntOr("ProvidedHeight", 0);
-
-			boolean adjustedHeight = false;
-			if (tag.contains("AdjustedHeight")) adjustedHeight = tag.getBooleanOr("AdjustedHeight", false);
-
-			return new RuinPiece(templateManager, tag, rotation, type, Optional.ofNullable(heightmap), Optional.ofNullable(providedHeight), adjustedHeight);
+			return new RuinPiece(context.registryAccess(), context.structureTemplateManager(), tag, rotation, type, heightmap, providedHeight, adjustedHeight);
 		}
 
 		@Override

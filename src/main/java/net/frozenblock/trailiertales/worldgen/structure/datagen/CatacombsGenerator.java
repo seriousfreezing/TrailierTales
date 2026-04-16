@@ -43,6 +43,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
@@ -751,18 +752,18 @@ public class CatacombsGenerator {
 
 				new ProcessorRule(
 					new RandomBlockStateMatchTest(
-						Blocks.RED_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 4).setValue(BlockStateProperties.LIT, true), 0.15F),
-					AlwaysTrueTest.INSTANCE, Blocks.RED_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 3).setValue(BlockStateProperties.LIT, true)
+						Blocks.DYED_CANDLE.red().defaultBlockState().setValue(BlockStateProperties.CANDLES, 4).setValue(BlockStateProperties.LIT, true), 0.15F),
+					AlwaysTrueTest.INSTANCE, Blocks.DYED_CANDLE.red().defaultBlockState().setValue(BlockStateProperties.CANDLES, 3).setValue(BlockStateProperties.LIT, true)
 				),
 				new ProcessorRule(
 					new RandomBlockStateMatchTest(
-						Blocks.RED_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 4).setValue(BlockStateProperties.LIT, true), 0.5F),
-					AlwaysTrueTest.INSTANCE, Blocks.RED_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 2).setValue(BlockStateProperties.LIT, true)
+						Blocks.DYED_CANDLE.red().defaultBlockState().setValue(BlockStateProperties.CANDLES, 4).setValue(BlockStateProperties.LIT, true), 0.5F),
+					AlwaysTrueTest.INSTANCE, Blocks.DYED_CANDLE.red().defaultBlockState().setValue(BlockStateProperties.CANDLES, 2).setValue(BlockStateProperties.LIT, true)
 				),
 				new ProcessorRule(
 					new RandomBlockStateMatchTest(
-						Blocks.RED_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 4).setValue(BlockStateProperties.LIT, true), 0.7F),
-					AlwaysTrueTest.INSTANCE, Blocks.RED_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 1).setValue(BlockStateProperties.LIT, true)
+						Blocks.DYED_CANDLE.red().defaultBlockState().setValue(BlockStateProperties.CANDLES, 4).setValue(BlockStateProperties.LIT, true), 0.7F),
+					AlwaysTrueTest.INSTANCE, Blocks.DYED_CANDLE.red().defaultBlockState().setValue(BlockStateProperties.CANDLES, 1).setValue(BlockStateProperties.LIT, true)
 				),
 
 				new ProcessorRule(
@@ -921,9 +922,9 @@ public class CatacombsGenerator {
 		final BlockStateRespectingRuleProcessor guaranteedRewardChests = guaranteedChestProcessor(TTLootTables.CATACOMBS_TOMB_REWARD);
 		final BlockStateRespectingRuleProcessor coffinLootTables = coffinLootProcessor(TTLootTables.CATACOMBS_COFFIN);
 
-		final BlockStateRespectingRuleProcessor zombieSkeletonCoffinProcessor = coffinProcessor(EntityType.ZOMBIE, EntityType.SKELETON);
-		final BlockStateRespectingRuleProcessor skeletonCoffinProcessor = coffinProcessor(EntityType.SKELETON);
-		final BlockStateRespectingRuleProcessor huskCoffinProcessor = coffinProcessor(EntityType.HUSK);
+		final BlockStateRespectingRuleProcessor zombieSkeletonCoffinProcessor = coffinProcessor(EntityTypes.ZOMBIE, EntityTypes.SKELETON);
+		final BlockStateRespectingRuleProcessor skeletonCoffinProcessor = coffinProcessor(EntityTypes.SKELETON);
+		final BlockStateRespectingRuleProcessor huskCoffinProcessor = coffinProcessor(EntityTypes.HUSK);
 
 		register(
 			context,
@@ -947,7 +948,7 @@ public class CatacombsGenerator {
 					TTItems.EYE_POTTERY_SHERD
 				),
 				permanentSkullProcessor,
-				new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+				new ProtectedBlockProcessor(context.lookup(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
 			)
 		);
 
@@ -973,7 +974,7 @@ public class CatacombsGenerator {
 					TTItems.EYE_POTTERY_SHERD
 				),
 				permanentSkullProcessor,
-				new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+				new ProtectedBlockProcessor(context.lookup(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
 			)
 		);
 
@@ -1001,7 +1002,7 @@ public class CatacombsGenerator {
 					TTItems.EYE_POTTERY_SHERD
 				),
 				permanentSkullProcessor,
-				new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+				new ProtectedBlockProcessor(context.lookup(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
 			)
 		);
 
@@ -1027,7 +1028,7 @@ public class CatacombsGenerator {
 					TTItems.EYE_POTTERY_SHERD
 				),
 				permanentSkullProcessor,
-				new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+				new ProtectedBlockProcessor(context.lookup(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
 			)
 		);
 
@@ -1070,7 +1071,7 @@ public class CatacombsGenerator {
 					TTItems.EYE_POTTERY_SHERD
 				),
 				permanentSkullProcessor,
-				new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+				new ProtectedBlockProcessor(context.lookup(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
 			)
 		);
 
@@ -1095,7 +1096,7 @@ public class CatacombsGenerator {
 					TTItems.EYE_POTTERY_SHERD
 				),
 				permanentSkullProcessor,
-				new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+				new ProtectedBlockProcessor(context.lookup(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
 			)
 		);
 
@@ -1123,7 +1124,7 @@ public class CatacombsGenerator {
 					TTItems.EYE_POTTERY_SHERD
 				),
 				permanentSkullProcessor,
-				new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+				new ProtectedBlockProcessor(context.lookup(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
 			)
 		);
 
@@ -1150,7 +1151,7 @@ public class CatacombsGenerator {
 					TTItems.EYE_POTTERY_SHERD
 				),
 				permanentSkullProcessor,
-				new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+				new ProtectedBlockProcessor(context.lookup(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
 			)
 		);
 
@@ -1198,7 +1199,7 @@ public class CatacombsGenerator {
 						)
 					)
 				),
-				new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+				new ProtectedBlockProcessor(context.lookup(Registries.BLOCK).getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
 			)
 		);
 	}

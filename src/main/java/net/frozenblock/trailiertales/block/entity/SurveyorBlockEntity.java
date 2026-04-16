@@ -24,7 +24,7 @@ import net.frozenblock.trailiertales.block.SurveyorBlock;
 import net.frozenblock.trailiertales.block.impl.TTClipContextShapeGetters;
 import net.frozenblock.trailiertales.registry.TTBlockEntityTypes;
 import net.frozenblock.trailiertales.tag.TTBlockTags;
-import net.frozenblock.trailiertales.tag.TTEntityTags;
+import net.frozenblock.trailiertales.tag.TTEntityTypeTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -147,7 +147,7 @@ public class SurveyorBlockEntity extends BlockEntity {
 					final HitResult hitResult = ProjectileUtil.getHitResult(
 						closestPoint,
 						player,
-						EntitySelector.NO_SPECTATORS.and(entity -> !entity.isInvisible() && !entity.is(TTEntityTags.SURVEYOR_IGNORES)),
+						EntitySelector.NO_SPECTATORS.and(entity -> !entity.isInvisible() && !entity.is(TTEntityTypeTags.SURVEYOR_IGNORES)),
 						surveyorCenterPos.subtract(closestPoint),
 						level,
 						0F,

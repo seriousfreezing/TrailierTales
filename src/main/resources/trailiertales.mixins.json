@@ -33,7 +33,9 @@
     "common.lithops.CropBlockMixin",
     "common.surveyor.ClipContextBlockMixin",
     "common.surveyor.RedStoneWireBlockMixin",
+    "datagen.common.feature_flag.BlocksMixin",
     "datagen.common.feature_flag.FeatureFlagsMixin",
+    "datagen.common.feature_flag.ItemsMixin",
     "structure_building.common.CandleBlockMixin"
   ],
   "client": [
@@ -52,7 +54,7 @@
     "client.decorated_pot.DecoratedPotRendererMixin",
     "client.haunt.CameraMixin",
     "client.haunt.FogRendererMixin",
-    "client.haunt.GuiMixin",
+    "client.haunt.HudMixin",
     "client.haunt.LightTextureMixin",
     "client.haunt.SoundEngineMixin"
   ],

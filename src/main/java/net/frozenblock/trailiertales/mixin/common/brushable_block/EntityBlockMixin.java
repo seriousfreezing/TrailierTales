@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,12 +35,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public interface EntityBlockMixin {
 
 	@Inject(method = "getTicker", at = @At("HEAD"), cancellable = true)
-	default <T extends BlockEntity> void trailierTales$getTicker(Level level, BlockState state, BlockEntityType<T> type, CallbackInfoReturnable<BlockEntityTicker<T>> info) {
-		if (type != BlockEntityType.BRUSHABLE_BLOCK) return;
+	default <T extends BlockEntity> void trailierTales$getTicker(Level level, BlockState blockState, BlockEntityType<T> type, CallbackInfoReturnable<BlockEntityTicker<T>> info) {
+		if (type != BlockEntityTypes.BRUSHABLE_BLOCK) return;
 		info.setReturnValue(
 			BaseEntityBlock.createTickerHelper(
 				type,
-				BlockEntityType.BRUSHABLE_BLOCK,
+				BlockEntityTypes.BRUSHABLE_BLOCK,
 				(levelx, pos, statex, blockEntity) -> {
 					if (blockEntity instanceof BrushableBlockEntityInterface brushableBlockEntityInterface) brushableBlockEntityInterface.trailierTales$tick();
 				})

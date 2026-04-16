@@ -30,7 +30,6 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
@@ -45,7 +44,6 @@ import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStruct
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.AlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.ProcessorRule;
-import net.minecraft.world.level.levelgen.structure.templatesystem.ProtectedBlockProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RandomBlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RandomBlockStateMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleProcessor;
@@ -133,23 +131,23 @@ public class BadlandsRuinsGenerator {
 						AlwaysTrueTest.INSTANCE, Blocks.POTTED_DEAD_BUSH.defaultBlockState()
 					),
 					new ProcessorRule(
-						new RandomBlockMatchTest(Blocks.ORANGE_CANDLE, 0.8F),
+						new RandomBlockMatchTest(Blocks.DYED_CANDLE.orange(), 0.8F),
 						AlwaysTrueTest.INSTANCE, Blocks.RED_SAND.defaultBlockState()
 					),
 					new ProcessorRule(
 						new RandomBlockStateMatchTest(
-							Blocks.ORANGE_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 4), 0.15F),
-						AlwaysTrueTest.INSTANCE, Blocks.ORANGE_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 3)
+							Blocks.DYED_CANDLE.orange().defaultBlockState().setValue(BlockStateProperties.CANDLES, 4), 0.15F),
+						AlwaysTrueTest.INSTANCE, Blocks.DYED_CANDLE.orange().defaultBlockState().setValue(BlockStateProperties.CANDLES, 3)
 					),
 					new ProcessorRule(
 						new RandomBlockStateMatchTest(
-							Blocks.ORANGE_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 4), 0.5F),
-						AlwaysTrueTest.INSTANCE, Blocks.ORANGE_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 2)
+							Blocks.DYED_CANDLE.orange().defaultBlockState().setValue(BlockStateProperties.CANDLES, 4), 0.5F),
+						AlwaysTrueTest.INSTANCE, Blocks.DYED_CANDLE.orange().defaultBlockState().setValue(BlockStateProperties.CANDLES, 2)
 					),
 					new ProcessorRule(
 						new RandomBlockStateMatchTest(
-							Blocks.ORANGE_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 4), 0.7F),
-						AlwaysTrueTest.INSTANCE, Blocks.ORANGE_CANDLE.defaultBlockState().setValue(BlockStateProperties.CANDLES, 1)
+							Blocks.DYED_CANDLE.orange().defaultBlockState().setValue(BlockStateProperties.CANDLES, 4), 0.7F),
+						AlwaysTrueTest.INSTANCE, Blocks.DYED_CANDLE.orange().defaultBlockState().setValue(BlockStateProperties.CANDLES, 1)
 					)
 				)
 			),
@@ -159,8 +157,7 @@ public class BadlandsRuinsGenerator {
 				Items.BURN_POTTERY_SHERD,
 				TTItems.WITHER_POTTERY_SHERD,
 				TTItems.DROUGHT_POTTERY_SHERD
-			),
-			new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+			)
 		)
 	);
 }

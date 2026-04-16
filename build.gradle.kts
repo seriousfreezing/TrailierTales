@@ -201,7 +201,7 @@ dependencies {
     }
 
     // Lithium
-    implementation("maven.modrinth:lithium:${lithium_version}")
+    compileOnly("maven.modrinth:lithium:${lithium_version}")
 
     // WorldEdit
     //compileOnly("maven.modrinth:worldedit:7.3.4-beta-01")
@@ -215,7 +215,7 @@ tasks {
             "mod_id" to mod_id,
             "version" to version,
             "protocol_version" to protocol_version,
-            "minecraft_version" to "~26.1-",
+            "minecraft_version" to "~26.2-",
 
             "fabric_api_version" to ">=$fabric_api_version",
             "frozenlib_version" to ">=${frozenlib_version.split('-').firstOrNull()}-"

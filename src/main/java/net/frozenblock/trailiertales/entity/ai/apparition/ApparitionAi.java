@@ -27,7 +27,8 @@ import net.frozenblock.trailiertales.registry.TTSensorTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.ActivityData;
 import net.minecraft.world.entity.ai.Brain;
@@ -110,7 +111,7 @@ public class ApparitionAi {
 				StayCloseToTarget.create(ApparitionAi::getLookTarget, entity -> true, 7, 16, 1F),
 				new RunOne<>( // idle look
 					ImmutableList.of(
-						Pair.of(SetEntityLookTarget.create(EntityType.PLAYER, 8F), 1),
+						Pair.of(SetEntityLookTarget.create(EntityTypes.PLAYER, 8F), 1),
 						Pair.of(new DoNothing(30, 60), 1)
 					)
 				),
@@ -138,7 +139,7 @@ public class ApparitionAi {
 						Pair.of(new ApparitionShoot(), 1),
 						Pair.of(
 							GoToWantedItem.create(
-								apparition -> apparition.getInventory().getItems().getFirst().isEmpty(),
+								apparition -> apparition.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty(),
 								1.25F, true, 28
 							),
 							1

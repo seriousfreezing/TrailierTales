@@ -27,147 +27,146 @@ public final class TTCreativeInventorySorting {
 
 	public static void init() {
 		// BLOCKS
+		insertBeforeInFunctionalBlocks(Items.SUSPICIOUS_SAND, TTItems.SUSPICIOUS_DIRT);
+		insertAfterInFunctionalBlocks(TTItems.SUSPICIOUS_DIRT, TTItems.SUSPICIOUS_CLAY);
+		insertAfterInFunctionalBlocks(Items.SUSPICIOUS_SAND, TTItems.SUSPICIOUS_RED_SAND);
 
-		insertBeforeInFunctionalBlocks(Blocks.SUSPICIOUS_SAND, TTBlocks.SUSPICIOUS_DIRT);
-		insertAfterInFunctionalBlocks(TTBlocks.SUSPICIOUS_DIRT, TTBlocks.SUSPICIOUS_CLAY);
-		insertAfterInFunctionalBlocks(Blocks.SUSPICIOUS_SAND, TTBlocks.SUSPICIOUS_RED_SAND);
+		insertAfterInNaturalBlocks(Items.TORCHFLOWER, TTItems.CYAN_ROSE);
+		insertAfterInNaturalBlocks(Items.PITCHER_PLANT, TTItems.MANEDROP);
+		insertAfterInNaturalBlocks(TTItems.MANEDROP, TTItems.GUZMANIA);
+		insertAfterInNaturalBlocks(TTItems.GUZMANIA, TTItems.LITHOPS);
+		insertAfterInNaturalBlocks(Items.GLOW_LICHEN, TTItems.DAWNTRAIL);
 
-		insertAfterInNaturalBlocks(Blocks.TORCHFLOWER, TTBlocks.CYAN_ROSE);
-		insertAfterInNaturalBlocks(Blocks.PITCHER_PLANT, TTBlocks.MANEDROP);
-		insertAfterInNaturalBlocks(TTBlocks.MANEDROP, TTBlocks.GUZMANIA);
-		insertAfterInNaturalBlocks(TTBlocks.GUZMANIA, TTBlocks.LITHOPS);
-		insertAfterInNaturalBlocks(Blocks.GLOW_LICHEN, TTBlocks.DAWNTRAIL);
+		insertAfterInBuildingBlocks(Items.STONE_SLAB, TTItems.STONE_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.STONE_SLAB, TTBlocks.STONE_WALL);
+		insertAfterInBuildingBlocks(Items.POLISHED_GRANITE_SLAB, TTItems.POLISHED_GRANITE_WALL);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_GRANITE_WALL, TTItems.GRANITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.GRANITE_BRICKS, TTItems.CRACKED_GRANITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CRACKED_GRANITE_BRICKS, TTItems.GRANITE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.GRANITE_BRICK_STAIRS, TTItems.GRANITE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.GRANITE_BRICK_SLAB, TTItems.GRANITE_BRICK_WALL);
+		insertAfterInBuildingBlocks(TTItems.GRANITE_BRICK_WALL, TTItems.CHISELED_GRANITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CHISELED_GRANITE_BRICKS, TTItems.MOSSY_GRANITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_GRANITE_BRICKS, TTItems.MOSSY_GRANITE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_GRANITE_BRICK_STAIRS, TTItems.MOSSY_GRANITE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_GRANITE_BRICK_SLAB, TTItems.MOSSY_GRANITE_BRICK_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.POLISHED_GRANITE_SLAB, TTBlocks.POLISHED_GRANITE_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_GRANITE_WALL, TTBlocks.GRANITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.GRANITE_BRICKS, TTBlocks.CRACKED_GRANITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CRACKED_GRANITE_BRICKS, TTBlocks.GRANITE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.GRANITE_BRICK_STAIRS, TTBlocks.GRANITE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.GRANITE_BRICK_SLAB, TTBlocks.GRANITE_BRICK_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.GRANITE_BRICK_WALL, TTBlocks.CHISELED_GRANITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CHISELED_GRANITE_BRICKS, TTBlocks.MOSSY_GRANITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_GRANITE_BRICKS, TTBlocks.MOSSY_GRANITE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_GRANITE_BRICK_STAIRS, TTBlocks.MOSSY_GRANITE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_GRANITE_BRICK_SLAB, TTBlocks.MOSSY_GRANITE_BRICK_WALL);
+		insertAfterInBuildingBlocks(Items.POLISHED_DIORITE_SLAB, TTItems.POLISHED_DIORITE_WALL);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_DIORITE_WALL, TTItems.DIORITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.DIORITE_BRICKS, TTItems.CRACKED_DIORITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CRACKED_DIORITE_BRICKS, TTItems.DIORITE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.DIORITE_BRICK_STAIRS, TTItems.DIORITE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.DIORITE_BRICK_SLAB, TTItems.DIORITE_BRICK_WALL);
+		insertAfterInBuildingBlocks(TTItems.DIORITE_BRICK_WALL, TTItems.CHISELED_DIORITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CHISELED_DIORITE_BRICKS, TTItems.MOSSY_DIORITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_DIORITE_BRICKS, TTItems.MOSSY_DIORITE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_DIORITE_BRICK_STAIRS, TTItems.MOSSY_DIORITE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_DIORITE_BRICK_SLAB, TTItems.MOSSY_DIORITE_BRICK_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.POLISHED_DIORITE_SLAB, TTBlocks.POLISHED_DIORITE_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_DIORITE_WALL, TTBlocks.DIORITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.DIORITE_BRICKS, TTBlocks.CRACKED_DIORITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CRACKED_DIORITE_BRICKS, TTBlocks.DIORITE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.DIORITE_BRICK_STAIRS, TTBlocks.DIORITE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.DIORITE_BRICK_SLAB, TTBlocks.DIORITE_BRICK_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.DIORITE_BRICK_WALL, TTBlocks.CHISELED_DIORITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CHISELED_DIORITE_BRICKS, TTBlocks.MOSSY_DIORITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_DIORITE_BRICKS, TTBlocks.MOSSY_DIORITE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_DIORITE_BRICK_STAIRS, TTBlocks.MOSSY_DIORITE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_DIORITE_BRICK_SLAB, TTBlocks.MOSSY_DIORITE_BRICK_WALL);
+		insertAfterInBuildingBlocks(Items.POLISHED_ANDESITE_SLAB, TTItems.POLISHED_ANDESITE_WALL);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_ANDESITE_WALL, TTItems.ANDESITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.ANDESITE_BRICKS, TTItems.CRACKED_ANDESITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CRACKED_ANDESITE_BRICKS, TTItems.ANDESITE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.ANDESITE_BRICK_STAIRS, TTItems.ANDESITE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.ANDESITE_BRICK_SLAB, TTItems.ANDESITE_BRICK_WALL);
+		insertAfterInBuildingBlocks(TTItems.ANDESITE_BRICK_WALL, TTItems.CHISELED_ANDESITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CHISELED_ANDESITE_BRICKS, TTItems.MOSSY_ANDESITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_ANDESITE_BRICKS, TTItems.MOSSY_ANDESITE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_ANDESITE_BRICK_STAIRS, TTItems.MOSSY_ANDESITE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_ANDESITE_BRICK_SLAB, TTItems.MOSSY_ANDESITE_BRICK_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.POLISHED_ANDESITE_SLAB, TTBlocks.POLISHED_ANDESITE_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_ANDESITE_WALL, TTBlocks.ANDESITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.ANDESITE_BRICKS, TTBlocks.CRACKED_ANDESITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CRACKED_ANDESITE_BRICKS, TTBlocks.ANDESITE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.ANDESITE_BRICK_STAIRS, TTBlocks.ANDESITE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.ANDESITE_BRICK_SLAB, TTBlocks.ANDESITE_BRICK_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.ANDESITE_BRICK_WALL, TTBlocks.CHISELED_ANDESITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CHISELED_ANDESITE_BRICKS, TTBlocks.MOSSY_ANDESITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_ANDESITE_BRICKS, TTBlocks.MOSSY_ANDESITE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_ANDESITE_BRICK_STAIRS, TTBlocks.MOSSY_ANDESITE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_ANDESITE_BRICK_SLAB, TTBlocks.MOSSY_ANDESITE_BRICK_WALL);
+		insertBeforeInBuildingBlocks(Items.DEEPSLATE, Blocks.CALCITE);
+		insertAfterInBuildingBlocks(Items.CALCITE, TTItems.CALCITE_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.CALCITE_STAIRS, TTItems.CALCITE_SLAB);
+		insertAfterInBuildingBlocks(TTItems.CALCITE_SLAB, TTItems.CALCITE_WALL);
+		insertAfterInBuildingBlocks(TTItems.CALCITE_WALL, TTItems.POLISHED_CALCITE);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_CALCITE, TTItems.POLISHED_CALCITE_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_CALCITE_STAIRS, TTItems.POLISHED_CALCITE_SLAB);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_CALCITE_SLAB, TTItems.POLISHED_CALCITE_WALL);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_CALCITE_WALL, TTItems.CALCITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CALCITE_BRICKS, TTItems.CRACKED_CALCITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CRACKED_CALCITE_BRICKS, TTItems.CALCITE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.CALCITE_BRICK_STAIRS, TTItems.CALCITE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.CALCITE_BRICK_SLAB, TTItems.CALCITE_BRICK_WALL);
+		insertAfterInBuildingBlocks(TTItems.CALCITE_BRICK_WALL, TTItems.CHISELED_CALCITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CHISELED_CALCITE_BRICKS, TTItems.MOSSY_CALCITE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_CALCITE_BRICKS, TTItems.MOSSY_CALCITE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_CALCITE_BRICK_STAIRS, TTItems.MOSSY_CALCITE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_CALCITE_BRICK_SLAB, TTItems.MOSSY_CALCITE_BRICK_WALL);
 
-		insertBeforeInBuildingBlocks(Blocks.DEEPSLATE, Blocks.CALCITE);
-		insertAfterInBuildingBlocks(Blocks.CALCITE, TTBlocks.CALCITE_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.CALCITE_STAIRS, TTBlocks.CALCITE_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.CALCITE_SLAB, TTBlocks.CALCITE_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.CALCITE_WALL, TTBlocks.POLISHED_CALCITE);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_CALCITE, TTBlocks.POLISHED_CALCITE_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_CALCITE_STAIRS, TTBlocks.POLISHED_CALCITE_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_CALCITE_SLAB, TTBlocks.POLISHED_CALCITE_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_CALCITE_WALL, TTBlocks.CALCITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CALCITE_BRICKS, TTBlocks.CRACKED_CALCITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CRACKED_CALCITE_BRICKS, TTBlocks.CALCITE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.CALCITE_BRICK_STAIRS, TTBlocks.CALCITE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.CALCITE_BRICK_SLAB, TTBlocks.CALCITE_BRICK_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.CALCITE_BRICK_WALL, TTBlocks.CHISELED_CALCITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CHISELED_CALCITE_BRICKS, TTBlocks.MOSSY_CALCITE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_CALCITE_BRICKS, TTBlocks.MOSSY_CALCITE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_CALCITE_BRICK_STAIRS, TTBlocks.MOSSY_CALCITE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_CALCITE_BRICK_SLAB, TTBlocks.MOSSY_CALCITE_BRICK_WALL);
+		insertAfterInBuildingBlocks(Items.TUFF_BRICKS, TTItems.CRACKED_TUFF_BRICKS);
+		insertAfterInBuildingBlocks(Items.CHISELED_TUFF_BRICKS, TTItems.MOSSY_TUFF_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_TUFF_BRICKS, TTItems.MOSSY_TUFF_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_TUFF_BRICK_STAIRS, TTItems.MOSSY_TUFF_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_TUFF_BRICK_SLAB, TTItems.MOSSY_TUFF_BRICK_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.TUFF_BRICKS, TTBlocks.CRACKED_TUFF_BRICKS);
-		insertAfterInBuildingBlocks(Blocks.CHISELED_TUFF_BRICKS, TTBlocks.MOSSY_TUFF_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_TUFF_BRICKS, TTBlocks.MOSSY_TUFF_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_TUFF_BRICK_STAIRS, TTBlocks.MOSSY_TUFF_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_TUFF_BRICK_SLAB, TTBlocks.MOSSY_TUFF_BRICK_WALL);
+		insertAfterInBuildingBlocks(Items.BRICKS, TTItems.CRACKED_BRICKS);
+		insertAfterInBuildingBlocks(Items.BRICK_WALL, TTItems.MOSSY_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_BRICKS, TTItems.MOSSY_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_BRICK_STAIRS, TTItems.MOSSY_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_BRICK_SLAB, TTItems.MOSSY_BRICK_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.BRICKS, TTBlocks.CRACKED_BRICKS);
-		insertAfterInBuildingBlocks(Blocks.BRICK_WALL, TTBlocks.MOSSY_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_BRICKS, TTBlocks.MOSSY_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_BRICK_STAIRS, TTBlocks.MOSSY_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_BRICK_SLAB, TTBlocks.MOSSY_BRICK_WALL);
+		insertBeforeInBuildingBlocks(Items.RESIN_BRICKS, Blocks.RESIN_BLOCK);
+		insertAfterInBuildingBlocks(Items.RESIN_BLOCK, TTItems.POLISHED_RESIN_BLOCK);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_RESIN_BLOCK, TTItems.POLISHED_RESIN_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_RESIN_STAIRS, TTItems.POLISHED_RESIN_SLAB);
+		insertAfterInBuildingBlocks(TTItems.POLISHED_RESIN_SLAB, TTItems.POLISHED_RESIN_WALL);
+		insertAfterInBuildingBlocks(Items.RESIN_BRICKS, TTItems.CRACKED_RESIN_BRICKS);
+		insertAfterInBuildingBlocks(Items.RESIN_BRICK_WALL, TTItems.PALE_MOSSY_RESIN_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.PALE_MOSSY_RESIN_BRICKS, TTItems.PALE_MOSSY_RESIN_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.PALE_MOSSY_RESIN_BRICK_STAIRS, TTItems.PALE_MOSSY_RESIN_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.PALE_MOSSY_RESIN_BRICK_SLAB, TTItems.PALE_MOSSY_RESIN_BRICK_WALL);
 
-		insertBeforeInBuildingBlocks(Blocks.RESIN_BRICKS, Blocks.RESIN_BLOCK);
-		insertAfterInBuildingBlocks(Blocks.RESIN_BLOCK, TTBlocks.POLISHED_RESIN_BLOCK);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_RESIN_BLOCK, TTBlocks.POLISHED_RESIN_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_RESIN_STAIRS, TTBlocks.POLISHED_RESIN_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.POLISHED_RESIN_SLAB, TTBlocks.POLISHED_RESIN_WALL);
-		insertAfterInBuildingBlocks(Blocks.RESIN_BRICKS, TTBlocks.CRACKED_RESIN_BRICKS);
-		insertAfterInBuildingBlocks(Blocks.RESIN_BRICK_WALL, TTBlocks.PALE_MOSSY_RESIN_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.PALE_MOSSY_RESIN_BRICKS, TTBlocks.PALE_MOSSY_RESIN_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.PALE_MOSSY_RESIN_BRICK_STAIRS, TTBlocks.PALE_MOSSY_RESIN_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.PALE_MOSSY_RESIN_BRICK_SLAB, TTBlocks.PALE_MOSSY_RESIN_BRICK_WALL);
+		insertAfterInBuildingBlocks(Items.COBBLED_DEEPSLATE_WALL, TTItems.MOSSY_COBBLED_DEEPSLATE);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_COBBLED_DEEPSLATE, TTItems.MOSSY_COBBLED_DEEPSLATE_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_COBBLED_DEEPSLATE_STAIRS, TTItems.MOSSY_COBBLED_DEEPSLATE_SLAB);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_COBBLED_DEEPSLATE_SLAB, TTItems.MOSSY_COBBLED_DEEPSLATE_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.COBBLED_DEEPSLATE_WALL, TTBlocks.MOSSY_COBBLED_DEEPSLATE);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_COBBLED_DEEPSLATE, TTBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS, TTBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB, TTBlocks.MOSSY_COBBLED_DEEPSLATE_WALL);
+		insertAfterInBuildingBlocks(Items.DEEPSLATE_BRICK_WALL, TTItems.MOSSY_DEEPSLATE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_DEEPSLATE_BRICKS, TTItems.MOSSY_DEEPSLATE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_DEEPSLATE_BRICK_STAIRS, TTItems.MOSSY_DEEPSLATE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_DEEPSLATE_BRICK_SLAB, TTItems.MOSSY_DEEPSLATE_BRICK_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.DEEPSLATE_BRICK_WALL, TTBlocks.MOSSY_DEEPSLATE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_DEEPSLATE_BRICKS, TTBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS, TTBlocks.MOSSY_DEEPSLATE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_DEEPSLATE_BRICK_SLAB, TTBlocks.MOSSY_DEEPSLATE_BRICK_WALL);
+		insertAfterInBuildingBlocks(Items.DEEPSLATE_TILE_WALL, TTItems.MOSSY_DEEPSLATE_TILES);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_DEEPSLATE_TILES, TTItems.MOSSY_DEEPSLATE_TILE_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_DEEPSLATE_TILE_STAIRS, TTItems.MOSSY_DEEPSLATE_TILE_SLAB);
+		insertAfterInBuildingBlocks(TTItems.MOSSY_DEEPSLATE_TILE_SLAB, TTItems.MOSSY_DEEPSLATE_TILE_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.DEEPSLATE_TILE_WALL, TTBlocks.MOSSY_DEEPSLATE_TILES);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_DEEPSLATE_TILES, TTBlocks.MOSSY_DEEPSLATE_TILE_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_DEEPSLATE_TILE_STAIRS, TTBlocks.MOSSY_DEEPSLATE_TILE_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.MOSSY_DEEPSLATE_TILE_SLAB, TTBlocks.MOSSY_DEEPSLATE_TILE_WALL);
+		insertAfterInBuildingBlocks(Items.SMOOTH_SANDSTONE_SLAB, TTItems.SMOOTH_SANDSTONE_WALL);
+		insertBeforeInBuildingBlocks(Items.CUT_STANDSTONE_SLAB, TTItems.CUT_SANDSTONE_STAIRS);
+		insertAfterInBuildingBlocks(Items.CUT_STANDSTONE_SLAB, TTItems.CUT_SANDSTONE_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.SMOOTH_SANDSTONE_SLAB, TTBlocks.SMOOTH_SANDSTONE_WALL);
-		insertBeforeInBuildingBlocks(Blocks.CUT_SANDSTONE_SLAB, TTBlocks.CUT_SANDSTONE_STAIRS);
-		insertAfterInBuildingBlocks(Blocks.CUT_SANDSTONE_SLAB, TTBlocks.CUT_SANDSTONE_WALL);
+		insertAfterInBuildingBlocks(Items.SMOOTH_RED_SANDSTONE_SLAB, TTItems.SMOOTH_RED_SANDSTONE_WALL);
+		insertBeforeInBuildingBlocks(Items.CUT_RED_SANDSTONE_SLAB, TTItems.CUT_RED_SANDSTONE_STAIRS);
+		insertAfterInBuildingBlocks(Items.CUT_RED_SANDSTONE_SLAB, TTItems.CUT_RED_SANDSTONE_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.SMOOTH_RED_SANDSTONE_SLAB, TTBlocks.SMOOTH_RED_SANDSTONE_WALL);
-		insertBeforeInBuildingBlocks(Blocks.CUT_RED_SANDSTONE_SLAB, TTBlocks.CUT_RED_SANDSTONE_STAIRS);
-		insertAfterInBuildingBlocks(Blocks.CUT_RED_SANDSTONE_SLAB, TTBlocks.CUT_RED_SANDSTONE_WALL);
+		insertAfterInBuildingBlocks(Items.PRISMARINE_BRICK_SLAB, TTItems.PRISMARINE_BRICK_WALL);
+		insertAfterInBuildingBlocks(Items.DARK_PRISMARINE_SLAB, TTItems.DARK_PRISMARINE_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.PRISMARINE_BRICK_SLAB, TTBlocks.PRISMARINE_BRICK_WALL);
-		insertAfterInBuildingBlocks(Blocks.DARK_PRISMARINE_SLAB, TTBlocks.DARK_PRISMARINE_WALL);
+		insertAfterInBuildingBlocks(Items.END_STONE, TTItems.END_STONE_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.END_STONE_STAIRS, TTItems.END_STONE_SLAB);
+		insertAfterInBuildingBlocks(TTItems.END_STONE_SLAB, TTItems.END_STONE_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.END_STONE, TTBlocks.END_STONE_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.END_STONE_STAIRS, TTBlocks.END_STONE_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.END_STONE_SLAB, TTBlocks.END_STONE_WALL);
+		insertAfterInBuildingBlocks(TTItems.END_STONE_WALL, TTItems.CHORAL_END_STONE);
+		insertAfterInBuildingBlocks(TTItems.CHORAL_END_STONE, TTItems.CHORAL_END_STONE_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.CHORAL_END_STONE_STAIRS, TTItems.CHORAL_END_STONE_SLAB);
+		insertAfterInBuildingBlocks(TTItems.CHORAL_END_STONE_SLAB, TTItems.CHORAL_END_STONE_WALL);
 
-		insertAfterInBuildingBlocks(TTBlocks.END_STONE_WALL, TTBlocks.CHORAL_END_STONE);
-		insertAfterInBuildingBlocks(TTBlocks.CHORAL_END_STONE, TTBlocks.CHORAL_END_STONE_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.CHORAL_END_STONE_STAIRS, TTBlocks.CHORAL_END_STONE_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.CHORAL_END_STONE_SLAB, TTBlocks.CHORAL_END_STONE_WALL);
+		insertAfterInBuildingBlocks(Items.END_STONE_BRICKS, TTItems.CRACKED_END_STONE_BRICKS);
+		insertAfterInBuildingBlocks(Items.END_STONE_BRICK_WALL, TTItems.CHISELED_END_STONE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CHISELED_END_STONE_BRICKS, TTItems.CHORAL_END_STONE_BRICKS);
+		insertAfterInBuildingBlocks(TTItems.CHORAL_END_STONE_BRICKS, TTItems.CHORAL_END_STONE_BRICK_STAIRS);
+		insertAfterInBuildingBlocks(TTItems.CHORAL_END_STONE_BRICK_STAIRS, TTItems.CHORAL_END_STONE_BRICK_SLAB);
+		insertAfterInBuildingBlocks(TTItems.CHORAL_END_STONE_BRICK_SLAB, TTItems.CHORAL_END_STONE_BRICK_WALL);
 
-		insertAfterInBuildingBlocks(Blocks.END_STONE_BRICKS, TTBlocks.CRACKED_END_STONE_BRICKS);
-		insertAfterInBuildingBlocks(Blocks.END_STONE_BRICK_WALL, TTBlocks.CHISELED_END_STONE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CHISELED_END_STONE_BRICKS, TTBlocks.CHORAL_END_STONE_BRICKS);
-		insertAfterInBuildingBlocks(TTBlocks.CHORAL_END_STONE_BRICKS, TTBlocks.CHORAL_END_STONE_BRICK_STAIRS);
-		insertAfterInBuildingBlocks(TTBlocks.CHORAL_END_STONE_BRICK_STAIRS, TTBlocks.CHORAL_END_STONE_BRICK_SLAB);
-		insertAfterInBuildingBlocks(TTBlocks.CHORAL_END_STONE_BRICK_SLAB, TTBlocks.CHORAL_END_STONE_BRICK_WALL);
+		insertAfterInBuildingBlocks(Items.PURPUR_BLOCK, TTItems.CRACKED_PURPUR_BLOCK);
+		insertAfterInBuildingBlocks(Items.PURPUR_SLAB, TTItems.PURPUR_WALL);
+		insertAfterInBuildingBlocks(TTItems.PURPUR_WALL, TTItems.CHISELED_PURPUR_BLOCK);
 
-		insertAfterInBuildingBlocks(Blocks.PURPUR_BLOCK, TTBlocks.CRACKED_PURPUR_BLOCK);
-		insertAfterInBuildingBlocks(Blocks.PURPUR_SLAB, TTBlocks.PURPUR_WALL);
-		insertAfterInBuildingBlocks(TTBlocks.PURPUR_WALL, TTBlocks.CHISELED_PURPUR_BLOCK);
-
-		insertAfterInSpawnEggs(Blocks.TRIAL_SPAWNER, TTBlocks.COFFIN);
-		insertAfterInRedstone(Blocks.OBSERVER, TTBlocks.SURVEYOR);
-		insertAfterInFunctionalBlocks(Blocks.MAGMA_BLOCK, TTBlocks.ECTOPLASM_BLOCK);
-		insertAfterInNaturalBlocks(Blocks.HONEY_BLOCK, TTBlocks.ECTOPLASM_BLOCK);
+		insertAfterInSpawnEggs(Items.TRIAL_SPAWNER, TTItems.COFFIN);
+		insertAfterInRedstone(Items.OBSERVER, TTItems.SURVEYOR);
+		insertAfterInFunctionalBlocks(Items.MAGMA_BLOCK, TTItems.ECTOPLASM_BLOCK);
+		insertAfterInNaturalBlocks(Items.HONEY_BLOCK, TTItems.ECTOPLASM_BLOCK);
 
 		// ITEMS
 		insertAfterInSpawnEggs(Items.ALLAY_SPAWN_EGG, TTItems.APPARITION_SPAWN_EGG);

@@ -30,7 +30,6 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
@@ -44,7 +43,6 @@ import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.AlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.ProcessorRule;
-import net.minecraft.world.level.levelgen.structure.templatesystem.ProtectedBlockProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RandomBlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
@@ -159,8 +157,7 @@ public class JungleRuinsGenerator {
 				TTItems.NAVIGATOR_POTTERY_SHERD,
 				TTItems.BLOOM_POTTERY_SHERD,
 				TTItems.SHOWER_POTTERY_SHERD
-			),
-			new ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+			)
 		)
 	);
 }

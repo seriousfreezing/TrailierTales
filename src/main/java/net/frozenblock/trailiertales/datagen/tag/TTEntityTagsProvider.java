@@ -20,11 +20,11 @@ package net.frozenblock.trailiertales.datagen.tag;
 import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
-import net.frozenblock.trailiertales.registry.TTEntityTypes;
-import net.frozenblock.trailiertales.tag.TTEntityTags;
+import net.frozenblock.trailiertales.references.TTEntityTypeIds;
+import net.frozenblock.trailiertales.tag.TTEntityTypeTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypeIds;
 
 public final class TTEntityTagsProvider extends FabricTagsProvider.EntityTypeTagsProvider {
 
@@ -34,19 +34,19 @@ public final class TTEntityTagsProvider extends FabricTagsProvider.EntityTypeTag
 
 	@Override
 	protected void addTags(HolderLookup.Provider arg) {
-		this.valueLookupBuilder(TTEntityTags.APPARITION_TARGETABLE)
-			.add(EntityType.PLAYER);
+		this.builder(TTEntityTypeTags.APPARITION_TARGETABLE)
+			.add(EntityTypeIds.PLAYER);
 
-		this.valueLookupBuilder(TTEntityTags.SURVEYOR_IGNORES)
-			.add(TTEntityTypes.APPARITION);
+		this.builder(TTEntityTypeTags.SURVEYOR_IGNORES)
+			.add(TTEntityTypeIds.APPARITION);
 
-		this.valueLookupBuilder(EntityTypeTags.CAN_BREATHE_UNDER_WATER)
-			.add(TTEntityTypes.APPARITION);
+		this.builder(EntityTypeTags.CAN_BREATHE_UNDER_WATER)
+			.add(TTEntityTypeIds.APPARITION);
 
-		this.valueLookupBuilder(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)
-			.add(TTEntityTypes.APPARITION);
+		this.builder(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)
+			.add(TTEntityTypeIds.APPARITION);
 
-		this.valueLookupBuilder(EntityTypeTags.WITHER_FRIENDS)
-			.add(TTEntityTypes.APPARITION);
+		this.builder(EntityTypeTags.WITHER_FRIENDS)
+			.add(TTEntityTypeIds.APPARITION);
 	}
 }

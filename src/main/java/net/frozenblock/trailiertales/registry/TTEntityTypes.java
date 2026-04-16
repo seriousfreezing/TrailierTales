@@ -18,36 +18,28 @@
 package net.frozenblock.trailiertales.registry;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.frozenblock.trailiertales.TTConstants;
 import net.frozenblock.trailiertales.TTFeatureFlags;
 import net.frozenblock.trailiertales.entity.Apparition;
 import net.frozenblock.trailiertales.entity.ThrownItemProjectile;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.Entity;
+import net.frozenblock.trailiertales.references.TTEntityTypeIds;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.MobCategory;
 
 public final class TTEntityTypes {
-	public static final EntityType<Apparition> APPARITION = register(
-		"apparition",
+	public static final EntityType<Apparition> APPARITION = EntityTypes.register(TTEntityTypeIds.APPARITION,
 		EntityType.Builder.of(Apparition::new, MobCategory.MISC)
 			.sized(0.98F, 0.98F)
 			.eyeHeight(0.98F * 0.5F)
 			.requiredFeatures(TTFeatureFlags.FEATURE_FLAG)
-			.build(ResourceKey.create(Registries.ENTITY_TYPE, TTConstants.id("apparition")))
 	);
 
-	public static final EntityType<ThrownItemProjectile> THROWN_ITEM_PROJECTILE = register(
-		"thrown_item",
+	public static final EntityType<ThrownItemProjectile> THROWN_ITEM_PROJECTILE = EntityTypes.register(TTEntityTypeIds.THROWN_ITEM_PROJECTILE,
 		EntityType.Builder.<ThrownItemProjectile>of(ThrownItemProjectile::new, MobCategory.MISC)
 			.sized(0.25F, 0.25F)
 			.clientTrackingRange(64)
 			.updateInterval(10)
 			.requiredFeatures(TTFeatureFlags.FEATURE_FLAG)
-			.build(ResourceKey.create(Registries.ENTITY_TYPE, TTConstants.id("thrown_item")))
 	);
 
 	static {
@@ -55,9 +47,5 @@ public final class TTEntityTypes {
 	}
 
 	public static void init() {
-	}
-
-	private static <E extends Entity, T extends EntityType<E>> T register(String path, T entityType) {
-		return Registry.register(BuiltInRegistries.ENTITY_TYPE, TTConstants.id(path), entityType);
 	}
 }
