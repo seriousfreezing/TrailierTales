@@ -26,6 +26,7 @@ import net.frozenblock.trailiertales.references.TTBlockIds;
 import net.frozenblock.trailiertales.references.TTBlockItemIds;
 import net.frozenblock.trailiertales.tag.TTBlockTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.tags.BlockItemTagsProvider;
 import net.minecraft.references.BlockIds;
 import net.minecraft.references.BlockItemIds;
 import net.minecraft.resources.Identifier;
@@ -47,6 +48,8 @@ public final class TTBlockTagsProvider extends FabricTagsProvider.BlockTagsProvi
 
 	@Override
 	protected void addTags(HolderLookup.Provider arg) {
+		new TTBlockItemTagsProvider(tagId -> BlockItemTagsProvider.wrapForBlocks(this.tag(tagId.block()))).run();
+
 		this.builder(BlockTags.MINEABLE_WITH_PICKAXE)
 			.add(TTBlockItemIds.STONE_WALL)
 
@@ -178,23 +181,6 @@ public final class TTBlockTagsProvider extends FabricTagsProvider.BlockTagsProvi
 		this.builder(BlockTags.SWORD_EFFICIENT)
 			.add(TTBlockItemIds.LITHOPS);
 
-		this.builder(BlockItemTags.SAND.block())
-			.add(TTBlockItemIds.SUSPICIOUS_RED_SAND);
-
-		this.builder(BlockItemTags.DIRT.block())
-			.add(TTBlockItemIds.SUSPICIOUS_DIRT);
-
-		this.builder(BlockItemTags.SMALL_FLOWERS.block())
-			.add(TTBlockItemIds.CYAN_ROSE);
-
-		this.builder(BlockItemTags.BEE_FOOD.block())
-			.add(TTBlockItemIds.CYAN_ROSE)
-			.add(TTBlockItemIds.MANEDROP)
-			.add(TTBlockItemIds.GUZMANIA);
-
-		this.builder(BlockItemTags.FLOWERS.block())
-			.add(TTBlockItemIds.DAWNTRAIL);
-
 		this.builder(BlockTags.FLOWER_POTS)
 			.add(TTBlockIds.POTTED_CYAN_ROSE)
 			.add(TTBlockIds.POTTED_LITHOPS);
@@ -225,85 +211,6 @@ public final class TTBlockTagsProvider extends FabricTagsProvider.BlockTagsProvi
 			.add(TTBlockItemIds.DAWNTRAIL)
 			.add(TTBlockItemIds.LITHOPS);
 
-		this.builder(BlockItemTags.STAIRS.block())
-			.add(TTBlockItemIds.GRANITE_BRICK_STAIRS)
-			.add(TTBlockItemIds.MOSSY_GRANITE_BRICK_STAIRS)
-			.add(TTBlockItemIds.DIORITE_BRICK_STAIRS)
-			.add(TTBlockItemIds.MOSSY_DIORITE_BRICK_STAIRS)
-			.add(TTBlockItemIds.ANDESITE_BRICK_STAIRS)
-			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICK_STAIRS)
-			.add(TTBlockItemIds.CALCITE_STAIRS)
-			.add(TTBlockItemIds.POLISHED_CALCITE_STAIRS)
-			.add(TTBlockItemIds.CALCITE_BRICK_STAIRS)
-			.add(TTBlockItemIds.MOSSY_CALCITE_BRICK_STAIRS)
-			.add(TTBlockItemIds.MOSSY_TUFF_BRICK_STAIRS)
-			.add(TTBlockItemIds.MOSSY_BRICK_STAIRS)
-			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICK_STAIRS)
-			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_STAIRS)
-			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_STAIRS)
-			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_STAIRS)
-			.add(TTBlockItemIds.POLISHED_RESIN_STAIRS)
-			.add(TTBlockItemIds.CUT_SANDSTONE_STAIRS)
-			.add(TTBlockItemIds.CUT_RED_SANDSTONE_STAIRS)
-			.add(TTBlockItemIds.CHORAL_END_STONE_STAIRS)
-			.add(TTBlockItemIds.CHORAL_END_STONE_BRICK_STAIRS)
-			.add(TTBlockItemIds.END_STONE_STAIRS);
-
-		this.builder(BlockItemTags.SLABS.block())
-			.add(TTBlockItemIds.GRANITE_BRICK_SLAB)
-			.add(TTBlockItemIds.MOSSY_GRANITE_BRICK_SLAB)
-			.add(TTBlockItemIds.DIORITE_BRICK_SLAB)
-			.add(TTBlockItemIds.MOSSY_DIORITE_BRICK_SLAB)
-			.add(TTBlockItemIds.ANDESITE_BRICK_SLAB)
-			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICK_SLAB)
-			.add(TTBlockItemIds.CALCITE_SLAB)
-			.add(TTBlockItemIds.POLISHED_CALCITE_SLAB)
-			.add(TTBlockItemIds.CALCITE_BRICK_SLAB)
-			.add(TTBlockItemIds.MOSSY_CALCITE_BRICK_SLAB)
-			.add(TTBlockItemIds.MOSSY_TUFF_BRICK_SLAB)
-			.add(TTBlockItemIds.MOSSY_BRICK_SLAB)
-			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICK_SLAB)
-			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_SLAB)
-			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_SLAB)
-			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_SLAB)
-			.add(TTBlockItemIds.POLISHED_RESIN_SLAB)
-			.add(TTBlockItemIds.CHORAL_END_STONE_SLAB)
-			.add(TTBlockItemIds.CHORAL_END_STONE_BRICK_SLAB)
-			.add(TTBlockItemIds.END_STONE_SLAB);
-
-		this.builder(BlockItemTags.WALLS.block())
-			.add(TTBlockItemIds.STONE_WALL)
-			.add(TTBlockItemIds.GRANITE_BRICK_WALL)
-			.add(TTBlockItemIds.MOSSY_GRANITE_BRICK_WALL)
-			.add(TTBlockItemIds.POLISHED_GRANITE_WALL)
-			.add(TTBlockItemIds.DIORITE_BRICK_WALL)
-			.add(TTBlockItemIds.MOSSY_DIORITE_BRICK_WALL)
-			.add(TTBlockItemIds.POLISHED_DIORITE_WALL)
-			.add(TTBlockItemIds.ANDESITE_BRICK_WALL)
-			.add(TTBlockItemIds.MOSSY_ANDESITE_BRICK_WALL)
-			.add(TTBlockItemIds.POLISHED_ANDESITE_WALL)
-			.add(TTBlockItemIds.CALCITE_WALL)
-			.add(TTBlockItemIds.POLISHED_CALCITE_WALL)
-			.add(TTBlockItemIds.CALCITE_BRICK_WALL)
-			.add(TTBlockItemIds.MOSSY_CALCITE_BRICK_WALL)
-			.add(TTBlockItemIds.MOSSY_TUFF_BRICK_WALL)
-			.add(TTBlockItemIds.MOSSY_BRICK_WALL)
-			.add(TTBlockItemIds.PALE_MOSSY_RESIN_BRICK_WALL)
-			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_WALL)
-			.add(TTBlockItemIds.MOSSY_DEEPSLATE_BRICK_WALL)
-			.add(TTBlockItemIds.MOSSY_DEEPSLATE_TILE_WALL)
-			.add(TTBlockItemIds.POLISHED_RESIN_WALL)
-			.add(TTBlockItemIds.SMOOTH_SANDSTONE_WALL)
-			.add(TTBlockItemIds.CUT_SANDSTONE_WALL)
-			.add(TTBlockItemIds.SMOOTH_RED_SANDSTONE_WALL)
-			.add(TTBlockItemIds.CUT_RED_SANDSTONE_WALL)
-			.add(TTBlockItemIds.PRISMARINE_BRICK_WALL)
-			.add(TTBlockItemIds.DARK_PRISMARINE_WALL)
-			.add(TTBlockItemIds.CHORAL_END_STONE_WALL)
-			.add(TTBlockItemIds.CHORAL_END_STONE_BRICK_WALL)
-			.add(TTBlockItemIds.END_STONE_WALL)
-			.add(TTBlockItemIds.PURPUR_WALL);
-
 		this.builder(BlockTags.ANCIENT_CITY_REPLACEABLE)
 			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE)
 			.add(TTBlockItemIds.MOSSY_COBBLED_DEEPSLATE_STAIRS)
@@ -325,7 +232,7 @@ public final class TTBlockTagsProvider extends FabricTagsProvider.BlockTagsProvi
 
 		this.builder(TTBlockTags.SUPPORTS_LITHOPS)
 			.addOptionalTag(BlockTags.SUPPORTS_DRY_VEGETATION)
-			.addOptionalTag(BlockTags.SAND)
+			.addOptionalTag(BlockItemTags.SAND.block())
 			.addOptionalTag(BlockTags.BASE_STONE_OVERWORLD);
 
 		this.builder(TTBlockTags.COFFIN_UNSPAWNABLE_ON)
@@ -337,7 +244,7 @@ public final class TTBlockTagsProvider extends FabricTagsProvider.BlockTagsProvi
 			.add(BlockItemIds.LEVER)
 			.add(BlockItemIds.REPEATER)
 			.add(BlockItemIds.COMPARATOR)
-			.addOptionalTag(BlockTags.BUTTONS)
+			.addOptionalTag(BlockItemTags.BUTTONS.block())
 			.addOptionalTag(BlockTags.PRESSURE_PLATES);
 
 		this.builder(BlockTags.FEATURES_CANNOT_REPLACE)

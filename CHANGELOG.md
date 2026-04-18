@@ -6,3 +6,4 @@ hi
 - Fixed Trailier Tales' plants not being flammable or compostable.
 - Fixed the `One Small Step` advancement not being granted.
 - Fixed two exploits related to the Apparition.
+- Added missing entries to Item Tags.

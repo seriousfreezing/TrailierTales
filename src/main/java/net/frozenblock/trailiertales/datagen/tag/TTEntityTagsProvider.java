@@ -20,6 +20,7 @@ package net.frozenblock.trailiertales.datagen.tag;
 import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.frozenblock.lib.tag.api.FrozenLibEntityTypeTags;
 import net.frozenblock.trailiertales.references.TTEntityTypeIds;
 import net.frozenblock.trailiertales.tag.TTEntityTypeTags;
 import net.minecraft.core.HolderLookup;
@@ -47,6 +48,9 @@ public final class TTEntityTagsProvider extends FabricTagsProvider.EntityTypeTag
 			.add(TTEntityTypeIds.APPARITION);
 
 		this.builder(EntityTypeTags.WITHER_FRIENDS)
+			.add(TTEntityTypeIds.APPARITION);
+
+		this.builder(FrozenLibEntityTypeTags.GHOST_LIKE)
 			.add(TTEntityTypeIds.APPARITION);
 	}
 }
