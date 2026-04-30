@@ -485,8 +485,7 @@ public final class TTBlocks {
 			.dynamicShape()
 	);
 
-	public static void init() {
-	}
+	public static void init() {}
 
 	public static Block registerFlowerPot(ResourceKey<Block> id, Block potted) {
 		return Blocks.register(id, properties -> new FlowerPotBlock(potted, properties), Blocks.flowerPotProperties());

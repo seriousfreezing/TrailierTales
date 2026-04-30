@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.worldgen;
+package net.frozenblock.trailiertales.data.worldgen.feature;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +24,7 @@ import net.frozenblock.trailiertales.block.LithopsBlock;
 import net.frozenblock.trailiertales.registry.TTBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -34,7 +35,6 @@ import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.MultifaceSpreadeableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -56,118 +56,43 @@ import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.levelgen.placement.SurfaceRelativeThresholdFilter;
 
 public class TTFeatureBootstrap {
-	public static final ResourceKey<ConfiguredFeature<?, ?>> TORCHFLOWER = ResourceKey.create(
-		Registries.CONFIGURED_FEATURE,
-			TTConstants.id("torchflower")
-	);
-	public static final ResourceKey<PlacedFeature> PATCH_TORCHFLOWER = ResourceKey.create(
-		Registries.PLACED_FEATURE,
-		TTConstants.id("patch_torchflower")
-	);
+	public static final ResourceKey<ConfiguredFeature<?, ?>> TORCHFLOWER = ResourceKey.create(Registries.CONFIGURED_FEATURE, TTConstants.id("torchflower"));
+	public static final ResourceKey<PlacedFeature> PATCH_TORCHFLOWER = ResourceKey.create(Registries.PLACED_FEATURE, TTConstants.id("patch_torchflower"));
 
-	public static final ResourceKey<ConfiguredFeature<?, ?>> PITCHER = ResourceKey.create(
-		Registries.CONFIGURED_FEATURE,
-			TTConstants.id("pitcher")
-		);
-	public static final ResourceKey<PlacedFeature> PATCH_PITCHER = ResourceKey.create(
-		Registries.PLACED_FEATURE,
-		TTConstants.id("patch_pitcher")
-	);
+	public static final ResourceKey<ConfiguredFeature<?, ?>> PITCHER = ResourceKey.create(Registries.CONFIGURED_FEATURE, TTConstants.id("pitcher"));
+	public static final ResourceKey<PlacedFeature> PATCH_PITCHER = ResourceKey.create(Registries.PLACED_FEATURE, TTConstants.id("patch_pitcher"));
 
-	public static final ResourceKey<ConfiguredFeature<?, ?>> CYAN_ROSE = ResourceKey.create(
-		Registries.CONFIGURED_FEATURE,
-			TTConstants.id("cyan_rose")
-		);
-	public static final ResourceKey<PlacedFeature> PATCH_CYAN_ROSE = ResourceKey.create(
-		Registries.PLACED_FEATURE,
-		TTConstants.id("patch_cyan_rose")
-	);
+	public static final ResourceKey<ConfiguredFeature<?, ?>> CYAN_ROSE = ResourceKey.create(Registries.CONFIGURED_FEATURE, TTConstants.id("cyan_rose"));
+	public static final ResourceKey<PlacedFeature> PATCH_CYAN_ROSE = ResourceKey.create(Registries.PLACED_FEATURE, TTConstants.id("patch_cyan_rose"));
 
-	public static final ResourceKey<ConfiguredFeature<?, ?>> MANEDROP = ResourceKey.create(
-		Registries.CONFIGURED_FEATURE,
-			TTConstants.id("manedrop")
-		);
-	public static final ResourceKey<PlacedFeature> PATCH_MANEDROP = ResourceKey.create(
-		Registries.PLACED_FEATURE,
-		TTConstants.id("patch_manedrop")
-	);
+	public static final ResourceKey<ConfiguredFeature<?, ?>> MANEDROP = ResourceKey.create(Registries.CONFIGURED_FEATURE, TTConstants.id("manedrop"));
+	public static final ResourceKey<PlacedFeature> PATCH_MANEDROP = ResourceKey.create(Registries.PLACED_FEATURE, TTConstants.id("patch_manedrop"));
 
-	public static final ResourceKey<ConfiguredFeature<?, ?>> GUZMANIA = ResourceKey.create(
-		Registries.CONFIGURED_FEATURE,
-		TTConstants.id("guzmania")
-	);
-	public static final ResourceKey<PlacedFeature> PATCH_GUZMANIA = ResourceKey.create(
-		Registries.PLACED_FEATURE,
-		TTConstants.id("patch_guzmania")
-	);
+	public static final ResourceKey<ConfiguredFeature<?, ?>> GUZMANIA = ResourceKey.create(Registries.CONFIGURED_FEATURE, TTConstants.id("guzmania"));
+	public static final ResourceKey<PlacedFeature> PATCH_GUZMANIA = ResourceKey.create(Registries.PLACED_FEATURE, TTConstants.id("patch_guzmania"));
 
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DAWNTRAIL = ResourceKey.create(
-		Registries.CONFIGURED_FEATURE,
-		TTConstants.id("dawntrail")
-	);
-	public static final ResourceKey<PlacedFeature> DAWNTRAIL_PLACED = ResourceKey.create(
-		Registries.PLACED_FEATURE,
-		TTConstants.id("dawntrail")
-	);
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DAWNTRAIL = ResourceKey.create(Registries.CONFIGURED_FEATURE, TTConstants.id("dawntrail"));
+	public static final ResourceKey<PlacedFeature> DAWNTRAIL_PLACED = ResourceKey.create(Registries.PLACED_FEATURE, TTConstants.id("dawntrail"));
 
-	public static final ResourceKey<ConfiguredFeature<?, ?>> LITHOPS = ResourceKey.create(
-		Registries.CONFIGURED_FEATURE,
-		TTConstants.id("lithops")
-	);
-	public static final ResourceKey<PlacedFeature> PATCH_LITHOPS = ResourceKey.create(
-		Registries.PLACED_FEATURE,
-		TTConstants.id("patch_lithops")
-	);
-	public static final ResourceKey<PlacedFeature> PATCH_LITHOPS_RARE = ResourceKey.create(
-		Registries.PLACED_FEATURE,
-		TTConstants.id("patch_lithops_rare")
-	);
+	public static final ResourceKey<ConfiguredFeature<?, ?>> LITHOPS = ResourceKey.create(Registries.CONFIGURED_FEATURE, TTConstants.id("lithops"));
+	public static final ResourceKey<PlacedFeature> PATCH_LITHOPS = ResourceKey.create(Registries.PLACED_FEATURE, TTConstants.id("patch_lithops"));
+	public static final ResourceKey<PlacedFeature> PATCH_LITHOPS_RARE = ResourceKey.create(Registries.PLACED_FEATURE, TTConstants.id("patch_lithops_rare"));
 
 	public static void bootstrapConfigured(BootstrapContext<ConfiguredFeature<?, ?>> entries) {
-		final var configuredFeatures = entries.lookup(Registries.CONFIGURED_FEATURE);
-		final var placedFeatures = entries.lookup(Registries.PLACED_FEATURE);
+		final HolderGetter<PlacedFeature> placedFeatures = entries.lookup(Registries.PLACED_FEATURE);
+		final HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = entries.lookup(Registries.CONFIGURED_FEATURE);
 
-		register(
-			entries,
-			TORCHFLOWER,
-			Feature.SIMPLE_BLOCK,
-			new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.TORCHFLOWER))
-		);
-
-		register(
-			entries,
-			PITCHER,
-			Feature.SIMPLE_BLOCK,
-			new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.PITCHER_PLANT))
-		);
-
-		register(
-			entries,
-			CYAN_ROSE,
-			Feature.SIMPLE_BLOCK,
-			new SimpleBlockConfiguration(BlockStateProvider.simple(TTBlocks.CYAN_ROSE))
-		);
-
-		register(
-			entries,
-			MANEDROP,
-			Feature.SIMPLE_BLOCK,
-			new SimpleBlockConfiguration(BlockStateProvider.simple(TTBlocks.MANEDROP))
-		);
-
-		register(
-			entries,
-			GUZMANIA,
-			Feature.SIMPLE_BLOCK,
-			new SimpleBlockConfiguration(BlockStateProvider.simple(TTBlocks.GUZMANIA))
-		);
-
+		register(entries, TORCHFLOWER, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.TORCHFLOWER)));
+		register(entries, PITCHER, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.PITCHER_PLANT)));
+		register(entries, CYAN_ROSE, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(TTBlocks.CYAN_ROSE)));
+		register(entries, MANEDROP, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(TTBlocks.MANEDROP)));
+		register(entries, GUZMANIA, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(TTBlocks.GUZMANIA)));
 		register(
 			entries,
 			DAWNTRAIL,
 			Feature.MULTIFACE_GROWTH,
 			new MultifaceGrowthConfiguration(
-				(MultifaceSpreadeableBlock) TTBlocks.DAWNTRAIL,
+				TTBlocks.DAWNTRAIL,
 				20,
 				true,
 				true,
@@ -190,17 +115,12 @@ public class TTFeatureBootstrap {
 				lithopsStates.add(TTBlocks.LITHOPS.defaultBlockState().setValue(LithopsBlock.AMOUNT, i).setValue(LithopsBlock.FACING, direction), 1);
 			}
 		}
-		register(
-			entries,
-			LITHOPS,
-			Feature.SIMPLE_BLOCK,
-			new SimpleBlockConfiguration(new WeightedStateProvider(lithopsStates))
-		);
+		register(entries, LITHOPS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(lithopsStates)));
 	}
 
 	public static void bootstrapPlaced(BootstrapContext<PlacedFeature> entries) {
-		final var placedFeatures = entries.lookup(Registries.PLACED_FEATURE);
-		final var configuredFeatures = entries.lookup(Registries.CONFIGURED_FEATURE);
+		final HolderGetter<PlacedFeature> placedFeatures = entries.lookup(Registries.PLACED_FEATURE);
+		final HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = entries.lookup(Registries.CONFIGURED_FEATURE);
 
 		register(
 			entries,
@@ -305,15 +225,15 @@ public class TTFeatureBootstrap {
 		);
 	}
 
-	public static void register(BootstrapContext<PlacedFeature> entries, ResourceKey<PlacedFeature> resourceKey, Holder<ConfiguredFeature<?, ?>> configuredHolder, PlacementModifier... modifiers) {
-		register(entries, resourceKey, configuredHolder, Arrays.asList(modifiers));
+	public static void register(BootstrapContext<PlacedFeature> entries, ResourceKey<PlacedFeature> id, Holder<ConfiguredFeature<?, ?>> configuredHolder, PlacementModifier... modifiers) {
+		register(entries, id, configuredHolder, Arrays.asList(modifiers));
 	}
 
-	private static void register(BootstrapContext<PlacedFeature> entries, ResourceKey<PlacedFeature> resourceKey, Holder<ConfiguredFeature<?, ?>> configuredHolder, List<PlacementModifier> modifiers) {
-		PlacementUtils.register(entries, resourceKey, configuredHolder, modifiers);
+	private static void register(BootstrapContext<PlacedFeature> entries, ResourceKey<PlacedFeature> id, Holder<ConfiguredFeature<?, ?>> configuredHolder, List<PlacementModifier> modifiers) {
+		PlacementUtils.register(entries, id, configuredHolder, modifiers);
 	}
 
-	private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> entries, ResourceKey<ConfiguredFeature<?, ?>> resourceKey, F feature, FC featureConfiguration) {
-		FeatureUtils.register(entries, resourceKey, feature, featureConfiguration);
+	private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> entries, ResourceKey<ConfiguredFeature<?, ?>> id, F feature, FC config) {
+		FeatureUtils.register(entries, id, feature, config);
 	}
 }

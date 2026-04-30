@@ -20,7 +20,7 @@ package net.frozenblock.trailiertales.datagen.tag;
 import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
-import net.frozenblock.trailiertales.worldgen.TTFeatureBootstrap;
+import net.frozenblock.trailiertales.data.worldgen.feature.TTFeatureBootstrap;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.FeatureTags;

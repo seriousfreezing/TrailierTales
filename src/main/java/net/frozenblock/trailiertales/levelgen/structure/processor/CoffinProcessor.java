@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.worldgen.processor;
+package net.frozenblock.trailiertales.levelgen.structure.processor;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

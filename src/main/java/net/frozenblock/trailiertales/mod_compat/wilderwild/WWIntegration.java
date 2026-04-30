@@ -24,8 +24,8 @@ import net.frozenblock.lib.worldgen.structure.api.BlockStateRespectingRuleProces
 import net.frozenblock.lib.worldgen.structure.api.StructureProcessorApi;
 import net.frozenblock.trailiertales.registry.TTBlocks;
 import net.frozenblock.trailiertales.registry.TTSounds;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.CatacombsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.SavannaRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.CatacombsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.SavannaRuinsGenerator;
 import net.frozenblock.wilderwild.config.WWBlockConfig;
 import net.frozenblock.wilderwild.registry.WWBlocks;
 import net.minecraft.world.level.block.Blocks;

@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.worldgen.structure.datagen;
+package net.frozenblock.trailiertales.data.worldgen.structure;
 
 import com.google.common.collect.ImmutableList;
 import net.frozenblock.lib.worldgen.structure.api.BlockStateRespectingProcessorRule;
@@ -25,13 +25,12 @@ import net.frozenblock.trailiertales.registry.TTItems;
 import net.frozenblock.trailiertales.registry.TTLootTables;
 import net.frozenblock.trailiertales.registry.TTStructures;
 import net.frozenblock.trailiertales.tag.TTBiomeTags;
-import net.frozenblock.trailiertales.worldgen.structure.RuinsStructure;
+import net.frozenblock.trailiertales.levelgen.structure.RuinsStructure;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -48,24 +47,24 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.RandomBlockMa
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 
-public class GenericRuinsGenerator {
-	public static final ResourceKey<StructureSet> RUINS_KEY = TTStructures.ofSet("ruins");
-	public static final ResourceKey<Structure> RUIN_KEY = TTStructures.createKey("ruins");
+public class JungleRuinsGenerator {
+	public static final ResourceKey<StructureSet> JUNGLE_RUINS_KEY =  TTStructures.ofSet("ruins_jungle");
+	public static final ResourceKey<Structure> JUNGLE_RUIN_KEY = TTStructures.createKey("ruins_jungle");
 
 	public static void bootstrap(BootstrapContext<Structure> context) {
 		final HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 
 		context.register(
-			RUIN_KEY,
+			JUNGLE_RUIN_KEY,
 			new RuinsStructure(
 				TTStructures.structure(
-					biomes.getOrThrow(TTBiomeTags.HAS_RUINS),
+					biomes.getOrThrow(TTBiomeTags.HAS_JUNGLE_RUINS),
 					GenerationStep.Decoration.SURFACE_STRUCTURES,
 					TerrainAdjustment.NONE
 				),
-				RuinsStructure.Type.GENERIC,
+				RuinsStructure.Type.JUNGLE,
 				1F,
-				UniformInt.of(2, 6),
+				UniformInt.of(2, 5),
 				Heightmap.Types.OCEAN_FLOOR_WG
 			)
 		);
@@ -75,10 +74,10 @@ public class GenericRuinsGenerator {
 		final HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
 
 		context.register(
-			RUINS_KEY,
+			JUNGLE_RUINS_KEY,
 			new StructureSet(
-				structures.getOrThrow(RUIN_KEY),
-				new RandomSpreadStructurePlacement(34, 18, RandomSpreadType.LINEAR, 68415318)
+				structures.getOrThrow(JUNGLE_RUIN_KEY),
+				new RandomSpreadStructurePlacement(34, 18, RandomSpreadType.LINEAR, 343577861)
 			)
 		);
 	}
@@ -101,63 +100,63 @@ public class GenericRuinsGenerator {
 			new RuleProcessor(
 				ImmutableList.of(
 					new ProcessorRule(new BlockMatchTest(Blocks.COBBLESTONE), AlwaysTrueTest.INSTANCE, Blocks.STONE_BRICKS.defaultBlockState()),
-					new ProcessorRule(new RandomBlockMatchTest(Blocks.COBBLESTONE, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_COBBLESTONE.defaultBlockState())
+					new ProcessorRule(new RandomBlockMatchTest(Blocks.COBBLESTONE, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_COBBLESTONE.defaultBlockState())
 				)
 			),
 			new RuleProcessor(
 				ImmutableList.of(
 					new ProcessorRule(new RandomBlockMatchTest(Blocks.GRAVEL, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.DIRT.defaultBlockState()),
 					new ProcessorRule(new RandomBlockMatchTest(Blocks.GRAVEL, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.COARSE_DIRT.defaultBlockState()),
-					TTStructures.archyProcessorRule(Blocks.GRAVEL, Blocks.SUSPICIOUS_GRAVEL, TTLootTables.RUINS_ARCHAEOLOGY, 0.15F),
-					new ProcessorRule(new RandomBlockMatchTest(Blocks.STONE_BRICKS, 0.25F), AlwaysTrueTest.INSTANCE, Blocks.COBBLESTONE.defaultBlockState()),
-					new ProcessorRule(new RandomBlockMatchTest(Blocks.STONE_BRICKS, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_STONE_BRICKS.defaultBlockState()),
+					TTStructures.archyProcessorRule(Blocks.GRAVEL, Blocks.SUSPICIOUS_GRAVEL, TTLootTables.JUNGLE_RUINS_ARCHAEOLOGY, 0.15F),
+					new ProcessorRule(new RandomBlockMatchTest(Blocks.STONE_BRICKS, 0.4F), AlwaysTrueTest.INSTANCE, Blocks.COBBLESTONE.defaultBlockState()),
+					new ProcessorRule(new RandomBlockMatchTest(Blocks.STONE_BRICKS, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_STONE_BRICKS.defaultBlockState()),
 					new ProcessorRule(new RandomBlockMatchTest(Blocks.STONE_BRICKS, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.CRACKED_STONE_BRICKS.defaultBlockState())
 				)
 			),
 			new BlockStateRespectingRuleProcessor(
 				ImmutableList.of(
 					new BlockStateRespectingProcessorRule(
-						new RandomBlockMatchTest(Blocks.STONE_BRICK_SLAB, 0.25F), AlwaysTrueTest.INSTANCE, Blocks.COBBLESTONE_SLAB
+						new RandomBlockMatchTest(Blocks.STONE_BRICK_SLAB, 0.4F), AlwaysTrueTest.INSTANCE, Blocks.COBBLESTONE_SLAB
 					),
 					new BlockStateRespectingProcessorRule(
-						new RandomBlockMatchTest(Blocks.STONE_BRICK_WALL, 0.25F), AlwaysTrueTest.INSTANCE, Blocks.COBBLESTONE_WALL
+						new RandomBlockMatchTest(Blocks.STONE_BRICK_WALL, 0.4F), AlwaysTrueTest.INSTANCE, Blocks.COBBLESTONE_WALL
 					),
 					new BlockStateRespectingProcessorRule(
-						new RandomBlockMatchTest(Blocks.STONE_BRICK_STAIRS, 0.25F), AlwaysTrueTest.INSTANCE, Blocks.COBBLESTONE_STAIRS
+						new RandomBlockMatchTest(Blocks.STONE_BRICK_STAIRS, 0.4F), AlwaysTrueTest.INSTANCE, Blocks.COBBLESTONE_STAIRS
 					)
 				)
 			),
 			new BlockStateRespectingRuleProcessor(
 				ImmutableList.of(
 					new BlockStateRespectingProcessorRule(
-						new RandomBlockMatchTest(Blocks.COBBLESTONE_SLAB, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_COBBLESTONE_SLAB
+						new RandomBlockMatchTest(Blocks.COBBLESTONE_SLAB, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_COBBLESTONE_SLAB
 					),
 					new BlockStateRespectingProcessorRule(
-						new RandomBlockMatchTest(Blocks.COBBLESTONE_WALL, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_COBBLESTONE_WALL
+						new RandomBlockMatchTest(Blocks.COBBLESTONE_WALL, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_COBBLESTONE_WALL
 					),
 					new BlockStateRespectingProcessorRule(
-						new RandomBlockMatchTest(Blocks.COBBLESTONE_STAIRS, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_COBBLESTONE_STAIRS
+						new RandomBlockMatchTest(Blocks.COBBLESTONE_STAIRS, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_COBBLESTONE_STAIRS
 					),
 					new BlockStateRespectingProcessorRule(
-						new RandomBlockMatchTest(Blocks.STONE_BRICK_SLAB, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_STONE_BRICK_SLAB
+						new RandomBlockMatchTest(Blocks.STONE_BRICK_SLAB, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_STONE_BRICK_SLAB
 					),
 					new BlockStateRespectingProcessorRule(
-						new RandomBlockMatchTest(Blocks.STONE_BRICK_WALL, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_STONE_BRICK_WALL
+						new RandomBlockMatchTest(Blocks.STONE_BRICK_WALL, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_STONE_BRICK_WALL
 					),
 					new BlockStateRespectingProcessorRule(
-						new RandomBlockMatchTest(Blocks.STONE_BRICK_STAIRS, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_STONE_BRICK_STAIRS
+						new RandomBlockMatchTest(Blocks.STONE_BRICK_STAIRS, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.MOSSY_STONE_BRICK_STAIRS
 					)
 				)
 			),
-			TTStructures.archyLootProcessor(Blocks.DIRT, TTBlocks.SUSPICIOUS_DIRT, TTLootTables.RUINS_ARCHAEOLOGY, 0.05F),
-			TTStructures.archyLootProcessor(Blocks.COARSE_DIRT, TTBlocks.SUSPICIOUS_DIRT, TTLootTables.RUINS_ARCHAEOLOGY, 0.05F),
-			TTStructures.archyLootProcessor(Blocks.CLAY, TTBlocks.SUSPICIOUS_CLAY, TTLootTables.RUINS_ARCHAEOLOGY, 0.4F),
+			TTStructures.archyLootProcessor(Blocks.DIRT, TTBlocks.SUSPICIOUS_DIRT, TTLootTables.JUNGLE_RUINS_ARCHAEOLOGY, 0.05F),
+			TTStructures.archyLootProcessor(Blocks.COARSE_DIRT, TTBlocks.SUSPICIOUS_DIRT, TTLootTables.JUNGLE_RUINS_ARCHAEOLOGY, 0.05F),
+			TTStructures.archyLootProcessor(Blocks.CLAY, TTBlocks.SUSPICIOUS_CLAY, TTLootTables.JUNGLE_RUINS_ARCHAEOLOGY, 0.4F),
 			TTStructures.decoratedPotSherdProcessor(
 				1F,
-				TTItems.LUMBER_POTTERY_SHERD,
-				Items.ARCHER_POTTERY_SHERD,
-				Items.BLADE_POTTERY_SHERD,
-				TTItems.SPROUT_POTTERY_SHERD
+				TTItems.BOLT_POTTERY_SHERD,
+				TTItems.NAVIGATOR_POTTERY_SHERD,
+				TTItems.BLOOM_POTTERY_SHERD,
+				TTItems.SHOWER_POTTERY_SHERD
 			)
 		)
 	);

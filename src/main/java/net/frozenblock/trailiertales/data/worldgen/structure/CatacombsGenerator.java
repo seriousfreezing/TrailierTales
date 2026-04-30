@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.worldgen.structure.datagen;
+package net.frozenblock.trailiertales.data.worldgen.structure;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
@@ -32,7 +32,7 @@ import net.frozenblock.trailiertales.registry.TTItems;
 import net.frozenblock.trailiertales.registry.TTLootTables;
 import net.frozenblock.trailiertales.registry.TTStructures;
 import net.frozenblock.trailiertales.tag.TTBiomeTags;
-import net.frozenblock.trailiertales.worldgen.processor.CoffinProcessor;
+import net.frozenblock.trailiertales.levelgen.structure.processor.CoffinProcessor;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;

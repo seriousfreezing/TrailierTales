@@ -22,6 +22,7 @@ import net.frozenblock.lib.FrozenBools;
 import net.frozenblock.lib.entrypoint.api.FrozenModInitializer;
 import net.frozenblock.lib.feature_flag.api.FeatureFlagApi;
 import net.frozenblock.lib.gravity.api.GravityAPI;
+import net.frozenblock.trailiertales.advancements.modification.TTAdvancementModifications;
 import net.frozenblock.trailiertales.block.EctoplasmBlock;
 import net.frozenblock.trailiertales.config.TTBlockConfig;
 import net.frozenblock.trailiertales.config.TTEntityConfig;
@@ -29,9 +30,11 @@ import net.frozenblock.trailiertales.config.TTItemConfig;
 import net.frozenblock.trailiertales.config.TTMiscConfig;
 import net.frozenblock.trailiertales.config.TTWorldgenConfig;
 import net.frozenblock.trailiertales.datafix.trailiertales.TTDataFixer;
+import net.frozenblock.trailiertales.levelgen.structure.modification.TTStructureModifications;
 import net.frozenblock.trailiertales.mod_compat.TTModIntegrations;
 import net.frozenblock.trailiertales.registry.TTAttachmentTypes;
 import net.frozenblock.trailiertales.registry.TTBlockEntityTypes;
+import net.frozenblock.trailiertales.registry.TTBlockSoundTypeOverwrites;
 import net.frozenblock.trailiertales.registry.TTBlocks;
 import net.frozenblock.trailiertales.registry.TTCreativeInventorySorting;
 import net.frozenblock.trailiertales.registry.TTDebugSubscriptions;
@@ -53,7 +56,8 @@ import net.frozenblock.trailiertales.registry.TTSounds;
 import net.frozenblock.trailiertales.registry.TTStructurePieceTypes;
 import net.frozenblock.trailiertales.registry.TTStructureTypes;
 import net.frozenblock.trailiertales.registry.TTTrimPatterns;
-import net.frozenblock.trailiertales.worldgen.TTBiomeModifications;
+import net.frozenblock.trailiertales.levelgen.biome.modification.TTBiomeModifications;
+import net.frozenblock.trailiertales.registry.TTWindDisturbances;
 
 public class TrailierTales extends FrozenModInitializer {
 
@@ -97,6 +101,11 @@ public class TrailierTales extends FrozenModInitializer {
 
 		TTModIntegrations.init();
 		TTCreativeInventorySorting.init();
+		TTBlockSoundTypeOverwrites.init();
+		TTStructureModifications.init();
+		TTAdvancementModifications.init();
+
+		TTWindDisturbances.init();
 
 		TTResources.init(container);
 

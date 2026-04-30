@@ -45,7 +45,7 @@ import net.frozenblock.trailiertales.registry.TTEnchantments;
 import net.frozenblock.trailiertales.registry.TTJukeboxSongs;
 import net.frozenblock.trailiertales.registry.TTStructures;
 import net.frozenblock.trailiertales.registry.TTTrimPatterns;
-import net.frozenblock.trailiertales.worldgen.TTFeatureBootstrap;
+import net.frozenblock.trailiertales.data.worldgen.feature.TTFeatureBootstrap;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamilies;

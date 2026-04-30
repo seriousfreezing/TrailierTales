@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.worldgen.structure;
+package net.frozenblock.trailiertales.levelgen.structure;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
@@ -26,13 +26,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import net.frozenblock.trailiertales.registry.TTStructureTypes;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.BadlandsRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.DeepslateRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.DesertRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.GenericRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.JungleRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.SavannaRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.SnowyRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.BadlandsRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.DeepslateRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.DesertRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.GenericRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.JungleRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.SavannaRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.SnowyRuinsGenerator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.StringRepresentable;

@@ -18,7 +18,7 @@
 package net.frozenblock.trailiertales.registry;
 
 import net.frozenblock.trailiertales.TTConstants;
-import net.frozenblock.trailiertales.worldgen.structure.RuinsPieces;
+import net.frozenblock.trailiertales.levelgen.structure.RuinsPieces;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;

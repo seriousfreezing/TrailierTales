@@ -19,7 +19,7 @@ package net.frozenblock.trailiertales.registry;
 
 import com.mojang.serialization.MapCodec;
 import net.frozenblock.trailiertales.TTConstants;
-import net.frozenblock.trailiertales.worldgen.structure.RuinsStructure;
+import net.frozenblock.trailiertales.levelgen.structure.RuinsStructure;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.structure.Structure;

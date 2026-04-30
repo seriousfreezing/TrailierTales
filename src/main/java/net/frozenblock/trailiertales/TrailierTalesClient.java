@@ -28,7 +28,7 @@ import net.frozenblock.trailiertales.client.TTParticleEngine;
 import net.frozenblock.trailiertales.client.TTRenderStateDataKeys;
 import net.frozenblock.trailiertales.client.renderer.special.CoffinSpecialRenderer;
 import net.frozenblock.trailiertales.config.TTMiscConfig;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.CatacombsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.CatacombsGenerator;
 import net.minecraft.client.renderer.special.SpecialModelRenderers;
 import net.minecraft.util.Mth;
 

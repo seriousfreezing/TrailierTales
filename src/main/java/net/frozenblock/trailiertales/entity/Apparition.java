@@ -23,10 +23,10 @@ import net.frozenblock.trailiertales.block.entity.coffin.CoffinSpawner;
 import net.frozenblock.trailiertales.block.entity.coffin.impl.EntityCoffinInterface;
 import net.frozenblock.trailiertales.config.TTEntityConfig;
 import net.frozenblock.trailiertales.entity.ai.apparition.ApparitionAi;
-import net.frozenblock.trailiertales.mod_compat.FrozenLibIntegration;
 import net.frozenblock.trailiertales.particle.options.GlowingDustColorTransitionOptions;
 import net.frozenblock.trailiertales.registry.TTMemoryModuleTypes;
 import net.frozenblock.trailiertales.registry.TTSounds;
+import net.frozenblock.trailiertales.registry.TTWindDisturbances;
 import net.frozenblock.trailiertales.tag.TTEntityTypeTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
@@ -676,7 +676,7 @@ public class Apparition extends Monster implements RangedAttackMob, WindDisturbi
 
 	@Override
 	public Identifier frozenLib$getWindDisturbanceLogicID() {
-		return FrozenLibIntegration.APPARITION_WIND_DISTURBANCE;
+		return TTWindDisturbances.APPARITION_WIND_DISTURBANCE;
 	}
 
 	@Override

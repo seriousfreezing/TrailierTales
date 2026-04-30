@@ -23,7 +23,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.frozenblock.trailiertales.TTConstants;
 import net.frozenblock.trailiertales.registry.TTBlocks;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.CatacombsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.CatacombsGenerator;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;

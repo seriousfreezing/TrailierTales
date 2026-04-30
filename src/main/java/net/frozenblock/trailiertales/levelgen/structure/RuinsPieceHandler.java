@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.worldgen.structure;
+package net.frozenblock.trailiertales.levelgen.structure;
 
 import com.google.common.collect.ImmutableMap;
 import java.util.ArrayList;

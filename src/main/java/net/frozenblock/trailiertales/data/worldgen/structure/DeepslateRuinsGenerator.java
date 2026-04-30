@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.worldgen.structure.datagen;
+package net.frozenblock.trailiertales.data.worldgen.structure;
 
 import com.google.common.collect.ImmutableList;
 import net.frozenblock.lib.worldgen.structure.api.BlockStateRespectingProcessorRule;
@@ -23,7 +23,7 @@ import net.frozenblock.lib.worldgen.structure.api.BlockStateRespectingRuleProces
 import net.frozenblock.trailiertales.registry.TTLootTables;
 import net.frozenblock.trailiertales.registry.TTStructures;
 import net.frozenblock.trailiertales.tag.TTBiomeTags;
-import net.frozenblock.trailiertales.worldgen.structure.RuinsStructure;
+import net.frozenblock.trailiertales.levelgen.structure.RuinsStructure;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;

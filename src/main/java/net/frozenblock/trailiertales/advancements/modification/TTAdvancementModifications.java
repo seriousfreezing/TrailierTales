@@ -15,44 +15,29 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.mod_compat;
+package net.frozenblock.trailiertales.advancements.modification;
 
-import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.frozenblock.lib.advancement.api.AdvancementAPI;
 import net.frozenblock.lib.advancement.api.AdvancementEvents;
-import net.frozenblock.lib.block.sound.api.BlockSoundTypeOverwrites;
-import net.frozenblock.lib.integration.api.ModIntegration;
-import net.frozenblock.lib.wind.api.WindDisturbance;
-import net.frozenblock.lib.wind.api.WindDisturbanceLogic;
-import net.frozenblock.lib.worldgen.structure.api.StructureGenerationConditionApi;
-import net.frozenblock.lib.worldgen.structure.api.StructurePlacementExclusionApi;
-import net.frozenblock.lib.worldgen.structure.api.StructureProcessorApi;
 import net.frozenblock.trailiertales.TTConstants;
-import net.frozenblock.trailiertales.config.TTBlockConfig;
 import net.frozenblock.trailiertales.config.TTMiscConfig;
-import net.frozenblock.trailiertales.config.TTWorldgenConfig;
-import net.frozenblock.trailiertales.entity.Apparition;
+import net.frozenblock.trailiertales.data.worldgen.structure.BadlandsRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.CatacombsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.DeepslateRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.DesertRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.GenericRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.JungleRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.SavannaRuinsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.SnowyRuinsGenerator;
 import net.frozenblock.trailiertales.registry.TTBlocks;
 import net.frozenblock.trailiertales.registry.TTEntityTypes;
 import net.frozenblock.trailiertales.registry.TTLootTables;
 import net.frozenblock.trailiertales.registry.TTMobEffects;
-import net.frozenblock.trailiertales.registry.TTSounds;
-import net.frozenblock.trailiertales.tag.TTBlockTags;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.BadlandsRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.CatacombsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.DeepslateRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.DesertRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.GenericRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.JungleRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.SavannaRuinsGenerator;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.SnowyRuinsGenerator;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.predicates.MobEffectsPredicate;
@@ -63,130 +48,17 @@ import net.minecraft.advancements.triggers.EffectsChangedTrigger;
 import net.minecraft.advancements.triggers.ItemUsedOnLocationTrigger;
 import net.minecraft.advancements.triggers.KilledTrigger;
 import net.minecraft.advancements.triggers.LootTableTrigger;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructureSets;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
-import net.minecraft.world.level.levelgen.structure.templatesystem.AlwaysTrueTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.ProcessorRule;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RandomBlockMatchTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RandomBlockStateMatchTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleProcessor;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.phys.Vec3;
 
-public class FrozenLibIntegration extends ModIntegration {
-	public static final Identifier APPARITION_WIND_DISTURBANCE = TTConstants.id("apparition");
+public class TTAdvancementModifications {
 
-	public FrozenLibIntegration() {
-		super("frozenlib");
-	}
-
-	@Override
-	public void initPreFreeze() {
-		WindDisturbanceLogic.register(
-			APPARITION_WIND_DISTURBANCE,
-			(WindDisturbanceLogic.DisturbanceLogic<Apparition>) (source, level, windOrigin, affectedArea, windTarget) -> {
-				if (source.isEmpty()) return null;
-
-				final double distance = windOrigin.distanceTo(windTarget);
-				if (distance > 6D) return null;
-
-				final Vec3 differenceInPoses = windOrigin.subtract(windTarget);
-				final double scaledDistance = (6D - distance) / 6D;
-				final double strengthFromDistance = Mth.clamp((6D - distance) / 4.5D, 0D, 1D);
-				final double x = scaledDistance * differenceInPoses.x * 0.3D;
-				final double y = scaledDistance * differenceInPoses.y * 0.3D;
-				final double z = scaledDistance * differenceInPoses.z * 0.3D;
-				final Vec3 windVec = new Vec3(x, y, z);
-				return new WindDisturbance.DisturbanceResult(strengthFromDistance, 6D - distance, windVec);
-			}
-		);
-	}
-
-	@Override
-	public void init() {
-		BlockSoundTypeOverwrites.addBlockTag(TTBlockTags.SOUND_UNPOLISHED_BRICKS, TTSounds.BRICKS, TTBlockConfig.UNPOLISHED_BRICKS_SOUNDS::get);
-		BlockSoundTypeOverwrites.addBlockTag(TTBlockTags.SOUND_POLISHED_BRICKS, TTSounds.POLISHED_BRICKS, TTBlockConfig.POLISHED_BRICKS_SOUNDS::get);
-		BlockSoundTypeOverwrites.addBlockTag(TTBlockTags.SOUND_POLISHED_CALCITE, TTSounds.POLISHED_CALCITE, TTBlockConfig.POLISHED_CALCITE_SOUNDS::get);
-		BlockSoundTypeOverwrites.addBlockTag(TTBlockTags.SOUND_CALCITE_BRICKS, TTSounds.CALCITE_BRICKS_ALT, TTBlockConfig.CALCITE_BRICKS_SOUNDS::get);
-		BlockSoundTypeOverwrites.addBlockTag(TTBlockTags.SOUND_POLISHED, TTSounds.POLISHED, TTBlockConfig.POLISHED_SOUNDS::get);
-		BlockSoundTypeOverwrites.addBlockTag(TTBlockTags.SOUND_POLISHED_DEEPSLATE, TTSounds.POLISHED_DEEPSLATE, TTBlockConfig.POLISHED_DEEPSLATE_SOUNDS::get);
-		BlockSoundTypeOverwrites.addBlockTag(TTBlockTags.SOUND_POLISHED_TUFF, TTSounds.POLISHED_TUFF, TTBlockConfig.POLISHED_TUFF_SOUNDS::get);
-		BlockSoundTypeOverwrites.addBlockTag(TTBlockTags.SOUND_POLISHED_BASALT, TTSounds.POLISHED_BASALT, TTBlockConfig.POLISHED_BASALT_SOUNDS::get);
-		BlockSoundTypeOverwrites.addBlockTag(TTBlockTags.SOUND_POLISHED_RESIN, TTSounds.POLISHED_RESIN, TTBlockConfig.POLISHED_SOUNDS::get);
-
-		StructureGenerationConditionApi.addGenerationCondition(CatacombsGenerator.CATACOMBS_STRUCTURE_SET_KEY.identifier(), TTWorldgenConfig.CATACOMBS_GENERATION);
-		StructureGenerationConditionApi.addGenerationCondition(BadlandsRuinsGenerator.BADLANDS_RUINS_KEY.identifier(), TTWorldgenConfig.BADLANDS_RUINS_GENERATION);
-		StructureGenerationConditionApi.addGenerationCondition(DeepslateRuinsGenerator.DEEPSLATE_RUINS_KEY.identifier(), TTWorldgenConfig.DEEPSLATE_RUINS_GENERATION);
-		StructureGenerationConditionApi.addGenerationCondition(DesertRuinsGenerator.DESERT_RUINS_KEY.identifier(), TTWorldgenConfig.DESERT_RUINS_GENERATION);
-		StructureGenerationConditionApi.addGenerationCondition(GenericRuinsGenerator.RUINS_KEY.identifier(), TTWorldgenConfig.GENERIC_RUINS_GENERATION);
-		StructureGenerationConditionApi.addGenerationCondition(JungleRuinsGenerator.JUNGLE_RUINS_KEY.identifier(), TTWorldgenConfig.JUNGLE_RUINS_GENERATION);
-		StructureGenerationConditionApi.addGenerationCondition(SavannaRuinsGenerator.SAVANNA_RUINS_KEY.identifier(), TTWorldgenConfig.SAVANNA_RUINS_GENERATION);
-		StructureGenerationConditionApi.addGenerationCondition(SnowyRuinsGenerator.SNOWY_RUINS_KEY.identifier(), TTWorldgenConfig.SNOWY_RUINS_GENERATION);
-
-		StructurePlacementExclusionApi.addExclusion(
-			BuiltinStructureSets.TRIAL_CHAMBERS.identifier(),
-			CatacombsGenerator.CATACOMBS_STRUCTURE_SET_KEY.identifier(),
-			8
-		);
-
-		StructurePlacementExclusionApi.addExclusion(
-			DeepslateRuinsGenerator.DEEPSLATE_RUINS_KEY.identifier(),
-			BuiltinStructureSets.ANCIENT_CITIES.identifier(),
-			8
-		);
-
-		StructurePlacementExclusionApi.addExclusion(
-			DesertRuinsGenerator.DESERT_RUINS_KEY.identifier(),
-			BuiltinStructureSets.DESERT_PYRAMIDS.identifier(),
-			3
-		);
-
-		if (TTWorldgenConfig.END_CITY_CRACKED_GENERATION.get()) {
-			StructureProcessorApi.addProcessor(
-				BuiltinStructures.END_CITY.identifier(),
-				new RuleProcessor(
-					ImmutableList.of(
-						new ProcessorRule(new RandomBlockMatchTest(Blocks.END_STONE_BRICKS, 0.2F), AlwaysTrueTest.INSTANCE, TTBlocks.CRACKED_END_STONE_BRICKS.defaultBlockState()),
-						new ProcessorRule(new RandomBlockMatchTest(Blocks.PURPUR_BLOCK, 0.2F), AlwaysTrueTest.INSTANCE, TTBlocks.CRACKED_PURPUR_BLOCK.defaultBlockState())
-					)
-				)
-			);
-		}
-
-		if (TTWorldgenConfig.END_CITY_CHORAL_GENERATION.get()) {
-			StructureProcessorApi.addProcessor(
-				BuiltinStructures.END_CITY.identifier(),
-				new RuleProcessor(
-					ImmutableList.of(
-						new ProcessorRule(new RandomBlockMatchTest(Blocks.END_STONE_BRICKS, 0.05F), AlwaysTrueTest.INSTANCE, TTBlocks.CHORAL_END_STONE_BRICKS.defaultBlockState())
-					)
-				)
-			);
-		}
-
-		if (TTWorldgenConfig.END_CITY_CHISELED_GENERATION.get()) {
-			StructureProcessorApi.addProcessor(
-				BuiltinStructures.END_CITY.identifier(),
-				new RuleProcessor(
-					ImmutableList.of(
-						new ProcessorRule(new RandomBlockStateMatchTest(Blocks.PURPUR_PILLAR.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 0.4F), AlwaysTrueTest.INSTANCE, TTBlocks.CHISELED_PURPUR_BLOCK.defaultBlockState()),
-						new ProcessorRule(new RandomBlockStateMatchTest(Blocks.PURPUR_PILLAR.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 0.4F), AlwaysTrueTest.INSTANCE, TTBlocks.CHISELED_PURPUR_BLOCK.defaultBlockState())
-					)
-				)
-			);
-		}
-
+	public static void init() {
 		AdvancementEvents.INIT.register((holder, registries) -> {
 			final HolderLookup<EntityType<?>> entity = registries.lookupOrThrow(Registries.ENTITY_TYPE);
 			final Advancement advancement = holder.value();
@@ -301,10 +173,5 @@ public class FrozenLibIntegration extends ModIntegration {
 		}
 
 		advancement.requirements().requirements = Collections.unmodifiableList(requirementsList);
-	}
-
-	@Environment(EnvType.CLIENT)
-	@Override
-	public void clientInit() {
 	}
 }

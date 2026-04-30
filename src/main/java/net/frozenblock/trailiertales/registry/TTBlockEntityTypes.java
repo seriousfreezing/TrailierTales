@@ -18,7 +18,6 @@
 package net.frozenblock.trailiertales.registry;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityType;
-import net.frozenblock.trailiertales.TTConstants;
 import net.frozenblock.trailiertales.block.entity.SurveyorBlockEntity;
 import net.frozenblock.trailiertales.block.entity.coffin.CoffinBlockEntity;
 import net.frozenblock.trailiertales.references.TTBlockEntityTypeIds;
@@ -36,8 +35,6 @@ public final class TTBlockEntityTypes {
 	);
 
 	public static void register() {
-		TTConstants.log("Registering BlockEntities for Trailier Tales.", TTConstants.UNSTABLE_LOGGING);
-
 		final FabricBlockEntityType brushableBlock = BlockEntityTypes.BRUSHABLE_BLOCK;
 		brushableBlock.addValidBlock(TTBlocks.SUSPICIOUS_DIRT);
 		brushableBlock.addValidBlock(TTBlocks.SUSPICIOUS_CLAY);

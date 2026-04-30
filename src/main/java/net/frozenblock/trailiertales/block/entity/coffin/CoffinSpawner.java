@@ -38,7 +38,7 @@ import net.frozenblock.trailiertales.registry.TTParticleTypes;
 import net.frozenblock.trailiertales.registry.TTResources;
 import net.frozenblock.trailiertales.registry.TTSounds;
 import net.frozenblock.trailiertales.tag.TTBlockTags;
-import net.frozenblock.trailiertales.worldgen.structure.datagen.CatacombsGenerator;
+import net.frozenblock.trailiertales.data.worldgen.structure.CatacombsGenerator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
