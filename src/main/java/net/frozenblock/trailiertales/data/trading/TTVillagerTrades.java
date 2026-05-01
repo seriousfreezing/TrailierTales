@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.datagen.trading;
+package net.frozenblock.trailiertales.data.trading;
 
 import java.util.List;
 import java.util.Optional;

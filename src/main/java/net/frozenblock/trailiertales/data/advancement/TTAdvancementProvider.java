@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.datagen.advancement;
+package net.frozenblock.trailiertales.data.advancement;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;

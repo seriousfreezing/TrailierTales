@@ -15,31 +15,31 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.datagen;
+package net.frozenblock.trailiertales.data;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.frozenblock.lib.FrozenBools;
 import net.frozenblock.lib.feature_flag.api.FeatureFlagApi;
 import net.frozenblock.trailiertales.TTConstants;
-import net.frozenblock.trailiertales.datagen.advancement.TTAdvancementProvider;
-import net.frozenblock.trailiertales.datagen.loot.TTArchaeologyLootProvider;
-import net.frozenblock.trailiertales.datagen.loot.TTBlockLootProvider;
-import net.frozenblock.trailiertales.datagen.loot.TTChestLootProvider;
-import net.frozenblock.trailiertales.datagen.loot.TTEntityLootProvider;
-import net.frozenblock.trailiertales.datagen.model.TTModelProvider;
-import net.frozenblock.trailiertales.datagen.recipe.TTRecipeProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTBiomeTagsProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTBlockTagsProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTDamageTypeTagsProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTEnchantmentsTagProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTEntityTagsProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTFeatureTagsProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTGameEventTagsProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTItemTagsProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTStructureTagsProvider;
-import net.frozenblock.trailiertales.datagen.tag.TTVillagerTradesTagsProvider;
-import net.frozenblock.trailiertales.datagen.trading.TTVillagerTrades;
+import net.frozenblock.trailiertales.data.advancement.TTAdvancementProvider;
+import net.frozenblock.trailiertales.data.loot.TTArchaeologyLootProvider;
+import net.frozenblock.trailiertales.data.loot.TTBlockLootProvider;
+import net.frozenblock.trailiertales.data.loot.TTChestLootProvider;
+import net.frozenblock.trailiertales.data.loot.TTEntityLootProvider;
+import net.frozenblock.trailiertales.data.model.TTModelProvider;
+import net.frozenblock.trailiertales.data.recipe.TTRecipeProvider;
+import net.frozenblock.trailiertales.data.tag.TTBiomeTagsProvider;
+import net.frozenblock.trailiertales.data.tag.TTBlockTagsProvider;
+import net.frozenblock.trailiertales.data.tag.TTDamageTypeTagsProvider;
+import net.frozenblock.trailiertales.data.tag.TTEnchantmentsTagProvider;
+import net.frozenblock.trailiertales.data.tag.TTEntityTagsProvider;
+import net.frozenblock.trailiertales.data.tag.TTFeatureTagsProvider;
+import net.frozenblock.trailiertales.data.tag.TTGameEventTagsProvider;
+import net.frozenblock.trailiertales.data.tag.TTItemTagsProvider;
+import net.frozenblock.trailiertales.data.tag.TTStructureTagsProvider;
+import net.frozenblock.trailiertales.data.tag.TTVillagerTradesTagsProvider;
+import net.frozenblock.trailiertales.data.trading.TTVillagerTrades;
 import net.frozenblock.trailiertales.registry.TTBlocks;
 import net.frozenblock.trailiertales.registry.TTEnchantments;
 import net.frozenblock.trailiertales.registry.TTJukeboxSongs;

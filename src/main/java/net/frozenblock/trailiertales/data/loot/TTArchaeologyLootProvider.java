@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.datagen.loot;
+package net.frozenblock.trailiertales.data.loot;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;

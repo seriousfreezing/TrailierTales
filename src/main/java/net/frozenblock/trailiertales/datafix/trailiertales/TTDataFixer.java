@@ -28,80 +28,76 @@ import org.quiltmc.qsl.frozenblock.misc.datafixerupper.api.SimpleFixes;
 public class TTDataFixer {
 	public static final int DATA_VERSION = 3;
 
-	private TTDataFixer() {
-		throw new UnsupportedOperationException("TrailierDataFixer contains only static declarations.");
-	}
-
 	public static void applyDataFixes(final ModContainer mod) {
-		var builder = new QuiltDataFixerBuilder(DATA_VERSION);
+		final QuiltDataFixerBuilder builder = new QuiltDataFixerBuilder(DATA_VERSION);
 		builder.addSchema(0, QuiltDataFixes.BASE_SCHEMA);
 
 		final Schema schemaV1 = builder.addSchema(1, NamespacedSchema::new);
 		// GRANITE
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename chiseled_polished_granite to chiseled_granite_bricks",
 			TTConstants.id("chiseled_polished_granite"),
 			TTConstants.id("chiseled_granite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_granite_bricks to granite_bricks",
 			TTConstants.id("polished_granite_bricks"),
 			TTConstants.id("granite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename cracked_polished_granite_bricks to cracked_granite_bricks",
 			TTConstants.id("cracked_polished_granite_bricks"),
 			TTConstants.id("cracked_granite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_granite_brick_stairs to granite_brick_stairs",
 			TTConstants.id("polished_granite_brick_stairs"),
 			TTConstants.id("granite_brick_stairs"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_granite_brick_slab to granite_brick_slab",
 			TTConstants.id("polished_granite_brick_slab"),
 			TTConstants.id("granite_brick_slab"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_granite_brick_wall to granite_brick_wall",
 			TTConstants.id("polished_granite_brick_wall"),
 			TTConstants.id("granite_brick_wall"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_granite_bricks to mossy_granite_bricks",
 			TTConstants.id("mossy_polished_granite_bricks"),
 			TTConstants.id("mossy_granite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_granite_brick_stairs to mossy_granite_brick_stairs",
 			TTConstants.id("mossy_polished_granite_brick_stairs"),
 			TTConstants.id("mossy_granite_brick_stairs"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_granite_brick_slab to mossy_granite_brick_slab",
 			TTConstants.id("mossy_polished_granite_brick_slab"),
 			TTConstants.id("mossy_granite_brick_slab"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_granite_brick_wall to mossy_granite_brick_wall",
 			TTConstants.id("mossy_polished_granite_brick_wall"),
@@ -110,70 +106,70 @@ public class TTDataFixer {
 		);
 
 		// DIORITE
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename chiseled_polished_diorite to chiseled_diorite_bricks",
 			TTConstants.id("chiseled_polished_diorite"),
 			TTConstants.id("chiseled_diorite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_diorite_bricks to diorite_bricks",
 			TTConstants.id("polished_diorite_bricks"),
 			TTConstants.id("diorite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename cracked_polished_diorite_bricks to cracked_diorite_bricks",
 			TTConstants.id("cracked_polished_diorite_bricks"),
 			TTConstants.id("cracked_diorite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_diorite_brick_stairs to diorite_brick_stairs",
 			TTConstants.id("polished_diorite_brick_stairs"),
 			TTConstants.id("diorite_brick_stairs"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_diorite_brick_slab to diorite_brick_slab",
 			TTConstants.id("polished_diorite_brick_slab"),
 			TTConstants.id("diorite_brick_slab"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_diorite_brick_wall to diorite_brick_wall",
 			TTConstants.id("polished_diorite_brick_wall"),
 			TTConstants.id("diorite_brick_wall"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_diorite_bricks to mossy_diorite_bricks",
 			TTConstants.id("mossy_polished_diorite_bricks"),
 			TTConstants.id("mossy_diorite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_diorite_brick_stairs to mossy_diorite_brick_stairs",
 			TTConstants.id("mossy_polished_diorite_brick_stairs"),
 			TTConstants.id("mossy_diorite_brick_stairs"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_diorite_brick_slab to mossy_diorite_brick_slab",
 			TTConstants.id("mossy_polished_diorite_brick_slab"),
 			TTConstants.id("mossy_diorite_brick_slab"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_diorite_brick_wall to mossy_diorite_brick_wall",
 			TTConstants.id("mossy_polished_diorite_brick_wall"),
@@ -182,70 +178,70 @@ public class TTDataFixer {
 		);
 
 		// ANDESITE
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename chiseled_polished_andesite to chiseled_andesite_bricks",
 			TTConstants.id("chiseled_polished_andesite"),
 			TTConstants.id("chiseled_andesite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_andesite_bricks to andesite_bricks",
 			TTConstants.id("polished_andesite_bricks"),
 			TTConstants.id("andesite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename cracked_polished_andesite_bricks to cracked_andesite_bricks",
 			TTConstants.id("cracked_polished_andesite_bricks"),
 			TTConstants.id("cracked_andesite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_andesite_brick_stairs to andesite_brick_stairs",
 			TTConstants.id("polished_andesite_brick_stairs"),
 			TTConstants.id("andesite_brick_stairs"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_andesite_brick_slab to andesite_brick_slab",
 			TTConstants.id("polished_andesite_brick_slab"),
 			TTConstants.id("andesite_brick_slab"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename polished_andesite_brick_wall to andesite_brick_wall",
 			TTConstants.id("polished_andesite_brick_wall"),
 			TTConstants.id("andesite_brick_wall"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_andesite_bricks to mossy_andesite_bricks",
 			TTConstants.id("mossy_polished_andesite_bricks"),
 			TTConstants.id("mossy_andesite_bricks"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_andesite_brick_stairs to mossy_andesite_brick_stairs",
 			TTConstants.id("mossy_polished_andesite_brick_stairs"),
 			TTConstants.id("mossy_andesite_brick_stairs"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_andesite_brick_slab to mossy_andesite_brick_slab",
 			TTConstants.id("mossy_polished_andesite_brick_slab"),
 			TTConstants.id("mossy_andesite_brick_slab"),
 			schemaV1
 		);
-		SimpleFixes.addBlockRenameFix(
+		SimpleFixes.addBlockItemRenameFix(
 			builder,
 			"Rename mossy_polished_andesite_brick_wall to mossy_andesite_brick_wall",
 			TTConstants.id("mossy_polished_andesite_brick_wall"),

@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.datagen.tag;
+package net.frozenblock.trailiertales.data.tag;
 
 import java.util.function.Function;
 import net.frozenblock.trailiertales.references.TTBlockItemIds;

@@ -15,7 +15,7 @@
  * along with this program; if not, see <https://github.com/FrozenBlock/Licenses>.
  */
 
-package net.frozenblock.trailiertales.datagen.model;
+package net.frozenblock.trailiertales.data.model;
 
 import com.mojang.math.Transformation;
 import it.unimi.dsi.fastutil.ints.Int2ObjectFunction;
@@ -38,7 +38,7 @@ import net.frozenblock.trailiertales.block.entity.coffin.CoffinSpawnerState;
 import net.frozenblock.trailiertales.block.impl.CoffinPart;
 import net.frozenblock.trailiertales.client.renderer.blockentity.CoffinRenderer;
 import net.frozenblock.trailiertales.client.renderer.special.CoffinSpecialRenderer;
-import net.frozenblock.trailiertales.datagen.TTDataGenerator;
+import net.frozenblock.trailiertales.data.TTDataGenerator;
 import net.frozenblock.trailiertales.registry.TTBlocks;
 import net.frozenblock.trailiertales.registry.TTItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
