@@ -279,7 +279,7 @@ public final class CoffinSpawner {
 			});
 			if (!level.noCollision(entityType.get().getSpawnAABB(spawnVec3.x, spawnVec3.y, spawnVec3.z))) return Optional.empty();
 
-			if (!inLineOfSight(level, pos.getCenter(), spawnVec3)) return Optional.empty();
+			if (!inLineOfSight(level, Vec3.atCenterOf(pos), spawnVec3)) return Optional.empty();
 
 			final BlockPos spawnBlockPos = BlockPos.containing(spawnVec3);
 			if (!SpawnPlacements.checkSpawnRules(entityType.get(), level, EntitySpawnReason.TRIAL_SPAWNER, spawnBlockPos, level.getRandom())) return Optional.empty();

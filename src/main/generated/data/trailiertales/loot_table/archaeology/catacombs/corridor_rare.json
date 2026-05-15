@@ -2,7 +2,6 @@
   "type": "minecraft:archaeology",
   "pools": [
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
@@ -125,7 +124,6 @@
               "options": "#minecraft:on_random_loot"
             },
             {
-              "add": false,
               "damage": {
                 "type": "minecraft:uniform",
                 "max": 0.8,
@@ -144,7 +142,6 @@
               "options": "#minecraft:on_random_loot"
             },
             {
-              "add": false,
               "damage": {
                 "type": "minecraft:uniform",
                 "max": 0.8,

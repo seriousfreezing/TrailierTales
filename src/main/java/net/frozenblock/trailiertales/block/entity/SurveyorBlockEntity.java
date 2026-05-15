@@ -67,7 +67,7 @@ public class SurveyorBlockEntity extends BlockEntity {
 
 	public static Vec3 getEyePosition(BlockPos pos, BlockState state, double distanceFromCenter) {
 		final Direction direction = state.getValue(SurveyorBlock.FACING);
-		return pos.getCenter()
+		return Vec3.atCenterOf(pos)
 			.add(
 				distanceFromCenter * (double) direction.getStepX(),
 				distanceFromCenter * (double) direction.getStepY(),

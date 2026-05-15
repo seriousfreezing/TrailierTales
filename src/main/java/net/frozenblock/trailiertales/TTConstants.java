@@ -20,7 +20,6 @@ package net.frozenblock.trailiertales;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.minecraft.SharedConstants;
@@ -43,7 +42,6 @@ public class TTConstants {
 		if (shouldLog) LOGGER.info(string);
 	}
 
-	@Contract("_ -> new")
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
@@ -53,7 +51,6 @@ public class TTConstants {
 		return id(fallback);
 	}
 
-	@Contract("_ -> new")
 	public static Identifier vanillaId(String path) {
 		return Identifier.withDefaultNamespace(path);
 	}
@@ -62,19 +59,18 @@ public class TTConstants {
 		return TTConstants.id(path).toString();
 	}
 
-	@Contract(pure = true)
 	public static String safeString(String path) {
 		return MOD_ID + "_" + path;
 	}
 
-	public static Component text(String key, Component... args) {
+	public static Component text(String key, Object... args) {
 		return Component.translatable("option." + MOD_ID + "." + key, args);
 	}
 
 	/**
 	 * @return A tooltip component for use in a Config GUI
 	 */
-	public static Component tooltip(String key, Component... args) {
+	public static Component tooltip(String key, Object... args) {
 		return Component.translatable("tooltip." + MOD_ID + "." + key, args);
 	}
 }

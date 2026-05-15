@@ -31,6 +31,7 @@ import net.minecraft.gizmos.Gizmos;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.debug.DebugValueAccess;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 @Environment(EnvType.CLIENT)
@@ -59,7 +60,7 @@ public class CoffinDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
 				Gizmos.billboardTextOverMob(entity, 2, "Last Interaction: " + debugInfo.lastInteractionDifference(), TEXT_COLOR, 0.48F);
 			}
 
-			Gizmos.arrow(entity.getPosition(partialTicks), coffinPos.getCenter(), selected ? SELECTED_CONNECTION_COLOR : CONNECTION_COLOR);
+			Gizmos.arrow(entity.getPosition(partialTicks), Vec3.atCenterOf(coffinPos), selected ? SELECTED_CONNECTION_COLOR : CONNECTION_COLOR);
 		});
 
 		if (!this.minecraft.player.isSpectator()) this.updateLastLookedAtUuid();

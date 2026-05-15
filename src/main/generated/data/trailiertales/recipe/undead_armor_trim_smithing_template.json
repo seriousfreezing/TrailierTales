@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "#": "minecraft:diamond",
     "C": "trailiertales:mossy_deepslate_bricks",

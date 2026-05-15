@@ -34,7 +34,7 @@
       "net.frozenblock.trailiertales.config.modmenu.ModMenuIntegration"
     ],
     "fabric-datagen": [
-      "net.frozenblock.trailiertales.datagen.TTDataGenerator"
+      "net.frozenblock.trailiertales.data.TTDataGenerator"
     ],
     "frozenlib:decorated_pot_patterns": [
       "net.frozenblock.trailiertales.registry.TTDecoratedPotPatternRegistry"
